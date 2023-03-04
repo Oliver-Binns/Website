@@ -5,7 +5,7 @@ icon: fa-briefcase
 ---
 # Consultant
 ## Deloitte Digital
-### Sep 2020 — May 2022
+### Sep 2019 — Aug 2020
 
 As an iOS Developer in the Mobile Team at Deloitte Digital, I worked on enterprise projects for a number of high-profile clients across the public and private sectors, including the NHS Test and Trace programme. 
 
