@@ -22,6 +22,8 @@ p { text-align:justify; }
 .timeline-item p:last-child { margin-bottom: 0; }
 .timeline-item a { color:#F9C300; font-size:12px; }
 .timeline-item a:hover { text-decoration: underline; }
+.timeline-item i.fas { margin-left:-34px; margin-right:8px; text-align:center; line-height:15px; height:15px; width:15px; padding:5px; background-color:#f9c300; border-radius:50%; color:white; font-size: 12px;  }
+
 .icon { filter: brightness(0); margin-top:5px; }
 header { text-align:center; padding: 62px; }
 header, footer { color:black; background-color: #F9C300; }
@@ -39,4 +41,4 @@ footer { padding: 2px; }
         .timeline-item i.fas { color:black; }
 }
 footer { padding-bottom:30px; padding-top:10px; }
-.timeline-item i.fas { margin-left:-34px; margin-right:8px; text-align:center; line-height:15px; height:15px; width:15px; padding:5px; background-color:#f9c300; border-radius:50%; color:white; font-size: 12px;  }
+

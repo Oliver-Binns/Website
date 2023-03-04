@@ -33,7 +33,7 @@ private struct OliverHTMLFactory: HTMLFactory {
                 Divider()
 
                 Wrapper {
-                    H3("Times")
+                    H3("Positions")
                     Timeline(items: context.sections[.times].items)
                 }
 
