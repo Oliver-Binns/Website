@@ -21,13 +21,19 @@ let package = Package(
 
         .package(name: "SplashPublishPlugin",
                  url: "https://github.com/johnsundell/splashpublishplugin",
-                 from: "0.2.0")
+                 from: "0.2.0"),
+
+        .package(url: "https://github.com/tanabe1478/YoutubePublishPlugin.git",
+                 from: "1.0.1")
     ],
     targets: [
+        .target(name: "LinkPlugin", dependencies: ["Publish"]),
         .executableTarget(name: "OliverBinns", dependencies: [
             "Publish",
+            "LinkPlugin",
             "SplashPublishPlugin",
-            "ReadingTimePublishPlugin"
+            "ReadingTimePublishPlugin",
+            "YoutubePublishPlugin"
         ])
     ]
 )

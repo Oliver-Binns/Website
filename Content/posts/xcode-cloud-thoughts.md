@@ -11,6 +11,16 @@ Ever since Apple acquired BuddyBuild back in 2018 there has been been speculatio
 
 Xcode Cloud promises an easy to setup, secure, automated workflow for your apps, heavily integrated with Xcode and App Store Connect. But does it meet these promises? I attempted to build a pipeline similar to one I’ve previously written about to find out. You can find the demo pipeline [in the repository for my open-source London Underground widgets](https://github.com/Oliver-Binns/tube-status-ios).
 
+> prettylink https://www.macrumors.com/2018/01/02/apple-acquires-buddybuild-for-xcode-team/
+> image /images/buddybuild.png
+> title Apple Acquires Canadian App Development Startup Buddybuild
+> description Apple recently purchased Vancouver-based app startup Buddybuild, according to a blog post on the Buddybuild website (via iMore). Buddybuild’s...
+
+> prettylink /posts/gitflow-automation/
+> image /images/git-flow.jpg
+> title Gitflow with Automation for Mobile Apps
+> description Gitflow is a great branching strategy for mobile apps. Automation is essential for achieving our agile principle of delivering working software frequently. Combining these two processes can reduce the burden of deployment, helping us focus on regularly delivering great apps for our users.
+
 ## Setup
 
 There’s nothing much to say here, which in itself says a lot. You’ll need to enable Automatic Code Signing (if you haven’t already), but once you do, in true Apple-style, “it just works”. I think this is the first time I’ve used a CI/CD provider where the build passes on the first run with no code-signing issues and no missing dependencies.
@@ -88,11 +98,21 @@ then
 fi
 ```
 
+> prettylink https://fastlane.tools
+> image /images/fastlane.png
+> title fastlane - App automation done right
+> description The easiest way to build and release mobile apps. fastlane handles tedious tasks so you don’t have to.
+
 #### SonarQube
 
 I went down a bit of a rabbit-hole attempting to run SonarQube on Xcode Cloud. Suffice to say, it’s possible and should be easy enough for you to follow my lead.
 
 I’ve spun off a separate article for this if you’re interested to find out how:
+
+> prettylink /posts/sonarqube-xcodecloud/
+> image /images/hammer-sonar.png
+> title Attempting SonarQube Analysis on Xcode Cloud
+> description SonarQube can be a great tool for finding smells, bugs and duplications in your code. We can use the Fastlane plugin for SonarQube to output a report from our Xcode Cloud builds.
 
 ### Communication
 
@@ -105,6 +125,11 @@ There’s also no support for any project management tools (i.e. Jira) yet, so I
 One area where Xcode Cloud shines is allowing you to run your tests against multiple types of devices in parallel. I’ve attempted to do this locally, since parallel simulator testing was introduced in Xcode 9, but, at least for me, this has always ended up with the tests becoming flaky and randomly failing much more often: particularly with XCUITest cases. I’ve not written a massive number of tests yet, but I’ve not come across any non-deterministic behaviour so far.
 
 What’s also worth noting here is that Xcode Cloud does run all these tests inside simulators of the device. If you want to test your apps on physical devices, you’ll still need your own device farm or to use something like [BrowserStack’s App Live](https://www.browserstack.com/app-live).
+
+> prettylink https://useyourloaf.com/blog/xcode-10-random-and-parallel-tests/
+> image /images/use-your-loaf.png
+> title Xcode 10 Random And Parallel Tests
+> description Xcode 10 introduces three new options for running your tests. These allow you to randomize the execution order, speed up the tests by running them in parallel on multiple simulators and finally to control if Xcode automatically adds new tests to a scheme.
 
 
 ## Vendor Tie-in
@@ -127,4 +152,7 @@ In the future, I’d love to see some additions to the pre-installed software (S
 
 How have you found Xcode Cloud? Are you going to adopt it? Let me know on Twitter:
 
-
+> prettylink https://www.twitter.com/oliver-binns
+> image /images/profile-yellow.jpg
+> title @Oliver_Binns | Twitter
+> description The latest Tweets from @Oliver_Binns. iOS Development Craft Lead for @DeloitteDigital | Apple Alliance.

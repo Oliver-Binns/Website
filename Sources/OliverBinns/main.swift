@@ -1,8 +1,10 @@
 import Foundation
+import LinkPlugin
+import Plot
 import Publish
 import ReadingTimePublishPlugin
 import SplashPublishPlugin
-import Plot
+import YoutubePublishPlugin
 
 // This type acts as the configuration for your website.
 struct OliverBinns: Website {
@@ -28,11 +30,13 @@ struct OliverBinns: Website {
 // This will generate your website using the built-in Foundation theme:
 try OliverBinns()
     .publish(using: [
+        .installPlugin(.splash(withClassPrefix: "")),
+        .installPlugin(.youtube()),
+        .installPlugin(.links()),
+        
         .addMarkdownFiles(),
 
-        .installPlugin(.splash(withClassPrefix: "")),
         .installPlugin(.readingTime()),
-
         .generateHTML(withTheme: .oliver),
 
         .copyResources(at: "Resources/Theme/images", to: "images"),
