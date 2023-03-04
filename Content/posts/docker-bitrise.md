@@ -1,12 +1,10 @@
 ---
 date: 2020-07-03 13:00
-description: Building (almost) anything on Bitrise using Docker
+title: Building (almost) anything on Bitrise using Docker
 image: https://www.oliverbinns.co.uk/wp-content/uploads/2020/10/wFlFGsF3_400x400.jpg
 color: #683D87
 tags: Swift, Server-Side, Vapor, Bitrise
 ---
-# Building (almost) anything on Bitrise using Docker
-
 Bitrise is gaining a lot of users in the mobile development community- but did you know you can also use it as a CI tool for non-mobile projects too?
 
 For [Little Journey](https://littlesparkshospital.com/) we use Bitrise to build our full stack of applications including front-end (Angular) and back-end (Vapor) web. The web applications are both deployed to a Linode server.

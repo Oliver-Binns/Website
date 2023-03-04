@@ -1,5 +1,6 @@
 import Foundation
 import Publish
+import ReadingTimePublishPlugin
 import SplashPublishPlugin
 import Plot
 
@@ -27,9 +28,11 @@ struct OliverBinns: Website {
 // This will generate your website using the built-in Foundation theme:
 try OliverBinns()
     .publish(using: [
-        .installPlugin(.splash(withClassPrefix: "")),
-
         .addMarkdownFiles(),
+
+        .installPlugin(.splash(withClassPrefix: "")),
+        .installPlugin(.readingTime()),
+
         .generateHTML(withTheme: .oliver),
 
         .copyResources(at: "Resources/Theme/images", to: "images"),
