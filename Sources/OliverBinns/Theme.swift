@@ -3,7 +3,6 @@ import Publish
 
 extension Theme where Site == OliverBinns {
     static var oliver: Self {
-        
         Theme(htmlFactory: OliverHTMLFactory(),
               resourcePaths: [
                 "Resources/Theme/styles.css"
@@ -71,9 +70,9 @@ private struct OliverHTMLFactory: HTMLFactory {
                     SiteHeader(context: context, selectedSelectionID: item.sectionID)
                     Wrapper {
                         Article {
-                            Div(item.content.body).class("content")
-                            Span("Tagged with: ")
-                            ItemTagList(item: item, site: context.site)
+                            Div(item.content.body)
+                                .class("content")
+                                .class("post-content")
                         }
                     }
                     SiteFooter()
@@ -98,58 +97,12 @@ private struct OliverHTMLFactory: HTMLFactory {
 
     func makeTagListHTML(for page: TagListPage,
                          context: PublishingContext<OliverBinns>) throws -> HTML? {
-        HTML(
-            .lang(context.site.language),
-            .head(for: page, on: context.site),
-            .body {
-                SiteHeader(context: context, selectedSelectionID: nil)
-                Wrapper {
-                    H1("Browse all tags")
-                    List(page.tags.sorted()) { tag in
-                        ListItem {
-                            Link(tag.string,
-                                 url: context.site.path(for: tag).absoluteString
-                            )
-                        }
-                        .class("tag")
-                    }
-                    .class("all-tags")
-                }
-                SiteFooter()
-            }
-        )
+        nil
     }
 
     func makeTagDetailsHTML(for page: TagDetailsPage,
                             context: PublishingContext<OliverBinns>) throws -> HTML? {
-        HTML(
-            .lang(context.site.language),
-            .head(for: page, on: context.site),
-            .body {
-                SiteHeader(context: context, selectedSelectionID: nil)
-                Wrapper {
-                    H1 {
-                        Text("Tagged with ")
-                        Span(page.tag.string).class("tag")
-                    }
-
-                    Link("Browse all tags",
-                        url: context.site.tagListPath.absoluteString
-                    )
-                    .class("browse-all")
-
-                    ItemList(
-                        items: context.items(
-                            taggedWith: page.tag,
-                            sortedBy: \.date,
-                            order: .descending
-                        ),
-                        site: context.site
-                    )
-                }
-                SiteFooter()
-            }
-        )
+        nil
     }
 }
 
@@ -189,23 +142,10 @@ private struct ItemList<Site: Website>: Component {
         List(items) { item in
             Article {
                 H1(Link(item.title, url: item.path.absoluteString))
-                ItemTagList(item: item, site: site)
                 Paragraph(item.description)
             }
         }
         .class("item-list")
-    }
-}
-
-private struct ItemTagList<Site: Website>: Component {
-    var item: Item<Site>
-    var site: Site
-
-    var body: Component {
-        List(item.tags) { tag in
-            Link(tag.string, url: site.path(for: tag).absoluteString)
-        }
-        .class("tag-list")
     }
 }
 
