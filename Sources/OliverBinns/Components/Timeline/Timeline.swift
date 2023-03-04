@@ -12,7 +12,7 @@ struct Timeline: Component {
     var body: Component {
         ComponentGroup(members: groupedItems.keys.sorted().reversed().map { year in
             ComponentGroup {
-                H4(year.description)
+                Year(year)
                 ComponentGroup(members: groupedItems[year, default: []].sorted().map { item in
                     Div {
                         ComponentGroup {

@@ -1,7 +1,6 @@
 html, body { padding: 0; color:#333; margin: 0; font-family: 'Quicksand', sans-serif; }
 h2 { font-weight: 500; }
 h2 { margin-bottom:0; }
-h4 { color: #F9C300; margin-block-start: 0.7em; margin-block-end: 0.7em; }
 .profile-image { width: 350px; height: 350px; border-radius: 175px; margin-left: 30px; float:right; }
 a, a:hover, a:visited { color: #333; text-decoration: none; }
 p { text-align:justify; }
@@ -18,6 +17,7 @@ p { text-align:justify; }
 .timeline-item h2::before { content: "@"; padding: 4px; }
 .timeline-item h2 { font-size: 16px; display:inline-block; }
 .timeline-item h3 { margin-bottom: 0.5em; margin-top:0; font-size:12px; font-weight:normal; }
+h4.year { color: #F9C300; margin-block-start: 0.7em; margin-block-end: 0.7em; }
 .timeline-item p { color: #646464; font-size:12px; }
 .timeline-item p:last-child { margin-bottom: 0; }
 .timeline-item a { color:#F9C300; font-size:12px; }
@@ -42,3 +42,81 @@ footer { padding: 2px; }
 }
 footer { padding-bottom:30px; padding-top:10px; }
 
+.post-content * {
+    font-family: 'Playfair Display', serif;
+}
+.post-content a, .post-content a:visited {
+    color:#F9C300;
+}
+.post-content a:hover {
+    text-decoration:underline;
+}
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing:0;
+}
+
+.post-content img {
+    max-width: 100%;
+    display:block;
+    margin:auto;
+}
+
+.post-content img + p {
+    color: gray;
+    text-align:center;
+}
+.post-content img + p em {
+    font-family: 'Quicksand', sans-serif;
+}
+
+pre code {
+    font-family: monospace !important;
+    color: #A9BCBC;
+    display:block;
+    background-color:#1a1a1a;
+    padding: 15px 20px;
+    border-radius:12px;
+}
+
+.preprocessing {
+    color: #B68A00;
+}
+
+.comment {
+    color: #6B8A94;
+}
+
+.number {
+    color: #DB6F57;
+}
+
+.call {
+    color: #348FE5;
+}
+
+.property {
+    color: #21AB9D;
+}
+
+.keyword {
+    color: #E83B8E;
+}
+
+.dotAccess {
+    color: #92B300;
+}
+
+.type {
+    color: #8281CA;
+}
+
+.string {
+    color: #FA641E;
+}

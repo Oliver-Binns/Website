@@ -8,6 +8,6 @@ struct Year: Component {
     }
 
     var body: Component {
-        H4("\(year)")
+        H4("\(year)").class("year")
     }
 }

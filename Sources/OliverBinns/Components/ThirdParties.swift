@@ -9,6 +9,12 @@ extension Node where Context == HTML.DocumentContext {
         )
     }
 
+    private static var playfairFont: Node<Context> {
+        .head(
+            .link(.rel(.stylesheet), .href("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600;1,900&display=swap"))
+        )
+    }
+
     private static var theme: Node<Context> {
         .head(
             .meta(.name("viewport"), .content("width=device-width, initial-scale=1, maximum-scale=1")),
@@ -19,14 +25,30 @@ extension Node where Context == HTML.DocumentContext {
     private static var fontAwesome: Node<Context> {
         .head(
             .script(
+                .async(),
                 .src("https://kit.fontawesome.com/99e4242f25.js"),
                 .attribute(named: "crossorigin", value: "anonymous")
             )
         )
     }
 
+    private static var googleAnalytics: Node<Context> {
+        .head(
+            .script(
+                .async(),
+                .src("https://www.googletagmanager.com/gtag/js?id=G-Y17266J9BZ")
+            ),
+            .script(.raw("""
+            window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-Y17266J9BZ');
+            """))
+        )
+    }
 
     static var global: Node<Context> {
-        .group([quicksandFont, theme, fontAwesome])
+        .group([quicksandFont, playfairFont, theme, fontAwesome, googleAnalytics])
     }
 }

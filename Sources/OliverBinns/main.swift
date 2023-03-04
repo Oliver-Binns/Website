@@ -1,5 +1,6 @@
 import Foundation
 import Publish
+import SplashPublishPlugin
 import Plot
 
 // This type acts as the configuration for your website.
@@ -26,11 +27,13 @@ struct OliverBinns: Website {
 // This will generate your website using the built-in Foundation theme:
 try OliverBinns()
     .publish(using: [
+        .installPlugin(.splash(withClassPrefix: "")),
+
         .addMarkdownFiles(),
         .generateHTML(withTheme: .oliver),
 
         .copyResources(at: "Resources/Theme/images", to: "images"),
         .copyResources(at: "Resources/images", to: "images"),
 
-        .generateRSSFeed(including: [.posts])
+        .generateRSSFeed(including: [.posts]),
     ])
