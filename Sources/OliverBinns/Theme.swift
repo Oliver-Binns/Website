@@ -18,7 +18,7 @@ private struct OliverHTMLFactory: HTMLFactory {
             .head(for: index, on: context.site),
             .global,
             .body {
-                SiteHeader(context: context, selectedSelectionID: nil)
+                SiteHeader()
 
                 About()
 
@@ -48,7 +48,7 @@ private struct OliverHTMLFactory: HTMLFactory {
             .head(for: section, on: context.site),
             .global,
             .body {
-                SiteHeader(context: context, selectedSelectionID: section.id)
+                SiteHeader()
                 Wrapper {
                     H1(section.title)
                     ItemList(items: section.items, site: context.site)
@@ -67,14 +67,14 @@ private struct OliverHTMLFactory: HTMLFactory {
             .body(
                 .class("item-page"),
                 .components {
-                    SiteHeader(context: context, selectedSelectionID: item.sectionID)
+                    SiteHeader()
                     Wrapper {
                         Article {
                             Div(item.content.body)
                                 .class("content")
                                 .class("post-content")
                         }
-                    }
+                    }.style("max-width:800px")
                     SiteFooter()
                 }
             )
@@ -88,7 +88,7 @@ private struct OliverHTMLFactory: HTMLFactory {
             .head(for: page, on: context.site),
             .global,
             .body {
-                SiteHeader(context: context, selectedSelectionID: nil)
+                SiteHeader()
                 Wrapper(page.body)
                 SiteFooter()
             }
@@ -106,10 +106,7 @@ private struct OliverHTMLFactory: HTMLFactory {
     }
 }
 
-private struct SiteHeader<Site: Website>: Component {
-    var context: PublishingContext<Site>
-    var selectedSelectionID: Site.SectionID?
-
+private struct SiteHeader: Component {
     var body: Component {
         Header {
             Wrapper {
