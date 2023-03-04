@@ -70,9 +70,14 @@ private struct OliverHTMLFactory: HTMLFactory {
                     SiteHeader()
                     Wrapper {
                         Article {
-                            Div(item.content.body)
-                                .class("content")
-                                .class("post-content")
+                            Div {
+                                H1(item.title)
+                                Text("Approx: \(item.readingTime.minutes) minutes reading time")
+                                    .italic()
+                                item.content.body
+                            }
+                            .class("content")
+                            .class("post-content")
                         }
                     }.style("max-width:800px")
                     SiteFooter()

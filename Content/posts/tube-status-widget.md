@@ -1,10 +1,9 @@
 ---
 date: 2020-06-27 13:00
-description: Create a Tube Status home-screen Widget for iOS 14
+title: Create a Tube Status home-screen Widget for iOS 14
 image: /images/roundel.png
 tags: iOS, Swift
 ---
-# Create a Tube Status home-screen Widget for iOS 14
 
 One of iOS 14’s most exciting changes for both users and developers will undoubtedly be it’s addition of widgets for quick access to information directly from the home-screen without having to open the app. This type of functionality has previously been limited to just two first-party applications (Calendar and Clock).
 
