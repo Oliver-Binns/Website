@@ -173,7 +173,7 @@ On [Day 18](https://adventofcode.com/2021/day/18), in particular, I went down a 
 
 > _If any regular number is 10 or greater, the leftmost such regular number splits._\
 
-> - _[Day 18, Advent of Code, 2021](https://adventofcode.com/2021/day/18)_
+> — _[Day 18, Advent of Code, 2021](https://adventofcode.com/2021/day/18)_
 
 This is exactly what Dave DeLong has done, using a Swift Package to allow testing. This seems like a great way to set up the project and I’ll definitely be following his lead next year. A Swift Package, much like the Swift Playgrounds that others have used, also makes it far easier to share code between challenges, in stark contrast to my scripting where I’ve needed to copy and paste small snippets into each individual solution.
 
