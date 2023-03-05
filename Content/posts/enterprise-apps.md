@@ -24,6 +24,11 @@ There is seemingly little incentive for companies to improve apps which are comp
 
 This is likely to become an even more important battleground in the post-COVID world, as companies from around the world compete to hire the very best people. When people are working remotely- the majority of their interaction with the company they work for and its processes are via the various apps and other software it provides.
 
+> prettylink https://monzo.com/blog/2019/02/11/internal-product-design/
+> image /images/monzo.png
+> title How we design our internal product
+> description It’s a mistake to think that if people are paid to use a product, it doesn’t need to be easy or pleasurable to use.
+
 ## How can we fix it?
 
 ### Consider the alternatives
@@ -36,7 +41,7 @@ For existing internal content, such as news items or other text-based informatio
 
 Still here? You must be sure a mobile app is the right thing for your use-case.
 
-Ok: let’s start with a simple app then. This one is potentially more for app designers than developers but, as with most iOS development, I’d suggest using native components and standard UI flows wherever possible. The majority of apps in this environment can be created using tab-bars, navigation controllers, table views and the odd collection view: think Apple Music, Notes or even third-party apps like the new GitHub app.
+Ok: let’s start with a simple app then. This one is potentially more for app designers than developers but, as with most iOS development, I’d suggest using native components and standard UI flows wherever possible. The majority of apps in this environment can be created using tab-bars, navigation controllers, table views and the odd collection view: think Apple Music, Notes or even third-party apps like the [new GitHub app](https://apps.apple.com/app/github/id1477376905?ls=1).
 
 This will allow you to build your app much quicker without worrying how to make your custom components. If you try and build the whole app with custom components, you can quite quickly end up with a problem of quantity over quality and end up with a poorer overall experience.
 
