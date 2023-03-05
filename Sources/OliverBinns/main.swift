@@ -33,7 +33,7 @@ try OliverBinns()
         .installPlugin(.splash(withClassPrefix: "")),
         .installPlugin(.youtube()),
         .installPlugin(.links()),
-        
+
         .addMarkdownFiles(),
 
         .installPlugin(.readingTime()),

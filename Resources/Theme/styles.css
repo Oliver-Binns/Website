@@ -102,6 +102,7 @@ pre code {
     padding: 15px 20px;
     border-radius:12px;
     line-height:1.6;
+    overflow-x: scroll;
 }
 
 .preprocessing {
