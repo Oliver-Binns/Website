@@ -48,7 +48,14 @@ extension Node where Context == HTML.DocumentContext {
         )
     }
 
+    private static var appStore: Node<Context> {
+        .head(.meta(
+            .name("apple-itunes-app"),
+            .content("app-id=1535326851, app-clip-bundle-id=uk.co.oliverbinns.oliverbinns.clip")
+        ))
+    }
+
     static var global: Node<Context> {
-        .group([quicksandFont, playfairFont, theme, fontAwesome, googleAnalytics])
+        .group([quicksandFont, playfairFont, theme, fontAwesome, appStore, googleAnalytics])
     }
 }
