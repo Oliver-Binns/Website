@@ -54,6 +54,7 @@ While some CI/CD providers, such as Bitrise, have a great setup process with dra
 Merging to a stable branch, such as develop, release/vX-X-X or main, should be done via a pull-request. This allows us to guarantee it remains stable.
 
 As well as a code review, we can also run:
+
 * the linter for our language: [SwiftLint](https://github.com/realm/SwiftLint) for Swift, [ktlint](https://github.com/pinterest/ktlint) for Kotlin, etc. to enforce a uniform code-style
 * unit tests to catch regressions in low-level code behaviour
 * UI tests to catch regressions in whole user journeys
