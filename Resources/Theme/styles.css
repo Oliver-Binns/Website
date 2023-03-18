@@ -164,6 +164,9 @@ code {
     display:grid;
     grid-template-columns: 160px auto;
 }
+.pretty-link div:only-child {
+    grid-column: 2;
+}
 
 .pretty-link div {
     display:inline;
