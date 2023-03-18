@@ -18,10 +18,9 @@ Gitflow is a great branching strategy for mobile apps. As mobile developers we c
 
 Automation is essential for achieving our agile principle of delivering working software frequently. Automated code-gates on our repository are like the brakes on our car, without them we cannot move faster without fear of crashing. Other parts of our automation, such as deployment, are more like the auto-pilot on an aeroplane; they do all the heavy lifting once a merge is complete.
 
-> _Deliver working software frequently, from a couple of weeks to a couple of months, with a preference to the shorter timescale._\
+> _Deliver working software frequently, from a couple of weeks to a couple of months, with a preference to the shorter timescale._
 
-> \
- _— Principles behind the Agile Manifesto, [agilemanifesto.org](http://agilemanifesto.org/principles.html)_
+> _— Principles behind the Agile Manifesto, [agilemanifesto.org](http://agilemanifesto.org/principles.html)_
 
 ## Adapting Gitflow for Automation
 

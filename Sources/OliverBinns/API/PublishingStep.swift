@@ -13,7 +13,9 @@ extension PublishingStep where Site == OliverBinns {
         .step(named: "API List", body: { context in
             let file = try context.createOutputFile(at: "api/posts.json")
             let items = context.sections[.posts].items.map(PostJSON.init)
-            let encodedData = try JSONEncoder().encode(items)
+            let encoder = JSONEncoder()
+            encoder.dateEncodingStrategy = .iso8601
+            let encodedData = try encoder.encode(items)
             try file.append(encodedData)
         })
     }
@@ -29,6 +31,7 @@ struct PostJSON: Encodable {
     let date: Date
     let imagePath: String?
     let contentPath: String
+    let color: String?
 
     init(item: Item<OliverBinns>) {
         title = item.title
@@ -36,5 +39,6 @@ struct PostJSON: Encodable {
         readingTime = item.readingTime.minutes
         imagePath = item.imagePath?.string
         contentPath = item.path.string
+        color = item.metadata.color
     }
 }
