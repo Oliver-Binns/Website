@@ -1,6 +1,6 @@
 ---
 date: 2020-09-05 17:00
-title: Going for Gold- Taking full advantage of Apple Platforms
+title: Going for Gold—Taking full advantage of Apple Platforms
 image: /images/gold-swift.jpg
 color: #1E2C39
 tags: Swift, Server-Side, Vapor, Bitrise
@@ -57,8 +57,6 @@ TL;DR: Only use white and black when the colours should remain the same between 
 ### Dynamic Type
 
 As with dark mode, if we are using the default Labels in SwiftUI, we get dynamic type for free though there are a number of things that we should do to improve how it behaves when we start to implement more complex interfaces. Let’s check out how our Tube Status example works at the largest accessibility dynamic type size (AX5).
-
-// todo: insert table here
 
 |![](/images/dynamictype-before.png)_AX5 Font Size_|![](/images/dynamictype-after.png)_AX5 Font Size\
 (Optimised for Dynamic Type)_|
