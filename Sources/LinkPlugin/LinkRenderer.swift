@@ -27,6 +27,7 @@ struct PrettyLinkComponent: Component {
                 }
             }.class("pretty-link")
         }
+        .class("pretty-link-container")
         .linkTarget(.blank)
     }
 }
