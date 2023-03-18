@@ -42,5 +42,6 @@ try OliverBinns()
         .copyResources(at: "Resources/Theme/images", to: "images"),
         .copyResources(at: "Resources/images", to: "images"),
 
+        .generateAPI,
         .generateRSSFeed(including: [.posts]),
     ])
