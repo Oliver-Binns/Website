@@ -88,6 +88,8 @@ footer { padding-bottom:30px; padding-top:10px; }
 .post-content img + em,
 .post-content .youtube + p {
     display:block;
+    margin-top:1em;
+    margin-bottom:2em;
     color: gray;
     text-align:center;
 }
