@@ -74,7 +74,7 @@ footer { padding-bottom:30px; padding-top:10px; }
     letter-spacing:0;
     font-family: 'Playfair Display', serif;
 }
-.post-content p {
+.post-content p, .post-content li {
     font-family: 'Playfair Display', serif;
 }
 
@@ -85,7 +85,9 @@ footer { padding-bottom:30px; padding-top:10px; }
 }
 
 .post-content img + p,
+.post-content img + em,
 .post-content .youtube + p {
+    display:block;
     color: gray;
     text-align:center;
 }
@@ -103,6 +105,10 @@ pre code {
     border-radius:12px;
     line-height:1.6;
     overflow-x: scroll;
+}
+
+code {
+    color: #7d6200;
 }
 
 .preprocessing {
@@ -145,8 +151,6 @@ pre code {
     padding: 10px;
     border: black 1px solid;
     border-radius: 12px;
-    background-color:#1a1a1a;
-
     margin-bottom:15px;
     display:grid;
     grid-template-columns: 160px auto;
@@ -169,19 +173,47 @@ a .pretty-link h1 {
     font-size: 1.2em;
     margin: 0;
     margin-bottom:8px;
-    color:white;
+    color:black;
 }
-.post-content a:hover .pretty-link {
+.post-content a.pretty-link-container:hover {
     text-decoration: none;
 }
 a .pretty-link p {
     margin:0;
-    color:white;
+    color:black;
 }
 
 
 @media (prefers-color-scheme: dark) {
     .pretty-link {
         border: none;
+        background-color:#1a1a1a;
     }
+
+    a .pretty-link h1 {
+        color:white;
+    }
+
+    a .pretty-link p {
+        color:white;
+    }
+
+    code {
+        color: #fde799;
+    }
+}
+
+hr {
+    background-color: #F9C300;
+    margin-top:50px;
+    margin-bottom:50px;
+    height:5px;
+    border:none;
+}
+
+table {
+    min-width:100%;
+}
+table td {
+    vertical-align:top;
 }
