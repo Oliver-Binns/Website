@@ -226,3 +226,6 @@ table {
 table td {
     vertical-align:top;
 }
+.jx-knightlab {
+    display:none !important;
+}

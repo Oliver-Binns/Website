@@ -1,3 +1,4 @@
+import JuxtaposePlugin
 import Plot
 
 extension Node where Context == HTML.DocumentContext {
@@ -55,7 +56,18 @@ extension Node where Context == HTML.DocumentContext {
         ))
     }
 
+    private static var juxtapose: Node<Context> {
+        .head(
+            .script(.src("https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js")),
+            .link(.rel(.stylesheet), .href("https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css"))
+        )
+    }
+
     static var global: Node<Context> {
-        .group([quicksandFont, playfairFont, theme, fontAwesome, appStore, googleAnalytics])
+        .group([quicksandFont, playfairFont, fontAwesome, theme, appStore])
+    }
+
+    static var scripts: Node<Context> {
+        .group([googleAnalytics, juxtapose])
     }
 }

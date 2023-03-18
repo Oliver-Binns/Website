@@ -45,7 +45,10 @@ Text(update.line.displayName)
     .background(update.line.color)
 ```
 
-// todo: insert slider here
+<div class="juxtapose">
+    <img src="/images/bakerloo-light.png" />
+    <img src="/images/bakerloo-dark.png" />
+</div>
 
 TL;DR: Only use white and black when the colours should remain the same between dark and light modes.
 

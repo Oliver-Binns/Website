@@ -82,7 +82,8 @@ private struct OliverHTMLFactory: HTMLFactory {
                     }.style("max-width:800px")
                     SiteFooter()
                 }
-            )
+            ),
+            .scripts
         )
     }
 
