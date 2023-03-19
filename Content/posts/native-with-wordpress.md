@@ -28,7 +28,7 @@ Native apps feel more intuitive to users as they tend to follow the UI standards
 
 For starters, this app makes the most of the accessibility features in iOS by providing support for Dynamic Type and VoiceOver, as well as giving users the ability to read posts while they are offline. You can see from these images that the iOS app obeys the user’s dynamic type choice while the web app displays text at the default size.
 
-|![](/images/blog-safari.png)_Blog post viewed on the web in Safari_|![](/images/blog-native.png)_Blog post viewed in the native iOS app_|
+|![An iPhone 12 showing the Safari app with oliverbinns.co.uk loaded to the blog post "Constructing Data with Swift Function Builders"](/images/blog-safari.png)_Blog post viewed on the web in Safari_|![An iPhone 12 showing the Oliver Binns app open displaying the blog post "Constructing Data with Swift Function Builders"](/images/blog-native.png)_Blog post viewed in the native iOS app_|
 
 
 While it is possible to support [dynamic type](https://useyourloaf.com/blog/using-dynamic-type-with-web-views/) on the web, we don’t get as much control over it, nor as much given for free as we do using the iOS SDK.
@@ -68,7 +68,7 @@ Making a GET request to https://wordpress-site.com/wp-json/wp/v2/posts:
 
 We can represent this as a UML diagram, to give visual representation of the different objects we can create in Swift and how they are related.
 
-![](/images/uml-wordpress.png)
+![UML diagram for Wordpress API. Post class has id, slug and title string attributes. link URL and media URL attributes and date attribute. The class has a many-to-one combination to a rendered content type.](/images/uml-wordpress.png)
 _UML Class Diagram for WordPress post API_
 
 If you’ve read some of my [previous posts](https://www.oliverbinns.co.uk/posts/tube-status-widget/), you’ll be familiar with Swift’s `Decodable` protocol for decoding values from JSON representation.
@@ -254,7 +254,7 @@ There’s just a small problem, and it’s hard to spot, but SwiftUI doesn’t s
 
 Here’s the comparison:
 
-|![](/images/before-padding.png)_SwiftUI adds too much padding above and below the text. This causes some layout issues in the scroll view._|![](/images/after-padding.png)|
+|![A white iPhone 7 displays two paragraphs of text with a large space between them](/images/before-padding.png)_SwiftUI adds too much padding above and below the text. This causes some layout issues in the scroll view._|![A white iPhone 7 displays two paragraphs of text with a normal amount of space between them](/images/after-padding.png)|
 
 I’ve found that the best way to do this is to place the SwiftUILabel inside a wrapper which can manually set the frame to the height.
 We can use a binding to pass the expected height through to the inner type: this allows both to stay up-to-date with the latest value, with any changes being rendered on the screen.

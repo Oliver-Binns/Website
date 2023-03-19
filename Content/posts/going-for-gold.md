@@ -61,8 +61,7 @@ TL;DR: Only use white and black when the colours should remain the same between 
 
 As with dark mode, if we are using the default Labels in SwiftUI, we get dynamic type for free though there are a number of things that we should do to improve how it behaves when we start to implement more complex interfaces. Let’s check out how our Tube Status example works at the largest accessibility dynamic type size (AX5).
 
-|![](/images/dynamictype-before.png)_AX5 Font Size_|![](/images/dynamictype-after.png)_AX5 Font Size\
-(Optimised for Dynamic Type)_|
+|![A black iPhone 7 showing tube status at large type size badly text-wrapped. Several words are truncated making them unreadable.](/images/dynamictype-before.png)_AX5 Font Size_|![A black iPhone 7 showing tube status at large type size with sensible text wrapping. No individual words span multiple lines](/images/dynamictype-after.png)_AX5 Font Size (Optimised for Dynamic Type)_|
 
 Not too bad: since we’ve used the inbuilt SwiftUI fonts the size increases our body font from 17 to 53 points automatically. The containers get adjusted accordingly and we can read all the detailed information and see the status icon and the colour that represents the line.
 
@@ -154,12 +153,12 @@ I used [this tutorial](https://github.com/TofPlay/SwiftCrossPlatformFramework) t
 
 Once we’ve enhanced the shared framework, it’s time to create a new target for our watch app. This should be familiar from the previous tutorial: in Xcode, go to File → New → Target → watchOS → Watch App and click Next. This will create a standalone app for Apple Watch that doesn’t require our existing iOS app to be installed. As we have previously, we want to use SwiftUI and the SwiftUI lifecycle for the app: this allows us to reuse the most amount of code between platforms. Select to include Complication which we will cover below, but not Notification scene which is not relevant for our simple tube app (since it does not implement push notifications).
 
-![](/images/watchOS-app-setup.png)
+![Xcode screenshot, setting up a new target for watchOS. Interface SwiftUI, SwiftUI Lifecycle. Include complications is checked.](/images/watchOS-app-setup.png)
 _Setup your watchOS Target in Xcode_
 
 Next, we just need to ensure we include the Shared framework into our watch app:
 
-![](/images/include-shared-framework.png)
+![Xcode screenshot, Frameworks, libraries and embedded content. Shared framework and watchOS WatchKit extension are in the list.](/images/include-shared-framework.png)
 _Be careful to include the Shared framework in the Watch app_
 
 The watch app template will include an App declaration and a template ContentView. Since we already have a content view in our shared framework, we can delete the provided one, and simply import the shared one into the app.
@@ -196,9 +195,7 @@ private var shouldDisplayVertically: Bool {
 
 That’s it: the app should run seamlessly on watchOS (and it looks great too!)
 
-|![](/images/watchos-nonoptimised.png)_ **Before:** Out of the box\
-Tube Status app running on watchOS_|![](/images/watchos-optimised.png)_ **After: ** Much better!\
-Tube Status app optimised for watchOS_|
+|![Apple Watch showing tube status with text wrapped badly breaking words in half](/images/watchos-nonoptimised.png)_Before: Out of the box. Tube Status app running on watchOS_|![Apple Watch showing tube status with sensible text wrapping. No individual words span multiple lines.](/images/watchos-optimised.png)_After: Much better! Tube Status app optimised for watchOS_|
 
 
 

@@ -396,7 +396,7 @@ struct SingleLineWidget: Widget {
 
 It works! We can use our intents to select a particular tube line for our widget to display:
 
-![](/images/widget-intent.gif)
+![iPhone 7 homescreen with tube status widget prent. The selected tube line is being changed from Bakerloo (default) to the Northern line. Animated gif.](/images/widget-intent.gif)
 _Use intents to select a Tube Line_
 
 ## More Resources
