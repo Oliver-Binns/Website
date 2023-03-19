@@ -41,6 +41,8 @@ try OliverBinns()
 
         .copyResources(at: "Resources/Theme/images", to: "images"),
         .copyResources(at: "Resources/images", to: "images"),
+        .copyFile(at: "Resources/404.php"),
+        .copyFile(at: "Resources/.htaccess"),
 
         .generateAPI,
         .generateRSSFeed(including: [.posts]),
