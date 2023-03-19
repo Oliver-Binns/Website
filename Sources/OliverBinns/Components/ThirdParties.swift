@@ -1,4 +1,3 @@
-import JuxtaposePlugin
 import Plot
 
 extension Node where Context == HTML.DocumentContext {
