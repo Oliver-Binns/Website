@@ -1,14 +1,33 @@
 ---
 title: A case for native mobile apps
-image: /images/wordpress-native.png
+image: /images/native-tooling.png
 tags: iOS, Swift
 ---
 
+## So you want to build an app?
+
+When deciding whether to build a mobile app, the first question that is usually asked first is what kind of app to build.
+The three options on the table are usually website, cross-platform app or native app.
+
+
+In my experience, this is best taken as two separate decisions; web or mobile, then cross-platform or native.
+
+
 ## Web vs Mobile
 
-When deciding whether to build a mobile app, the first question that is usually asked first is what kind of app to build. The three options on the table are web app, cross-platform app or native app. Usually this is best taken as two separate decisions; web or mobile, then cross-platform or native.
+Websites have the advantage of scale: they are available across iOS and Android, but can also be used on desktop and so many other devices too.
+As I mentioned in a previous post, “there’s no shame in delivering great content through the web”.
+Indeed, where possible, I’d generally recommend a web-first approach for maximising your user base.
 
-Websites have the advantage of scale: they are available across iOS and Android, but can also be used on desktop and so many other devices too. As I mentioned in a previous post, “there’s no shame in delivering great content through the web”. Indeed, where possible, I’d generally recommend a web-first approach for maximising your user base.
+_mobile opens a whole set of other challenges_
+- code must run on a user’s device, so you have a different security profile
+- you deal with Apple and Google’s controlling presence
+- user’s expect things to work offline
+
+> prettylink https://jacobbartlett.substack.com/p/mobile-is-actually-pretty-hard
+> image /images/jacob.jpg
+> title Mobile is actually pretty hard.
+> description You might picture mobile engineers as blissfully unaware drones, making castles in the sandbox provided to us by our favoured tech giant, tongues lolling and eyes glazing over while we wait 30 minutes for Xcode to build. But hold onto your FitBits, naysayers. I’m about to shatter the illusion that mobile development is a walk in the (Apple) Park.
 
 ## When to go Mobile
 
@@ -29,6 +48,17 @@ I’ve heard arguments that many of these are open source and you can write your
 Sometimes cross-platform can be the right choice: when you need to enter the market quickly building a simple app that doesn’t require many native features. From AirBnB’s journey, we can see a clear progression: start with web for maximum impact, move to cross-platform for a quicker journey into mobile allowing growth to continue at pace, use this growth to transition to native providing the world-class user experience that users (and our developers!) expect.
 
 Like most choices, there is no “better” in cross-platform vs native. It’s simply which is the best tool for your current task.
+
+## The Airbnb Story: A Case Study
+
+Airbnb’s journey is a great illustration of how to efficiently use the resources at your disposal to gradually improve user experience as you grow your business.
+Airbnb was founded in 2007, only one month after the launch of the App Store and two months before the launch of Google Play (then named Android Market).
+Smartphones were in their infancy and it wouldn’t have made sense for a start-up to prioritise native experience over a much wider reach via the web.
+
+> prettylink https://medium.com/airbnb-engineering/sunsetting-react-native-1868ba28e30a
+> image /images/airbnb.jpg
+> title Sunsetting React Native
+> description Due to a variety of technical and organizational issues, we will be sunsetting React Native and putting all of our efforts into making native amazing.
 
 ## Native Best Practices
 

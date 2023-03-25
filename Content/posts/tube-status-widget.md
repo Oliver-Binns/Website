@@ -409,7 +409,7 @@ Sample code available on GitHub:
 > description A sample iOS app for displaying the status of the London Underground using WidgetKit. – Oliver-Binns/tube-status-ios
 
 
-Apple's Developer Documentation:
+Apple’s Developer Documentation:
 
 > prettylink https://developer.apple.com/news/?id=yv6so7ie
 > image /Images/widget-code-along.jpg
