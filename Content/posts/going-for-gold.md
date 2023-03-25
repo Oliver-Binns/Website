@@ -125,7 +125,7 @@ This is obviously just a quick overview of what’s possible with some of the ac
 > prettylink https://mobilea11y.com/guides/swiftui/swiftui-accessibility/
 > image /images/rob-whitaker.jpg
 > title SwiftUI Accessibility
-> description Hi, I'm Rob. iOS engineer and mobile accessibility advocate. 
+> description Hi, I’m Rob. iOS engineer and mobile accessibility advocate. 
 
 ---
 

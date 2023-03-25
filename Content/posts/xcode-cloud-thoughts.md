@@ -65,7 +65,7 @@ swiftlint --strict $CI_WORKSPACE
 
 When running SwiftLint on the CI, I use the strict flag. This ensures that the whole team are following the code-style when merging into shared branches and prevents our project from building up with a large number of warnings, which may prevent more important issues from being surfaced.
 
-![A meme from the TV show, "The Office". A woman is shown two pieces of paper one saying "compiled successfully" and another saying "compiled with warnings". There is a subtitle saying "Corporate needs you to find the differences between this picture and this picture". The woman, who is labelled "developers" responds: "they're the same picture".](/images/warnings.jpg)
+![A meme from the TV show, "The Office". A woman is shown two pieces of paper one saying "compiled successfully" and another saying "compiled with warnings". There is a subtitle saying "Corporate needs you to find the differences between this picture and this picture". The woman, who is labelled "developers" responds: "they’re the same picture".](/images/warnings.jpg)
 
 #### Fastlane
 

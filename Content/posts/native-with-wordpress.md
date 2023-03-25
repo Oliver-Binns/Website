@@ -243,7 +243,7 @@ struct SwiftUILabel: UIViewRepresentable {
 }
 ```
 
-Great, now let's run it:
+Great, now let’s run it:
 
 ![An white iPhone 7. On the screen is an app showing a blog post. Title: Project setup, Widgets cannot be provided standalone, so we will need to start with a boilerplate app. Here we will setup a new Xcode project and produce a basic app. If you are a seasoned app developer, you may want to skip to the "Your First Widget" section.](/images/bold-italic.png)
 _HTML mark-up rendered as a UILabel within SwiftUI._
@@ -319,7 +319,7 @@ The entire source code for this app is available on GitHub:
 > prettylink https://github.com/Oliver-Binns/Oliver-Binns/tree/main/Native
 > image /images/profile-yellow.jpg
 > title Oliver-Binns - GitHub
-> description Here's the code that makes up my iOS app, available on the App Store.
+> description Here’s the code that makes up my iOS app, available on the App Store.
 
 
 Look out for a future article where I’ll describe how I made this app available without users needing to download it using App Clips for iOS 14.
