@@ -41,5 +41,6 @@ jobs:
         passphrase: ${{ secrets.PRIVATE_KEY_PASSPHRASE }}
         strip_components: 1
         overwrite: true
+        tar_tmp_path: "~/"
         source: "Output/"
         target: "/var/www/oliverbinns.co.uk/public_html"
