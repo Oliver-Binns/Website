@@ -3,6 +3,8 @@ name: Generate Static Site
 on:
   push:
     branches: [ "main" ]
+  pull_request:
+    types: [opened, reopened]
 
 jobs:
   build:
@@ -14,7 +16,28 @@ jobs:
       run: swift build
     - name: Run (Generate Site)
       run: swift run
-    - uses: actions/upload-artifact@v3
+    - name: Export Artifact
+      uses: actions/upload-artifact@v3
       with:
         name: Site
         path: Output/
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download Artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: Site
+        path: Output/
+    - name: copy file to server
+      uses: appleboy/scp-action@v0.1.4
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        passphrase: ${{ secrets.PRIVATE_KEY_PASSPHRASE }}
+        source: "Output/"
+        target: "~/site"
+        rm: true
