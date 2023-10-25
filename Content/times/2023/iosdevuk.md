@@ -1,7 +1,7 @@
 ---
 date: 2023-09-05 00:00
 description: Speaker @ iOSDevUK
-icon: fa-chalkboard-user
+icon: fa-microphone
 ---
 # Speaker
 ## iOSDevUK
