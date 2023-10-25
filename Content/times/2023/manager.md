@@ -1,5 +1,5 @@
 ---
-date: 2023-01-01 00:00
+date: 2023-12-31 00:00
 description: Manager @ Deloitte Digital
 icon: fa-briefcase
 ---
