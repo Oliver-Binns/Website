@@ -39,6 +39,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.PRIVATE_KEY }}
         passphrase: ${{ secrets.PRIVATE_KEY_PASSPHRASE }}
+        strip_components: 1
         source: "Output/"
         target: "~/site"
         rm: true
