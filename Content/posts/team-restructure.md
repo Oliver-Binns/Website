@@ -9,6 +9,12 @@ I recently posted on Twitter about how we’re restructuring our teams from a se
 
 ## Current Problems
 
+A majority of the work we do revolves around changes that require input from multiple disciplines.
+This is true of both new work and maintenance. 
+When we build a new feature in our mobile app, we do the work for both iOS and Android.
+Often this will require new backend APIs to be built and, since our infrastructure is written in code, sometimes these will even require help from AWS platform specialists.
+When each of these different specialisms sit in different teams, it requires a lot of upfront planning to ensure dependencies are met in the correct order, and if anything goes wrong we would have to replan multiple teams' roadmaps.
+
 Expert overload - due to no distribution of responsibilities in a more top-down hierarchy
 Communication overheads - many of our leads spent too much time in meetings
 Dependency management: especially when things are picked up mid-sprint
