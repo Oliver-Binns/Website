@@ -37,22 +37,28 @@ We also encountered the similar communication barriers here, where it was not al
 
 Finally, since all our team members were constantly context switching between different features, it was difficult for them to focus for long enough to gain a deep understanding of each of them.
 When this happens, we see the [Law of triviality](https://en.wikipedia.org/wiki/Law_of_triviality) begin to take effect.
-This is more colloquially known as ‘bikeshedding’ from the example where nuclear power-plant designers don't understand enough detail about the reactor plans so decide to ensure there is a design for the bikeshed.
+This is more colloquially known as ‘bikeshedding’ from the example where nuclear power-plant designers don’t understand enough detail about the reactor plans so decide to ensure there is a design for the bikeshed.
 
 ## Our Aims
 
 ![Team Structure diagram. A discovery team with arrows for feature 1 pointing at feature team 1, feature 2 pointing at feature team 2, and feature 3 pointing at feature team 3. The discovery team contains a tech lead, product managers, performance analyst, user researcher and designers. Each of the three feature teams contains a tech lead, product manager, business analyst and Android, iOS, Typescript and Platform developers as well as automation and manual QA.](../../Images/team-restructure-after.png)
 *Our New Team Structure — Teams are split by business domain*
 
-Empower individuals to take responsibility over their feature
-Empower teams to own their end-to-end
-Team Leads are an escalation path to support the team, not to micromanage the team
+When restructuring our teams, we wanted to solve as many of these irritations as possible.
+We created each of our teams around an end-to-end component of our app, with full ownership of their component.
+We have drawn the lines between the teams responsibilities with the aim of minimising cross-team dependencies.
+We wanted to ensure they have all skills to be able to successfully manage this _within_ the team, including making day-to-day decisions on maintenance and any enhancements.
+We’re hoping that this will enable the team to have a full understanding of their area and current work without being distracted by work going on in other parts of the app.
+Our leadership team should be an escalation path for the team to use at their discretion when problems arise.
+They are not there to micromanage the team or step in to make decisions on the team’s behalf.
 
 ## Things we want to avoid
 Our teams have raised concerns about loss of responsibility
 Complete siloing of our different disciplines: Android Catchup
 Lack of support for less senior team members
+
 Over-defining the team ways of working: individuals and interactions over processes and tools
+Encourage senior developers to have a basic knowledge of the whole stack, not just their discipline.
 
 ## Opportunities
 Ability to learn a new language and stack
