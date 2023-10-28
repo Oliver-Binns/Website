@@ -1,7 +1,7 @@
 ---
 date: 2020-09-05 17:00
 title: Going for Gold—Taking full advantage of Apple Platforms
-image: /images/gold-swift.jpg
+image: /Images/gold-swift.jpg
 color: #1E2C39
 tags: Swift, Server-Side, Vapor, Bitrise
 ---
@@ -13,12 +13,12 @@ Since SwiftUI is supported on all of Apple’s platforms, and we can now create 
 Sample code for this post is available on GitHub.
 
 > prettylink https://github.com/Oliver-Binns/tube-status-ios
-> image /images/tube-status-ios-github.png
+> image /Images/tube-status-ios-github.png
 > title Oliver-Binns/tube-status-ios
 > description A sample iOS app for displaying the status of the London Underground using WidgetKit. – Oliver-Binns/tube-status-ios
 
 > prettylink https://developer.apple.com/documentation/swiftui/app-organization
-> image /images/apps-organisation-docs.png
+> image /Images/apps-organisation-docs.png
 > title App Structure and Behavior | Apple Developer Documentation
 > description Define the entry point and top-level organization of your app.
 
@@ -28,7 +28,7 @@ Sample code for this post is available on GitHub.
 Let’s start assuming that we have implemented this, if you want more details on this, check out my previous blog post on the topic.
 
 > prettylink /posts/tube-status-widget
-> image /images/roundel.png
+> image /Images/roundel.png
 > title Create a Tube Status home-screen Widget for iOS 14
 > description In this article, I will detail how to quickly and easily create a home-screen widget for your app, using the London Underground status board as a real-world example.
 
@@ -46,14 +46,14 @@ Text(update.line.displayName)
 ```
 
 <div class="juxtapose">
-    <img src="/images/bakerloo-light.png" />
-    <img src="/images/bakerloo-dark.png" />
+    <img src="/Images/bakerloo-light.png" />
+    <img src="/Images/bakerloo-dark.png" />
 </div>
 
 TL;DR: Only use white and black when the colours should remain the same between dark and light modes.
 
 > prettylink https://developer.apple.com/design/human-interface-guidelines/foundations/color/
-> image /images/color.svg
+> image /Images/color.svg
 > title Color – Apple Human Interface Guidelines
 > description Look to the system’s color scheme for guidance when picking app tint colors that look great individually and in combination, on both light and dark backgrounds.
 
@@ -61,7 +61,7 @@ TL;DR: Only use white and black when the colours should remain the same between 
 
 As with dark mode, if we are using the default Labels in SwiftUI, we get dynamic type for free though there are a number of things that we should do to improve how it behaves when we start to implement more complex interfaces. Let’s check out how our Tube Status example works at the largest accessibility dynamic type size (AX5).
 
-|![A black iPhone 7 showing tube status at large type size badly text-wrapped. Several words are truncated making them unreadable.](/images/dynamictype-before.png)_AX5 Font Size_|![A black iPhone 7 showing tube status at large type size with sensible text wrapping. No individual words span multiple lines](/images/dynamictype-after.png)_AX5 Font Size (Optimised for Dynamic Type)_|
+|![A black iPhone 7 showing tube status at large type size badly text-wrapped. Several words are truncated making them unreadable.](../../Images/dynamictype-before.png)_AX5 Font Size_|![A black iPhone 7 showing tube status at large type size with sensible text wrapping. No individual words span multiple lines](../../Images/dynamictype-after.png)_AX5 Font Size (Optimised for Dynamic Type)_|
 
 Not too bad: since we’ve used the inbuilt SwiftUI fonts the size increases our body font from 17 to 53 points automatically. The containers get adjusted accordingly and we can read all the detailed information and see the status icon and the colour that represents the line.
 
@@ -88,12 +88,12 @@ In general, horizontal grids, such as carousels are more difficult to provide dy
 Always test your app with different dynamic type sizes to ensure that your views don’t break if users enable this feature.
 
 > prettylink https://developer.apple.com/design/human-interface-guidelines/foundations/typography/
-> image /images/typography.png
+> image /Images/typography.png
 > title Typography – Apple Human Interface Guidelines
 > description The built-in text styles let you express content in ways that are visually distinct, while retaining optimal legibility.
 
 > prettylink https://www.hackingwithswift.com/quick-start/swiftui/how-to-automatically-switch-between-hstack-and-vstack-based-on-size-class
-> image /images/hacking-with-swift.png
+> image /Images/hacking-with-swift.png
 > title Hacking with Swift
 > description SwiftUI lets us monitor the current size class to decide how things should be laid out, for example switching from a HStack when space is plentiful to a VStack when space is restricted.
 
@@ -122,7 +122,7 @@ We can fix this by adding the following two lines.
 This is obviously just a quick overview of what’s possible with some of the accessibility features in SwiftUI and iOS. For further reading I’d recommend checking out [Rob Whitaker](https://twitter.com/RobRWAPP)‘s blog:
 
 > prettylink https://mobilea11y.com/guides/swiftui/swiftui-accessibility/
-> image /images/rob-whitaker.jpg
+> image /Images/rob-whitaker.jpg
 > title SwiftUI Accessibility
 > description Hi, I'm Rob. iOS engineer and mobile accessibility advocate. 
 
@@ -136,7 +136,7 @@ One main distinction is that we can display our app in multiple windows.
 Since we’re already using `WindowGroup` as our SwiftUI scene, we get this ability for free.
 
 
-![A white iPad with two instances of the Tube Status app open on the screen](/images/ipad-multitask.png)
+![A white iPad with two instances of the Tube Status app open on the screen](../../Images/ipad-multitask.png)
 
 _Tube Status app running in multiple windows on iPad._
 
@@ -153,12 +153,12 @@ I used [this tutorial](https://github.com/TofPlay/SwiftCrossPlatformFramework) t
 
 Once we’ve enhanced the shared framework, it’s time to create a new target for our watch app. This should be familiar from the previous tutorial: in Xcode, go to File → New → Target → watchOS → Watch App and click Next. This will create a standalone app for Apple Watch that doesn’t require our existing iOS app to be installed. As we have previously, we want to use SwiftUI and the SwiftUI lifecycle for the app: this allows us to reuse the most amount of code between platforms. Select to include Complication which we will cover below, but not Notification scene which is not relevant for our simple tube app (since it does not implement push notifications).
 
-![Xcode screenshot, setting up a new target for watchOS. Interface SwiftUI, SwiftUI Lifecycle. Include complications is checked.](/images/watchOS-app-setup.png)
+![Xcode screenshot, setting up a new target for watchOS. Interface SwiftUI, SwiftUI Lifecycle. Include complications is checked.](../../Images/watchOS-app-setup.png)
 _Setup your watchOS Target in Xcode_
 
 Next, we just need to ensure we include the Shared framework into our watch app:
 
-![Xcode screenshot, Frameworks, libraries and embedded content. Shared framework and watchOS WatchKit extension are in the list.](/images/include-shared-framework.png)
+![Xcode screenshot, Frameworks, libraries and embedded content. Shared framework and watchOS WatchKit extension are in the list.](../../Images/include-shared-framework.png)
 _Be careful to include the Shared framework in the Watch app_
 
 The watch app template will include an App declaration and a template ContentView. Since we already have a content view in our shared framework, we can delete the provided one, and simply import the shared one into the app.
@@ -195,7 +195,7 @@ private var shouldDisplayVertically: Bool {
 
 That’s it: the app should run seamlessly on watchOS (and it looks great too!)
 
-|![Apple Watch showing tube status with text wrapped badly breaking words in half](/images/watchos-nonoptimised.png)_Before: Out of the box. Tube Status app running on watchOS_|![Apple Watch showing tube status with sensible text wrapping. No individual words span multiple lines.](/images/watchos-optimised.png)_After: Much better! Tube Status app optimised for watchOS_|
+|![Apple Watch showing tube status with text wrapped badly breaking words in half](../../Images/watchos-nonoptimised.png)_Before: Out of the box. Tube Status app running on watchOS_|![Apple Watch showing tube status with sensible text wrapping. No individual words span multiple lines.](../../Images/watchos-optimised.png)_After: Much better! Tube Status app optimised for watchOS_|
 
 
 
@@ -265,7 +265,7 @@ func getTemplateForLineStatusUpdate(_ update: LineStatusUpdate,
 
 Three methods implemented; another great feature available for our users.
 
-![Three Apple Watches showing various complications of Tube Status](/images/complications.png)
+![Three Apple Watches showing various complications of Tube Status](../../Images/complications.png)
 _watchOS Complications give our users the tube status for various lines with a quick glance._
 
 ---
@@ -283,7 +283,7 @@ Since we’ve already done the cross-platform work to make our shared framework 
 * Implement the app declaration, we can actually use exactly the same declaration (watchOS: `TubeStatusApp.swift`) that we used for the watch above.
 * Build and run!
 
-![Screenshot of a TV displaying statuses for the London Underground. Bakerloo Line, Central and Circle lines are shown all running "Special Service". District Line is part suspended. A short description is shown for each line](/images/tvOS-tube-fullstatus.png)
+![Screenshot of a TV displaying statuses for the London Underground. Bakerloo Line, Central and Circle lines are shown all running "Special Service". District Line is part suspended. A short description is shown for each line](../../Images/tvOS-tube-fullstatus.png)
 
 _Tube Status app running on tvOS—only four lines are visible_
 
@@ -291,7 +291,7 @@ As an alternative, we could use the `StaticContentView` we implemented for our i
 This would be more practical if we are indeed running in a Kiosk mode.
 
 
-![Screenshot of a TV displaying statuses for the London Underground. All lines are visible. Most show special service, District and Metropolitan lines are part suspended. Waterloo & City Line is closed.](/images/tvOS-tube-overview.png)
+![Screenshot of a TV displaying statuses for the London Underground. All lines are visible. Most show special service, District and Metropolitan lines are part suspended. Waterloo & City Line is closed.](../../Images/tvOS-tube-overview.png)
 
 _Tube Status app running on tvOS—all lines visible without scrolling_
 
@@ -308,13 +308,13 @@ File → New → Target → macOS → App.
 
 If we run the app now, we will see a blank screen and output to the console complaining of issues connecting to the Internet. This is because by default macOS apps run inside an App Sandbox, preventing access to files, networking and other system functionality such as hardware. Not to fear- enabling network connectivity for our app is as simple as ensuring the checkbox is set correctly in Signing & Capabilities for the target.
 
-![Screenshot of App Sandbox section of Capabilities screen. Network: Incoming Connections (Server) is disabled. Outgoing Connections (Client) is enabled.](/images/macOS-appSandbox.png)
+![Screenshot of App Sandbox section of Capabilities screen. Network: Incoming Connections (Server) is disabled. Outgoing Connections (Client) is enabled.](../../Images/macOS-appSandbox.png)
 
 _We need to ensure that outgoings network connections are allowed for our macOS app_
 
 Run again and we should see the familiar Tube Status view:
 
-![Screenshot of macOS displaying the statuses for the London Underground, complete with options for close, minimise and full-screen](/images/macOS-tubestatus.png)
+![Screenshot of macOS displaying the statuses for the London Underground, complete with options for close, minimise and full-screen](../../Images/macOS-tubestatus.png)
 
 _Tube Status app running on macOS_
 
@@ -336,6 +336,6 @@ There are so many further tweaks and improvements we can make, but overall, util
 Sample code for this post is available on GitHub.
 
 > prettylink https://github.com/Oliver-Binns/tube-status-ios
-> image /images/tube-status-ios-github.png
+> image /Images/tube-status-ios-github.png
 > title Oliver-Binns/tube-status-ios
 > description A sample iOS app for displaying the status of the London Underground using WidgetKit. – Oliver-Binns/tube-status-ios

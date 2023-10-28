@@ -39,8 +39,8 @@ try OliverBinns()
         .installPlugin(.readingTime()),
         .generateHTML(withTheme: .oliver),
 
-        .copyResources(at: "Resources/Theme/images", to: "images"),
-        .copyResources(at: "Resources/images", to: "images"),
+        .copyResources(at: "Resources/Theme/Images", to: "Images"),
+        .copyResources(at: "Images", to: "Images"),
         .copyFile(at: "Resources/404.php"),
         .copyFile(at: "Resources/.htaccess"),
 

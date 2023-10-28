@@ -117,7 +117,7 @@ private struct SiteHeader: Component {
         Header {
             Wrapper {
                 Link(url: "/") {
-                    Image(url: "/images/oliver-binns.svg", description: "Oliver Binns")
+                    Image(url: "/Images/oliver-binns.svg", description: "Oliver Binns")
                     H2("Lead Mobile Developer")
                 }
             }
@@ -161,21 +161,21 @@ private struct SiteFooter: Component {
                 }
                 H2 {
                     Link(url: "https://www.github.com/oliver-binns") {
-                        Image(url: "/images/github.svg", description: "GitHub Logo")
+                        Image(url: "/Images/github.svg", description: "GitHub Logo")
                             .class("icon")
                         Text(" oliver-binns")
                     }.linkTarget(.blank)
                 }
                 H2 {
                     Link(url: "https://www.twitter.com/oliver_binns") {
-                        Image(url: "/images/twitter.svg", description: "Twitter Logo")
+                        Image(url: "/Images/twitter.svg", description: "Twitter Logo")
                             .class("icon")
                         Text(" oliver_binns")
                     }.linkTarget(.blank)
                 }
                 H2 {
                     Link(url: "https://www.linkedin.com/in/obinns/") {
-                        Image(url: "/images/in.svg", description: "LinkedIn Logo")
+                        Image(url: "/Images/in.svg", description: "LinkedIn Logo")
                             .class("icon")
                         Text(" obinns")
                     }.linkTarget(.blank)

@@ -1,7 +1,7 @@
 ---
 date: 2021-04-28 09:45
 title: Gitflow with Automation for Mobile Apps
-image: /images/git-flow.jpg
+image: /Images/git-flow.jpg
 tags: iOS, Swift
 ---
 
@@ -10,7 +10,7 @@ tags: iOS, Swift
 Gitflow is a great branching strategy for mobile apps. As mobile developers we can only publish one stable release through the App Store and Google Play Store, therefore we do not need to—nor are we able to—ship bug fixes for older intermediate versions of the software.
 
 > prettylink https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
-> image /images/gitflow.svg
+> image /Images/gitflow.svg
 > title Gitflow Workflow | Atlassian Git Tutorial
 > description A deep dive into the Gitflow Workflow. Learn if this Git workflow is right for you and your team with this comprehensive tutorial.
 
@@ -40,7 +40,7 @@ Therefore the slight adaptation of GitFlow I’ve been using works like this:
 We can set up a whole automation pipeline around this approach where a number of gates, both manual and automated must be opened before a developer is allowed to merge code. There is a balance that needs to be struck to ensure quality without triggering developer frustration at a bar which is too high. I think [this documentation from Google’s Engineering Practices](https://google.github.io/eng-practices/review/reviewer/standard.html) does a great job at defining a compromise between perfection and progress for code review in particular, but the principles can also be applied to automated gates too.
 
 > prettylink https://google.github.io/eng-practices/review/reviewer/
-> image /images/google.png
+> image /Images/google.png
 > title How to do a code review
 > description Google’s Engineering Practices documentation
 
@@ -64,7 +64,7 @@ We can add additional tools and checks as required. I’ve had a lot of luck usi
 
 After we merge a pull request, we should build a binary of our application. Depending on which branch we merge to this build can perform a different purpose. For `develop` merges, this can be used for internal validation within the team by designers, product owners and anyone else with an interest in the change. For `release` merges, these can be used for a full QA cycle including various forms of manual and automated testing. For `main` merges, this is the final build which can then be used for pre-deployment testing before being released to users. At this point we may also want to generate screenshots for our App Store listing and any metadata, including credentials for App Review.
 
-![A diagram showing GitFlow branching with automated gates at each merge step.](/images/gitflow-full-automation.png)
+![A diagram showing GitFlow branching with automated gates at each merge step.](../../Images/gitflow-full-automation.png)
 
 _The full automated Continuous Integration & Deployment Pipeline_
 
@@ -84,7 +84,7 @@ It can be hard to merge small discrete changes when working on larger features, 
 What do you think? I’d love to hear how you approach branching and automation in your team or for your side-projects and whether you’ve found any of these processes useful in your work.
 
 > prettylink https://www.twitter.com/oliver-binns
-> image /images/profile-yellow.jpg
+> image /Images/profile-yellow.jpg
 > title @Oliver_Binns | Twitter
 > description The latest Tweets from @Oliver_Binns. iOS Development Craft Lead for @DeloitteDigital | Apple Alliance.
 
