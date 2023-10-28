@@ -18,9 +18,14 @@ When each of these different specialisms sit in different teams, it requires a l
 ![Team Structure diagram. A discovery team with arrows for Features 1, 2 and 3 pointing at three other teams: backend, mobile and platform. The discovery team contains a tech lead, product managers, business analysts, performance analyst, user researcher and designers. The backend team contains a tech lead, typescript developers and automation QA. The mobile team contains a tech lead, Android developers, iOS developers, automation QA and manual QA. The platform team contains a tech lead and platform developers.](../../Images/team-restructure-before.png)
 *Our Old Team Structure — Teams are split by discipline*
 
-Expert overload - due to no distribution of responsibilities in a more top-down hierarchy
-Communication overheads - many of our leads spent too much time in meetings
-Dependency management: especially when things are picked up mid-sprint
+When there are more members of each discipline (i.e. Android developers) in a larger mobile team, we try and give them unrelated pieces of work to avoid merge conflicts in the code that is being written.
+This means there are multiple features or pieces of work being delivered in parallel by the team.
+Unless we clearly assign team members to a particular feature, this can result in a lot of communication overheads and redudancy.
+For example, the whole team often end up invited to meetings for **every single** feature when only a single developer is needed to provide guidance.
+
+Alternatively, it may be the tech lead or a single individual that takes on the responsibility in all meetings, which results in a very top-down hierarchy where the team as a whole does not feel empowered.
+What's more, this can result in expert overload where the team accumulates more knowledge because they are at the centre of everything, resulting in them becoming indispensible in all situations.
+This is a vicious cycle because as they are now indispensible and they will gain even more knowledge — until they burn out and the team comes to a standstill.
 
 > _"Business people and developers must work together daily throughout the project."_
 > 
