@@ -21,7 +21,22 @@ extension PublishingStep where Site == OliverBinns {
     }
 
     private static var outputPosts: Self {
-        .copyFiles(at: "Content/posts", to: "api/posts")
+        .step(named: "Copy Posts") { context in
+            try context.folder(at: "Content/posts")
+                .files
+                .map { file in
+                    let data = try file
+                        .readAsString()
+                        .replacingOccurrences(of: "../../Images/", with: "/Images/")
+                        .data(using: .utf8)
+                    return (name: file.name, content: data)
+                }
+                .forEach {
+                    try context
+                        .createOutputFolder(at: "api/posts")
+                        .createFile(at: $0.name, contents: $0.content)
+                }
+        }
     }
 }
 
