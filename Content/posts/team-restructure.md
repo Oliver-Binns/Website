@@ -13,7 +13,7 @@ A majority of the work we do revolves around changes that require input from mul
 This is true of both new work and maintenance. 
 When we build a new feature in our mobile app, we do the work for both iOS and Android.
 Often this will require new backend APIs to be built and, since our infrastructure is written in code, sometimes these will even require help from AWS platform specialists.
-When each of these different specialisms sit in different teams, it requires a lot of upfront planning to ensure dependencies are met in the correct order, and if anything goes wrong we would have to replan multiple teams' roadmaps.
+When each of these different specialisms sit in different teams, it requires a lot of upfront planning to ensure dependencies are met in the correct order, and if anything goes wrong we would have to replan multiple teams’ roadmaps.
 
 ![Team Structure diagram. A discovery team with arrows for Features 1, 2 and 3 pointing at three other teams: backend, mobile and platform. The discovery team contains a tech lead, product managers, business analysts, performance analyst, user researcher and designers. The backend team contains a tech lead, typescript developers and automation QA. The mobile team contains a tech lead, Android developers, iOS developers, automation QA and manual QA. The platform team contains a tech lead and platform developers.](../../Images/team-restructure-before.png)
 *Our Old Team Structure — Teams are split by discipline*
@@ -24,16 +24,20 @@ Unless we clearly assign team members to a particular feature, this can result i
 For example, the whole team often end up invited to meetings for **every single** feature when only a single developer is needed to provide guidance.
 
 Alternatively, it may be the tech lead or a single individual that takes on the responsibility in all meetings, which results in a very top-down hierarchy where the team as a whole does not feel empowered.
-What's more, this can result in expert overload where the team accumulates more knowledge because they are at the centre of everything, resulting in them becoming indispensible in all situations.
+What’s more, this can result in expert overload where the team accumulates more knowledge because they are at the centre of everything, resulting in them becoming indispensible in all situations.
 This is a vicious cycle because as they are now indispensible and they will gain even more knowledge — until they burn out and the team comes to a standstill.
 
 > _"Business people and developers must work together daily throughout the project."_
 > 
 > — Principles behind the Agile Manifesto, [agilemanifesto.org](http://agilemanifesto.org/principles.html)
 
-Business / Product team members currently sit outside the teams, this makes communication more difficult (not in spirit of agile)
+While agile principles state that business people and developers must work together daily, our old team structure did not encourage this behaviour.
+Since product managers and business analysts did not sit inside our teams, they were not required to attend our regular scrum ceremonies including the daily stand-up.
+We also encountered the similar communication barriers here, where it was not always clear which product manager or business analyst was responsible for a given feature.
 
-Bikeshedding when cross-team communication is about complex features rather than common ground: lack of focus
+Finally, since all our team members were constantly context switching between different features, it was difficult for them to focus for long enough to gain a deep understanding of each of them.
+When this happens, we see the [Law of triviality](https://en.wikipedia.org/wiki/Law_of_triviality) begin to take effect.
+This is more colloquially known as ‘bikeshedding’ from the example where nuclear power-plant designers don't understand enough detail about the reactor plans so decide to ensure there is a design for the bikeshed.
 
 ## Our Aims
 
