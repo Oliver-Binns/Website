@@ -1,7 +1,7 @@
 ---
 date: 2021-03-26 20:30
 title: Creating Great Enterprise Apps for iOS
-image: /images/custom-apps.png
+image: /Images/custom-apps.png
 color: #000000
 tags: iOS, Swift
 ---
@@ -25,7 +25,7 @@ There is seemingly little incentive for companies to improve apps which are comp
 This is likely to become an even more important battleground in the post-COVID world, as companies from around the world compete to hire the very best people. When people are working remotely- the majority of their interaction with the company they work for and its processes are via the various apps and other software it provides.
 
 > prettylink https://monzo.com/blog/2019/02/11/internal-product-design/
-> image /images/monzo.png
+> image /Images/monzo.png
 > title How we design our internal product
 > description It’s a mistake to think that if people are paid to use a product, it doesn’t need to be easy or pleasurable to use.
 
@@ -67,7 +67,7 @@ Secondly, managing devices means we can add constraints, such as ensuring all ou
 In late 2019, Apple added support for Custom Apps deployment to iOS. This Custom Apps approach is effectively an overhaul of the not-quite-yet deprecated [Developer Enterprise Program (DEP)](https://developer.apple.com/programs/enterprise). Since then Apple has dramatically restricted entry to the DEP, likely as a response to [one particular, high-profile, breach of contract](https://techcrunch.com/2019/01/29/facebook-project-atlas/).
 
 > prettylink https://techcrunch.com/2019/01/29/facebook-project-atlas/
-> image /images/facebook-research-vpn-project-atlas.jpg
+> image /Images/facebook-research-vpn-project-atlas.jpg
 > title Facebook pays teens to install VPN that spies on them – TechCrunch
 > description Desperate for data on its competitors, Facebook has been secretly paying people to install a “Facebook Research” VPN that lets the company suck in all of a user’s phone and web activity.
 
@@ -89,7 +89,7 @@ Whereas the Enterprise Program allows businesses to distribute apps to their _ow
 N.B. Custom Apps requires Apple Business Manager, or its education sibling: Apple School Manager. As of Dec 2020, these are still only available in [69 countries](https://support.apple.com/en-gb/HT207305), so if you are deploying outside of these regions you will need to apply to be part of the DEP.
 
 > prettylink https://developer.apple.com/videos/play/wwdc2019/304/
-> image /images/adhoc-to-enterprise.jpg
+> image /Images/adhoc-to-enterprise.jpg
 > title WWDC2019 – From Ad-hoc to Enterprise
 > description Whether you want to share your app with a few colleagues, deliver it to employees within an organization, or release it to the world,…
 
@@ -117,7 +117,7 @@ You can add support for configuration to your App Store apps too, which will all
 For example: [Microsoft Outlook for iOS can be pre-populated](https://docs.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/outlook-for-ios-and-android/outlook-for-ios-and-android-configuration-with-microsoft-intune) with a user’s email credentials so employees don’t need to set this up manually.
 
 > prettylink https://support.apple.com/en-gb/guide/mdm/mdmbf9e668/1/web/1.0
-> image /images/mdm-icon.png
+> image /Images/mdm-icon.png
 > title MDM overview for Apple devices
 > description Mobile device management lets you manage several features of Apple devices.
 

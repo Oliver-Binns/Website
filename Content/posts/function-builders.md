@@ -1,7 +1,7 @@
 ---
 date: 2020-07-23 18:00
 title: Constructing Data with Swift Result Builders
-image: /images/lego.jpg
+image: /Images/lego.jpg
 tags: Swift, Server-Side, Vapor, Bitrise
 ---
 

@@ -1,7 +1,7 @@
 ---
 date: 2020-07-03 13:00
 title: Building (almost) anything on Bitrise using Docker
-image: /images/bitrise.jpg
+image: /Images/bitrise.jpg
 color: #683D87
 tags: Swift, Server-Side, Vapor, Bitrise
 ---
@@ -79,19 +79,19 @@ We can now pass a stage target parameter into Docker to either
 I’d recommend this article from [@ZachSimone](https://twitter.com/zachsimone) on how to deploy a Vapor app to a Linode Ubuntu server.
 
 > prettylink https://zachsim.one/blog/2020/6/28/deploying-swift-vapor-to-ubuntu-server
-> image /images/linode.png
+> image /Images/linode.png
 > title Deploying a Swift Vapor Project to a Ubuntu Server — zachsim.one
 > description Zach Simone’s homepage. Student and iOS developer from Sydney.
 
 Check out the full documentation on Docker BuildKit and Bitrise.
 
 > prettylink https://docs.docker.com/develop/develop-images/build_enhancements/
-> image /images/docker.ico
+> image /Images/docker.ico
 > title Build images with BuildKit
 > description Learn the new features of Docker Build with BuildKit
 
 > prettylink https://www.bitrise.io/
-> image /images/bitrise.jpg
+> image /Images/bitrise.jpg
 > title Bitrise - Mobile Continuous Integration and Delivery
 > description Continuous integration and delivery built for mobile: Automate iOS and Android builds, testing and deployment from your first install to the one millionth.
 
