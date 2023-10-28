@@ -1,13 +1,13 @@
 ---
 date: 2020-06-27 13:00
 title: Create a Tube Status home-screen Widget for iOS 14
-image: /images/roundel.png
+image: /Images/roundel.png
 tags: iOS, Swift
 ---
 
 One of iOS 14’s most exciting changes for both users and developers will undoubtedly be it’s addition of widgets for quick access to information directly from the home-screen without having to open the app. This type of functionality has previously been limited to just two first-party applications (Calendar and Clock).
 
-![London Underground status home-screen widgets on iOS 14](/images/tube-widgets.png)
+![London Underground status home-screen widgets on iOS 14](../../Images/tube-widgets.png)
 _London Underground status home-screen widgets on iOS 14_
 
 In this article, I will detail how to quickly and easily create a home-screen widget for your app, using the London Underground status board as a real-world example. Transport for London provides a free-to-use Open API ([https://api.tfl.gov.uk](https://api.tfl.gov.uk])) we can easily utilise that will allow us to get up-to-date status for all its services.
@@ -15,7 +15,7 @@ In this article, I will detail how to quickly and easily create a home-screen wi
 Sample code for the project is available on GitHub:
 
 > prettylink https://github.com/Oliver-Binns/tube-status-ios
-> image /images/tube-status-ios-github.png
+> image /Images/tube-status-ios-github.png
 > title Oliver-Binns/tube-status-ios
 > description A sample iOS app for displaying the status of the London Underground using WidgetKit. – Oliver-Binns/tube-status-ios
 
@@ -33,7 +33,7 @@ _Widgets cannot be provided standalone, so we will need to start with a boilerpl
 
 In order to get started, let’s select “Create a new Xcode project” from the Xcode launch screen. Select app, then next.
 
-![Screenshot of Xcode 12 Launch window](/images/xcode-launch.png)
+![Screenshot of Xcode 12 Launch window](../../Images/xcode-launch.png)
 _Xcode 12 Launch window_
 
 WidgetKit requires “SwiftUI” as the interface so we will use this for our app too.
@@ -53,7 +53,7 @@ Xcode will generate an app template containing `YourProjectApp.swift`.
 
 In order to share code between the main-app and widget, we can create a shared framework in Xcode. This isn’t completely necessary for a simple app such as this, but it’s good practice as you may want to share logic further if you are implementing other features such as Siri Shortcuts or iMessage apps.
 
-![Architecture diagram of London Underground app. Top row is two boxes: iOS app and WidgetKit extension. The bottom row is a single box: Shared Library.](/images/tube-status-architecture.png)
+![Architecture diagram of London Underground app. Top row is two boxes: iOS app and WidgetKit extension. The bottom row is a single box: Shared Library.](../../Images/tube-status-architecture.png)
 _Architecture of London Underground app_
 
 Create a new framework in Xcode, go to File → New → Target… and select Framework. Some common product names for shared frameworks are “Core” or “Shared”. From now on, it’s easiest to create all new source files within this new shared framework target.
@@ -318,7 +318,7 @@ Create a new intent definition file: File → New → File → SiriKit Intent De
 
 We can create a new enum datatype to hold the different Line options:
 
-![Screenshot of Xcode for creating an enum for different Tube line options using the visual editor](/images/line-enum.png)
+![Screenshot of Xcode for creating an enum for different Tube line options using the visual editor](../../Images/line-enum.png)
 _Create an enum for the different Tube line options using the visual editor_
 
 The unknown case is not displayed in the picker, but we can use it later for specifying a default value.
@@ -327,7 +327,7 @@ Next we need to create a new Custom Intent:
 Add a title and description so that the user knows what they are choosing.
 The Intent needs to be eligible for widgets, but Siri Shortcuts and Suggestions are not needed for this.
 
-![Screenshot of Xcode for creating a custom intent to allow the user to select a Line for the widget](/images/line-intent.png)
+![Screenshot of Xcode for creating a custom intent to allow the user to select a Line for the widget](../../Images/line-intent.png)
 _Create a custom intent to allow the user to select a Line for the widget_
 
 We also need to declare the intent in the application’s `Info.plist` file, otherwise it won’t be able to load in the “Edit Widget” modal.
@@ -396,7 +396,7 @@ struct SingleLineWidget: Widget {
 
 It works! We can use our intents to select a particular tube line for our widget to display:
 
-![iPhone 7 homescreen with tube status widget prent. The selected tube line is being changed from Bakerloo (default) to the Northern line. Animated gif.](/images/widget-intent.gif)
+![iPhone 7 homescreen with tube status widget prent. The selected tube line is being changed from Bakerloo (default) to the Northern line. Animated gif.](../../Images/widget-intent.gif)
 _Use intents to select a Tube Line_
 
 ## More Resources
@@ -404,7 +404,7 @@ _Use intents to select a Tube Line_
 Sample code available on GitHub:
 
 > prettylink https://github.com/Oliver-Binns/tube-status-ios
-> image /images/tube-status-ios-github.png
+> image /Images/tube-status-ios-github.png
 > title Oliver-Binns/tube-status-ios
 > description A sample iOS app for displaying the status of the London Underground using WidgetKit. – Oliver-Binns/tube-status-ios
 
@@ -412,11 +412,11 @@ Sample code available on GitHub:
 Apple's Developer Documentation:
 
 > prettylink https://developer.apple.com/news/?id=yv6so7ie
-> image /images/widget-code-along.jpg
+> image /Images/widget-code-along.jpg
 > title Widgets code-along – WWDC20 – Apple Developer
 > description Come and build a widget with us! Download a starter app and code along as we create a widget from start to finish.
 
 > prettylink https://developer.apple.com/documentation/widgetkit
-> image /images/widgetkit-docs.png
+> image /Images/widgetkit-docs.png
 > title WidgetKit – Apple Developer Documentation
 > description Show relevant, glanceable content from your app on the iOS Home screen or macOS Notification Center.

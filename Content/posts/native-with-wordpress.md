@@ -1,7 +1,7 @@
 ---
 date: 2020-11-25 19:40
 title: Going iOS native with WordPress
-image: /images/wordpress-native.png
+image: /Images/wordpress-native.png
 tags: iOS, Swift
 ---
 
@@ -10,7 +10,7 @@ WordPress is one of the most popular website platforms available, in fact it pow
 As most of my work focusses on iOS, I decided to use the WordPress API to see if I could make my blog (this website) available as a native app. I released this recently – you may even be using it to read this post – though I’ll let you be the judge of how well it’s been executed.
 
 > prettylink https://apps.apple.com/us/app/oliver-binns/id1535326851
-> image /images/obinns-appicon.png
+> image /Images/obinns-appicon.png
 > title Oliver Binns on the App Store
 > description Read Oliver Binns’ Blog in the app optimised for iOS devices. The app supports dynamic type, VoiceOver and can be used without installing thanks to App Clips on iOS 14.
 
@@ -28,7 +28,7 @@ Native apps feel more intuitive to users as they tend to follow the UI standards
 
 For starters, this app makes the most of the accessibility features in iOS by providing support for Dynamic Type and VoiceOver, as well as giving users the ability to read posts while they are offline. You can see from these images that the iOS app obeys the user’s dynamic type choice while the web app displays text at the default size.
 
-|![An iPhone 12 showing the Safari app with oliverbinns.co.uk loaded to the blog post "Constructing Data with Swift Function Builders"](/images/blog-safari.png)_Blog post viewed on the web in Safari_|![An iPhone 12 showing the Oliver Binns app open displaying the blog post "Constructing Data with Swift Function Builders"](/images/blog-native.png)_Blog post viewed in the native iOS app_|
+|![An iPhone 12 showing the Safari app with oliverbinns.co.uk loaded to the blog post "Constructing Data with Swift Function Builders"](../../Images/blog-safari.png)_Blog post viewed on the web in Safari_|![An iPhone 12 showing the Oliver Binns app open displaying the blog post "Constructing Data with Swift Function Builders"](../../Images/blog-native.png)_Blog post viewed in the native iOS app_|
 
 
 While it is possible to support [dynamic type](https://useyourloaf.com/blog/using-dynamic-type-with-web-views/) on the web, we don’t get as much control over it, nor as much given for free as we do using the iOS SDK.
@@ -68,7 +68,7 @@ Making a GET request to https://wordpress-site.com/wp-json/wp/v2/posts:
 
 We can represent this as a UML diagram, to give visual representation of the different objects we can create in Swift and how they are related.
 
-![UML diagram for Wordpress API. Post class has id, slug and title string attributes. link URL and media URL attributes and date attribute. The class has a many-to-one combination to a rendered content type.](/images/uml-wordpress.png)
+![UML diagram for Wordpress API. Post class has id, slug and title string attributes. link URL and media URL attributes and date attribute. The class has a many-to-one combination to a rendered content type.](../../Images/uml-wordpress.png)
 _UML Class Diagram for WordPress post API_
 
 If you’ve read some of my [previous posts](https://www.oliverbinns.co.uk/posts/tube-status-widget/), you’ll be familiar with Swift’s `Decodable` protocol for decoding values from JSON representation.
@@ -213,7 +213,7 @@ let excerpt = try? NSMutableAttributedString(
 You can find more details in this article from Paul Hudson:
 
 > prettylink https://www.hackingwithswift.com/example-code/system/how-to-convert-html-to-an-nsattributedstring
-> image /images/hacking-with-swift.png
+> image /Images/hacking-with-swift.png
 > title Hacking with Swift
 > description How to convert HTML to an NSAttributedString
 
@@ -245,7 +245,7 @@ struct SwiftUILabel: UIViewRepresentable {
 
 Great, now let's run it:
 
-![An white iPhone 7. On the screen is an app showing a blog post. Title: Project setup, Widgets cannot be provided standalone, so we will need to start with a boilerplate app. Here we will setup a new Xcode project and produce a basic app. If you are a seasoned app developer, you may want to skip to the "Your First Widget" section.](/images/bold-italic.png)
+![An white iPhone 7. On the screen is an app showing a blog post. Title: Project setup, Widgets cannot be provided standalone, so we will need to start with a boilerplate app. Here we will setup a new Xcode project and produce a basic app. If you are a seasoned app developer, you may want to skip to the "Your First Widget" section.](../../Images/bold-italic.png)
 _HTML mark-up rendered as a UILabel within SwiftUI._
 
 It works! Our text appears bold, italic, underlined and even in a monospaced font as we would expect. We even get support for numbered and un-numbered bulletpoints.
@@ -254,7 +254,7 @@ There’s just a small problem, and it’s hard to spot, but SwiftUI doesn’t s
 
 Here’s the comparison:
 
-|![A white iPhone 7 displays two paragraphs of text with a large space between them](/images/before-padding.png)_SwiftUI adds too much padding above and below the text. This causes some layout issues in the scroll view._|![A white iPhone 7 displays two paragraphs of text with a normal amount of space between them](/images/after-padding.png)|
+|![A white iPhone 7 displays two paragraphs of text with a large space between them](../../Images/before-padding.png)_SwiftUI adds too much padding above and below the text. This causes some layout issues in the scroll view._|![A white iPhone 7 displays two paragraphs of text with a normal amount of space between them](../../Images/after-padding.png)|
 
 I’ve found that the best way to do this is to place the SwiftUILabel inside a wrapper which can manually set the frame to the height.
 We can use a binding to pass the expected height through to the inner type: this allows both to stay up-to-date with the latest value, with any changes being rendered on the screen.
@@ -317,7 +317,7 @@ We’ve used the WordPress API to natively render a website on iOS with support 
 The entire source code for this app is available on GitHub:
 
 > prettylink https://github.com/Oliver-Binns/Oliver-Binns/tree/main/Native
-> image /images/profile-yellow.jpg
+> image /Images/profile-yellow.jpg
 > title Oliver-Binns - GitHub
 > description Here's the code that makes up my iOS app, available on the App Store.
 

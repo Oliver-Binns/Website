@@ -8,14 +8,14 @@ tags: Swift
 As I only made it to day 8 last year, I was even more determined to finish this year’s Advent of Code. I have to admit it’s been hard to find the time on occasion, but it’s been one of my top priorities for the month of December and I’ve managed to complete each task with the day, every day. If you follow me on Twitter, I apologise for the sheer amount I posted about this over the course of the last month 🤣
 
 > prettylink https://adventofcode.com
-> image /images/advent-calendar-21.png
+> image /Images/advent-calendar-21.png
 > title Advent of Code 2021
 > description Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like. People use them as a speed contest, interview prep, company training, university coursework, practice problems, or to challenge each other.
 
 Of course, I’ll talk about my solutions, but I’ve also included some other great solutions, written in Swift, that I’ve learnt from, and I’ll reference as I go through:
 
 > prettylink https://github.com/oliver-binns/advent-of-code/tree/2021
-> image /images/aoc-oliver.png
+> image /Images/aoc-oliver.png
 > title GitHub - Oliver-Binns/Advent-of-Code: My solutions for Advent of Code
 > description My solutions for Advent of Code
 
@@ -26,7 +26,7 @@ When working under time pressure, aiming for readable code is often one of thing
 [Daniel Tull](https://github.com/danielctull/Advent-of-Code/blob/main/Year2021/Sources/Day10.swift)‘s solutions are a great example at prioritising readability even when under pressure, he’s done a fantastic job at abstracting code out of each day’s solution into helper files, and then separating the files themselves using extensions. All the variables are well named and it’s always easy to tell what each line of code is doing.
 
 > prettylink https://github.com/danielctull/Advent-of-Code/blob/main/Year2021/Sources/Day10.swift
-> image /images/aoc-daniel.png
+> image /Images/aoc-daniel.png
 > title Advent-of-Code/Day10.swift at main · danielctull/Advent-of-Code
 > description My solutions to the Advent of Code puzzles. Contribute to danielctull/Advent-of-Code development by creating an account on GitHub.
 
@@ -84,7 +84,7 @@ final class Day1: Day {
 ```
 
 > prettylink https://github.com/simanerush/advent-of-code/blob/main/AOC2021/AdventOfCode/Days/Day1.swift
-> image /images/aoc-simane.png
+> image /Images/aoc-simane.png
 > title advent-of-code/Day1.swift at main · simanerush/advent-of-code
 > description solutions for advent of code with swift! Contribute to simanerush/advent-of-code development by creating an account on GitHub.
 
@@ -94,7 +94,7 @@ Since there are two (related) challenges to complete each day, often the first i
 
 For me, this has been one of the hardest parts of Advent of Code. It's been a few years since I was at university studying the theory of computational complexity and I've definitely gotten a little rusty. As most mobile devices now have an unbelievable amount of computing power (see the graph below!), I don't often need to produce code that is highly efficient in my day to day work. However, by knowing these techniques, we can write better code and reduce the impact of our inefficient code on the device's battery life.
 
-![iPhone 13's A15 Bionic GPU gains the most impressive in 5 years](/images/a15-bionic.png)
+![iPhone 13's A15 Bionic GPU gains the most impressive in 5 years](../../Images/a15-bionic.png)
 
 _Apple Silicon Single Core CPU Performance from iPhone 5s to iPhone 13 (c) Creative Strategies_
 
@@ -153,7 +153,7 @@ static func countPopulation(of input: [Int: Int], over: Int) -> Int {
 I hadn’t come across this dictionary initialiser before, but it really came in handy and I used it on days 6, 7, 8 and 14.
 
 > prettylink https://github.com/Abizern/AdventOfCode/blob/main/Advent21/Sources/Solution9.swift
-> image /images/aoc-abizern.png
+> image /Images/aoc-abizern.png
 > title AdventOfCode/Solution9.swift at main · Abizern/AdventOfCode
 > description Advent of Code solutions in Swift. Contribute to Abizern/AdventOfCode development by creating an account on GitHub.
 
@@ -178,7 +178,7 @@ On [Day 18](https://adventofcode.com/2021/day/18), in particular, I went down a 
 This is exactly what Dave DeLong has done, using a Swift Package to allow testing. This seems like a great way to set up the project and I’ll definitely be following his lead next year. A Swift Package, much like the Swift Playgrounds that others have used, also makes it far easier to share code between challenges, in stark contrast to my scripting where I’ve needed to copy and paste small snippets into each individual solution.
 
 > prettylink https://github.com/davedelong/AOC
-> image /images/aoc-dave.png
+> image /Images/aoc-dave.png
 > title GitHub - davedelong/AOC: Advent of Code
 > description Advent of Code. Contribute to davedelong/AOC development by creating an account on GitHub.
 
@@ -187,7 +187,7 @@ This is exactly what Dave DeLong has done, using a Swift Package to allow testin
 A random one, but I thought [Leif Gehrmann](https://github.com/leifgehrmann/)‘s use of GitHub actions to run his code was great. It takes your current hardware out of the picture and lets you independently prove how quickly your solutions run for comparison against others.
 
 > prettylink https://github.com/leifgehrmann/advent-of-code-2021/runs/4574201030?check_suite_focus=true
-> image /images/aoc-leif.png
+> image /Images/aoc-leif.png
 > title GitHub - leifgehrmann/advent-of-code: Advent of Code
 > description Solutions to Advent of Code 2021 in Swift. Day-19 - Parts 1 & 2 of the puzzle solved! But I did everything manually, so this is not a generic solution. · leifgehrmann/advent-of-code-2021@b31fd34
 

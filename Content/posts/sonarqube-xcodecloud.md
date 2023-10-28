@@ -1,7 +1,7 @@
 ---
 date: 2021-12-18 19:00
 title: Attempting SonarQube Analysis on Xcode Cloud
-image: /images/hammer-sonar.png
+image: /Images/hammer-sonar.png
 tags: iOS, Swift
 ---
 
@@ -14,12 +14,12 @@ Here I’ll be implementing SonarQube for a project I’ve written about before:
 I won’t cover how to create an Xcode Cloud build, as others have covered that already and the [Apple Documentation](https://developer.apple.com/documentation/Xcode/Configuring-Your-First-Xcode-Cloud-Workflow) is fairly well written.
 
 > prettylink https://docs.fastlane.tools/actions/sonar/
-> image /images/fastlane.png
+> image /Images/fastlane.png
 > title sonar - fastlane docs
 > description Invokes sonar-scanner to programmatically run SonarQube analysis
 
 > prettylink /posts/tube-status-widget
-> image /images/roundel.png
+> image /Images/roundel.png
 > title Create a Tube Status home-screen Widget for iOS 14
 > description In this article, I will detail how to quickly and easily create a home-screen widget for your app, using the London Underground status board as a real-world example.
 
@@ -59,7 +59,7 @@ fastlane run sonar \
    sonar_url:"https://sonarcloud.io"
 ```
 
-![Coverage: 0.0% on 8.3k new lines. Greater than or equal to 80% coverage is required. Red status.](/images/zero-percent-coverage.png)
+![Coverage: 0.0% on 8.3k new lines. Greater than or equal to 80% coverage is required. Red status.](../../Images/zero-percent-coverage.png)
 
 _0.0% code covered by the unit test suite_
 
@@ -93,7 +93,7 @@ end
 
 Great, we can now see how much of our code is covered and where we can improve. For me and my Tube Status demo project, it seems there’s a long way to go!
 
-![SonarQube report. 2.1k lines of code. Version 1, last analysis 14 days ago. Commit ID 2d3252a4. Quality Gate: Failed. 1 Failed Condition. New Code, since about 1 month ago. Reliability: 0 bugs. Maintainability: 1 code smell. Security: 0 vulnerabilities. Security Review: 0 security hotspots. Coverage: 8.6% coverage on 499 new lines to cover. Duplications 0.0% duplications on 2.1k new lines.](/images/full-report-sonar.png)
+![SonarQube report. 2.1k lines of code. Version 1, last analysis 14 days ago. Commit ID 2d3252a4. Quality Gate: Failed. 1 Failed Condition. New Code, since about 1 month ago. Reliability: 0 bugs. Maintainability: 1 code smell. Security: 0 vulnerabilities. Security Review: 0 security hotspots. Coverage: 8.6% coverage on 499 new lines to cover. Duplications 0.0% duplications on 2.1k new lines.](../../Images/full-report-sonar.png)
 
 _SonarQube Report complete with test coverage metrics._
 
@@ -125,7 +125,7 @@ When Xcode retrieves our code for a pull request, it creates a new repository an
 
 If we just run the same script that we used for our main branch, with the additional parameters, we’ll get a very boring report:
 
-![SonarQube analysis results. 0 new lines. Quality Gate: Passed. Last analysis 7 minutes ago. Commit hash. Reliability: A rating, 0 bugs. Maintainability: A rating, 0 code smells. Security: A rating, 0 vulnerabilities. Security Review: A rating, 0 security hotspots.](/images/empty-report-sonar.jpg)
+![SonarQube analysis results. 0 new lines. Quality Gate: Passed. Last analysis 7 minutes ago. Commit hash. Reliability: A rating, 0 bugs. Maintainability: A rating, 0 code smells. Security: A rating, 0 vulnerabilities. Security Review: A rating, 0 security hotspots.](../../Images/empty-report-sonar.jpg)
 
 _A SonarQube report from Xcode Cloud showing no changes against the develop branch._
 
@@ -154,7 +154,7 @@ git -C $CI_WORKSPACE fetch
 
 That’s better, we can now run an analysis and changes will get detected: 47 new lines.
 
-![SonarQube report. 47 new lines. From branch feature/sonar-qube to develop. Last analysis 2 days ago, commit ID fbb4d929. 1 warning. Quality gate failed. 1 failed condition. Reliability: 0 bugs. Maintainability: 0 code smells. Security: 0 vulnerabilities. Security Review: 0 security hotspots. Coverage: 0.0% coverage on 26 new lines to cover. 0.0% estimated after merge. Duplications 0.0% duplications on 47 new lines. 1.3% estimated after merge.](/images/line-difference-sonar.png)
+![SonarQube report. 47 new lines. From branch feature/sonar-qube to develop. Last analysis 2 days ago, commit ID fbb4d929. 1 warning. Quality gate failed. 1 failed condition. Reliability: 0 bugs. Maintainability: 0 code smells. Security: 0 vulnerabilities. Security Review: 0 security hotspots. Coverage: 0.0% coverage on 26 new lines to cover. 0.0% estimated after merge. Duplications 0.0% duplications on 47 new lines. 1.3% estimated after merge.](../../Images/line-difference-sonar.png)
 
 _A SonarQube report from Xcode Cloud showing 47 lines changed against the develop branch._
 
@@ -165,6 +165,6 @@ As you can see, it’s possible to get some of the features of SonarQube working
 Checkout the final implementation on GitHub:
 
 > prettylink https://github.com/Oliver-Binns/tube-status-ios/tree/develop/ci_scripts
-> image /images/tube-status-ios-github.png
+> image /Images/tube-status-ios-github.png
 > title Xcode Cloud CI Scripts: Tube Status
 > description A sample iOS app for displaying the status of the London Underground using WidgetKit. - tube-status-ios/ci_scripts at develop · Oliver-Binns/tube-status-ios

@@ -1,7 +1,7 @@
 ---
 date: 2022-01-04 07:00
 title: Some thoughts on Xcode Cloud
-image: /images/xcode-cloud.png
+image: /Images/xcode-cloud.png
 tags: iOS, Swift
 ---
 
@@ -12,12 +12,12 @@ Ever since Apple acquired BuddyBuild back in 2018 there has been been speculatio
 Xcode Cloud promises an easy to setup, secure, automated workflow for your apps, heavily integrated with Xcode and App Store Connect. But does it meet these promises? I attempted to build a pipeline similar to one I’ve previously written about to find out. You can find the demo pipeline [in the repository for my open-source London Underground widgets](https://github.com/Oliver-Binns/tube-status-ios).
 
 > prettylink https://www.macrumors.com/2018/01/02/apple-acquires-buddybuild-for-xcode-team/
-> image /images/buddybuild.png
+> image /Images/buddybuild.png
 > title Apple Acquires Canadian App Development Startup Buddybuild
 > description Apple recently purchased Vancouver-based app startup Buddybuild, according to a blog post on the Buddybuild website (via iMore). Buddybuild’s...
 
 > prettylink /posts/gitflow-automation/
-> image /images/git-flow.jpg
+> image /Images/git-flow.jpg
 > title Gitflow with Automation for Mobile Apps
 > description Gitflow is a great branching strategy for mobile apps. Automation is essential for achieving our agile principle of delivering working software frequently. Combining these two processes can reduce the burden of deployment, helping us focus on regularly delivering great apps for our users.
 
@@ -40,14 +40,14 @@ Xcode Cloud works with Bitbucket, GitHub and GitLab version control providers. A
 
 Xcode Cloud allows you to implement your own build scripts at specific points in the workflow: after cloning the code, before running the build and then after running the build. Since one of the main selling points of Xcode Cloud is that it’s quick to setup and simple to use, the more custom scripts we implement, the less value we are getting from this, but it’s nice to know we have this power if we need it.
 
-![An illustration that shows the different steps Xcode Cloud performs when it performs an action, including the custom build scripts from left to right.](/images/xcode-cloud-workflow.png)
+![An illustration that shows the different steps Xcode Cloud performs when it performs an action, including the custom build scripts from left to right.](../../Images/xcode-cloud-workflow.png)
 *The Xcode Cloud Workflow Lifecycle, © Apple, 2021.*
 
 We just need to create a file called `ci_post_clone.sh`, `ci_pre_xcodebuild.sh` or `ci_post_xcodebuild.sh` in a folder called `ci_scripts`. Since Xcode Cloud agents have Homebrew pre-installed and configured, we’re able to quickly add most the tools we would use in iOS Development, including SwiftLint and Fastlane.
 
 Don’t forget to make your scripts executable using `chmod +x script_name`!
 
-If I’m honest, I’d love to see some additions to the pre-installed software here as build times are pretty lengthy when I have to install all my dependencies first. For comparison, I’ve made pretty good use of Azure DevOps in the past and [their agents already come with both Fastlane and SwiftLint pre-installed](https://github.com/actions/virtual-environments/blob/main/images/macos/macos-11-Readme.md).
+If I’m honest, I’d love to see some additions to the pre-installed software here as build times are pretty lengthy when I have to install all my dependencies first. For comparison, I’ve made pretty good use of Azure DevOps in the past and [their agents already come with both Fastlane and SwiftLint pre-installed](https://github.com/actions/virtual-environments/blob/main/Images/macos/macos-11-Readme.md).
 
 #### SwiftLint
 
@@ -65,7 +65,7 @@ swiftlint --strict $CI_WORKSPACE
 
 When running SwiftLint on the CI, I use the strict flag. This ensures that the whole team are following the code-style when merging into shared branches and prevents our project from building up with a large number of warnings, which may prevent more important issues from being surfaced.
 
-![A meme from the TV show, "The Office". A woman is shown two pieces of paper one saying "compiled successfully" and another saying "compiled with warnings". There is a subtitle saying "Corporate needs you to find the differences between this picture and this picture". The woman, who is labelled "developers" responds: "they're the same picture".](/images/warnings.jpg)
+![A meme from the TV show, "The Office". A woman is shown two pieces of paper one saying "compiled successfully" and another saying "compiled with warnings". There is a subtitle saying "Corporate needs you to find the differences between this picture and this picture". The woman, who is labelled "developers" responds: "they're the same picture".](../../Images/warnings.jpg)
 
 #### Fastlane
 
@@ -99,7 +99,7 @@ fi
 ```
 
 > prettylink https://fastlane.tools
-> image /images/fastlane.png
+> image /Images/fastlane.png
 > title fastlane - App automation done right
 > description The easiest way to build and release mobile apps. fastlane handles tedious tasks so you don’t have to.
 
@@ -110,7 +110,7 @@ I went down a bit of a rabbit-hole attempting to run SonarQube on Xcode Cloud. S
 I’ve spun off a separate article for this if you’re interested to find out how:
 
 > prettylink /posts/sonarqube-xcodecloud/
-> image /images/hammer-sonar.png
+> image /Images/hammer-sonar.png
 > title Attempting SonarQube Analysis on Xcode Cloud
 > description SonarQube can be a great tool for finding smells, bugs and duplications in your code. We can use the Fastlane plugin for SonarQube to output a report from our Xcode Cloud builds.
 
@@ -127,7 +127,7 @@ One area where Xcode Cloud shines is allowing you to run your tests against mult
 What’s also worth noting here is that Xcode Cloud does run all these tests inside simulators of the device. If you want to test your apps on physical devices, you’ll still need your own device farm or to use something like [BrowserStack’s App Live](https://www.browserstack.com/app-live).
 
 > prettylink https://useyourloaf.com/blog/xcode-10-random-and-parallel-tests/
-> image /images/use-your-loaf.png
+> image /Images/use-your-loaf.png
 > title Xcode 10 Random And Parallel Tests
 > description Xcode 10 introduces three new options for running your tests. These allow you to randomize the execution order, speed up the tests by running them in parallel on multiple simulators and finally to control if Xcode automatically adds new tests to a scheme.
 
@@ -141,7 +141,7 @@ Perhaps this isn’t surprising from Apple, but the easy setup comes with the co
 Swift as a general purpose language is growing in popularity even outside of the Apple ecosystem. It’s being used to create server-side APIs in production by many companies around the world. Xcode Cloud is designed with Apple Platforms in mind but unfortunately, for the moment, this is limited to iOS, macOS, tvOS and watchOS apps. If you’re using something like Vapor to build your backend API, you’ll be greeted by this “No Apps or Frameworks” message. If you’re making use of (and paying for!) another CI/CD provider, then it’s probably harder to justify having two different solutions, but once Apple announce the pricing we’ll be able to know for sure.
 
 
-![Xcode window. The sidebar is set to show Cloud builds with a message reading "No Apps or Frameworks". The code editor shows a file called route.swiftsw with a basic Hello World implementation.](/images/vapor-xcodecloud.png)
+![Xcode window. The sidebar is set to show Cloud builds with a message reading "No Apps or Frameworks". The code editor shows a file called route.swiftsw with a basic Hello World implementation.](../../Images/vapor-xcodecloud.png)
 *A Hello World Vapor Swift App, Xcode Cloud builds are unavailable.*
 
 ## Summary
@@ -153,6 +153,6 @@ In the future, I’d love to see some additions to the pre-installed software (S
 How have you found Xcode Cloud? Are you going to adopt it? Let me know on Twitter:
 
 > prettylink https://www.twitter.com/oliver-binns
-> image /images/profile-yellow.jpg
+> image /Images/profile-yellow.jpg
 > title @Oliver_Binns | Twitter
 > description The latest Tweets from @Oliver_Binns. iOS Development Craft Lead for @DeloitteDigital | Apple Alliance.
