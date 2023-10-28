@@ -16,6 +16,7 @@ Often this will require new backend APIs to be built and, since our infrastructu
 When each of these different specialisms sit in different teams, it requires a lot of upfront planning to ensure dependencies are met in the correct order, and if anything goes wrong we would have to replan multiple teams' roadmaps.
 
 ![Team Structure diagram. A discovery team with arrows for Features 1, 2 and 3 pointing at three other teams: backend, mobile and platform. The discovery team contains a tech lead, product managers, business analysts, performance analyst, user researcher and designers. The backend team contains a tech lead, typescript developers and automation QA. The mobile team contains a tech lead, Android developers, iOS developers, automation QA and manual QA. The platform team contains a tech lead and platform developers.](../../Images/team-restructure-before.png)
+*Our Old Team Structure — Teams are split by discipline*
 
 Expert overload - due to no distribution of responsibilities in a more top-down hierarchy
 Communication overheads - many of our leads spent too much time in meetings
@@ -30,6 +31,9 @@ Business / Product team members currently sit outside the teams, this makes comm
 Bikeshedding when cross-team communication is about complex features rather than common ground: lack of focus
 
 ## Our Aims
+
+![Team Structure diagram. A discovery team with arrows for feature 1 pointing at feature team 1, feature 2 pointing at feature team 2, and feature 3 pointing at feature team 3. The discovery team contains a tech lead, product managers, performance analyst, user researcher and designers. Each of the three feature teams contains a tech lead, product manager, business analyst and Android, iOS, Typescript and Platform developers as well as automation and manual QA.](../../Images/team-restructure-after.png)
+*Our New Team Structure — Teams are split by business domain*
 
 Empower individuals to take responsibility over their feature
 Empower teams to own their end-to-end
