@@ -59,10 +59,15 @@ We’re aware that some of our less experienced developers are now the most seni
 We’ve attempted to mitigate this by putting them alongside a more experienced developer from another specialism.
 As part of this, we’re encouraging our senior developers to have a basic knowledge of the whole stack, not just their own code – after all general engineering principles should carry across these specialisms.
 
-Our teams have raised concerns about loss of responsibility
-Complete siloing of our different disciplines: Android Catchup
+> ”Individuals and interactions over processes and tools.“
+>
+> — Manifesto for Agile Software Development, [agilemanifesto.org](http://agilemanifesto.org)
 
-Over-defining the team ways of working: individuals and interactions over processes and tools
+While we want to keep as much of our work within our team silos, we know that there will be occasions where our people will want advice and support from others in their specialism.
+We’re encouraging our teams to keep their regular specialism specific catch-up calls to help maintain the cross-team relationships that we're carrying over from our previous teams.
+We don’t want to go much further than this and over-define any inter-team ways of working preferring to follow the Agile Manifesto and trust individuals and interactions over processes.
+
+Our teams have raised concerns about loss of responsibility
 
 ## Opportunities
 Ability to learn a new language and stack
