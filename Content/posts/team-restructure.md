@@ -18,7 +18,7 @@ When each of these different specialisms sit in different teams, it requires a l
 ![Team Structure diagram. A discovery team with arrows for Features 1, 2 and 3 pointing at three other teams: backend, mobile and platform. The discovery team contains a tech lead, product managers, business analysts, performance analyst, user researcher and designers. The backend team contains a tech lead, typescript developers and automation QA. The mobile team contains a tech lead, Android developers, iOS developers, automation QA and manual QA. The platform team contains a tech lead and platform developers.](../../Images/team-restructure-before.png)
 *Our Old Team Structure — Teams are split by discipline*
 
-When there are more members of each discipline (i.e. Android developers) in a larger mobile team, we try and give them unrelated pieces of work to avoid merge conflicts in the code that is being written.
+When there are more members of each specialism (i.e. Android developers) in a larger mobile team, we try and give them unrelated pieces of work to avoid merge conflicts in the code that is being written.
 This means there are multiple features or pieces of work being delivered in parallel by the team.
 Unless we clearly assign team members to a particular feature, this can result in a lot of communication overheads and redudancy.
 For example, the whole team often end up invited to meetings for **every single** feature when only a single developer is needed to provide guidance.
@@ -53,12 +53,16 @@ Our leadership team should be an escalation path for the team to use at their di
 They are not there to micromanage the team or step in to make decisions on the team’s behalf.
 
 ## Things we want to avoid
+
+Spreading members of each specialism across multiple teams could result in these people becoming isolated and not feeling sufficiently supported in their work.
+We’re aware that some of our less experienced developers are now the most senior developer of their particular specialism in their respective teams.
+We’ve attempted to mitigate this by putting them alongside a more experienced developer from another specialism.
+As part of this, we’re encouraging our senior developers to have a basic knowledge of the whole stack, not just their own code – after all general engineering principles should carry across these specialisms.
+
 Our teams have raised concerns about loss of responsibility
 Complete siloing of our different disciplines: Android Catchup
-Lack of support for less senior team members
 
 Over-defining the team ways of working: individuals and interactions over processes and tools
-Encourage senior developers to have a basic knowledge of the whole stack, not just their discipline.
 
 ## Opportunities
 Ability to learn a new language and stack
