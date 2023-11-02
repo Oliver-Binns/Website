@@ -70,7 +70,12 @@ We don’t want to go much further than this and over-define any inter-team ways
 Our teams have raised concerns about loss of responsibility
 
 ## Opportunities
-Ability to learn a new language and stack
+
+We think our new multi-disciplinary teams should provide a range of new opportunities to our team members.
+
+Those interested in pursuing their technical development will have more opportunities to work more closely with other disciplines and learn a new programming language or technology stack. They will also have more opportunities to define their work more closely: now the teams have the ability to work independently, they have the freedom to decide how to deliver a requirement for themselves.
+
+
 More leadership opportunities for our team: delegating responsibility into the team. Discipline leadership opportunities.
 
 ## The Future
