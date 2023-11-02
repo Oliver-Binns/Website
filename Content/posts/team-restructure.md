@@ -20,7 +20,7 @@ When each of these different specialisms sit in different teams, it requires a l
 
 When there are more members of each specialism (i.e. Android developers) in a larger mobile team, we try and give them unrelated pieces of work to avoid merge conflicts in the code that is being written.
 This means there are multiple features or pieces of work being delivered in parallel by the team.
-Unless we clearly assign team members to a particular feature, this can result in a lot of communication overheads and redudancy.
+Unless we clearly assign team members to a particular feature, this can result in a lot of communication overheads and redundancy.
 For example, the whole team often end up invited to meetings for **every single** feature when only a single developer is needed to provide guidance.
 
 Alternatively, it may be the tech lead or a single individual that takes on the responsibility in all meetings, which results in a very top-down hierarchy where the team as a whole does not feel empowered.
