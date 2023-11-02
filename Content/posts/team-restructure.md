@@ -74,9 +74,14 @@ Our teams have raised concerns about loss of responsibility
 We think our new multi-disciplinary teams should provide a range of new opportunities to our team members.
 
 Those interested in pursuing their technical development will have more opportunities to work more closely with other disciplines and learn a new programming language or technology stack. They will also have more opportunities to define their work more closely: now the teams have the ability to work independently, they have the freedom to decide how to deliver a requirement for themselves.
-
-
+ 
 More leadership opportunities for our team: delegating responsibility into the team. Discipline leadership opportunities.
 
 ## The Future
-We’ve put a lot of thought into this and we think this is going to be a huge improvement to the way our teams work. We’re going to trial it for a few sprints and see what happens. We’ll keep an eye out for feedback from our teams in their retros, and work to address any problems.
+
+It’s actually been over a year since we first discussed our aspiration for multi-discipline teams.
+
+We’ve put a lot of thought into this and overall we think this is going to be a huge improvement to the way our teams work. We’ve spent a lot of time ensuring that the responsibilities of each of our teams is both well defined and well communicated. We’ve worked hard to train our team to the point where everyone is comfortable and able to take on their new roles and responsibilities.
+
+We’re certainly not complacent so we’ll be keeping a close eye out for feedback from our teams in their retros, and work to address any problems.
+
