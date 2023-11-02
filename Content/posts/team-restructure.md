@@ -23,9 +23,9 @@ This means there are multiple features or pieces of work being delivered in para
 Unless we clearly assign team members to a particular feature, this can result in a lot of communication overheads and redundancy.
 For example, the whole team often end up invited to meetings for **every single** feature when only a single developer is needed to provide guidance.
 
-Alternatively, it may be the tech lead or a single individual that takes on the responsibility in all meetings, which results in a very top-down hierarchy where the team as a whole does not feel empowered.
-What’s more, this can result in expert overload where the team accumulates more knowledge because they are at the centre of everything, resulting in them becoming indispensible in all situations.
-This is a vicious cycle because as they are now indispensible and they will gain even more knowledge — until they burn out and the team comes to a standstill.
+Alternatively, it may be the team lead or a single individual that takes on the responsibility in all meetings, which results in a very top-down hierarchy where the team as a whole does not feel empowered.
+What’s more, this can result in expert overload where this team lead accumulates more knowledge because they are at the centre of everything, resulting in them becoming indispensable in many situations.
+This is a vicious cycle because as their presence is now vital, they will gain even more knowledge — until they burn out and the team comes to a standstill.
 
 > _"Business people and developers must work together daily throughout the project."_
 > 
