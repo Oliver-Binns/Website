@@ -35,12 +35,16 @@ While agile principles state that business people and developers must work toget
 Since product managers and business analysts did not sit inside our teams, they were not required to attend our regular scrum ceremonies including the daily stand-up.
 We also encountered the similar communication barriers here, where it was not always clear which product manager or business analyst was responsible for a given feature.
 
-Finally, since all our team members were constantly context switching between different features, it was difficult for them to focus for long enough to gain a deep understanding of each of one.
+Finally, since all our team members were constantly context switching between different features, it was difficult for them to focus for long enough to gain a deep understanding of each of one. This has an impact throughout our entire development lifecycle.
 
-
-We also see the [Law of triviality](https://en.wikipedia.org/wiki/Law_of_triviality) begin to take effect because of the team’s lack of detailed knowledge of the feature.
+Starting at the design phase we saw the [Law of triviality](https://en.wikipedia.org/wiki/Law_of_triviality) begin to take effect because of the team’s lack of detailed knowledge of the feature.
 This is more colloquially known as ‘bikeshedding’ from the example where stakeholders in a nuclear power-plant don’t understand enough detail about the important aspects of the plant, such as the nuclear reactor, but can easily spend time discussing the bikeshed.
 In our case, it has resulted in ancillary functionality such as localisation being discussed far more than the core user experience.
+
+As we progressed into the development phase..
+
+Finally, once development was complete, we felt pressure to move straight onto the other ongoing parallel piece of work.
+This meant that completed work was deployed and neglected with any monitoring and necessary iteration becoming low priority at the bottom of the team's backlog.
 
 ## Our Aims
 
