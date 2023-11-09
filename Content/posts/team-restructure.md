@@ -41,7 +41,8 @@ Starting at the design phase we saw the [Law of triviality](https://en.wikipedia
 This is more colloquially known as ‘bikeshedding’ from the example where stakeholders in a nuclear power-plant don’t understand enough detail about the important aspects of the plant, such as the nuclear reactor, but can easily spend time discussing the bikeshed.
 In our case, it has resulted in ancillary functionality such as localisation being discussed far more than the core user experience.
 
-As we progressed into the development phase..
+As we progressed into the development phase, a lack of ownership over functionality meant that live service incidents or other spontaneous events were disruptive to the entire team.
+This often pulled the team out of a productive [flow](https://en.wikipedia.org/wiki/Flow_(psychology)) state, or prevented them from reaching it entirely.
 
 Finally, once development was complete, we felt pressure to move straight onto the other ongoing parallel piece of work.
 This meant that completed work was deployed and neglected with any monitoring and necessary iteration becoming low priority at the bottom of the team's backlog.
