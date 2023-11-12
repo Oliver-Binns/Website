@@ -5,7 +5,7 @@ image: tbc
 tags: Management
 ---
 
-I recently [posted on Twitter](https://x.com/oliver_binns/status/1712736226447409264?s=46) about how we’re restructuring our teams from a separate mobile and backend team into cross-disciplinary feature teams. In this blog post I am going to explain our aims as we undertake this change, some of the issues we are trying address and even some of the challenges we’re think we will face and how we’re planning to mitigate them. 
+I recently [posted on Twitter](https://x.com/oliver_binns/status/1712736226447409264?s=46) about how we’re restructuring our teams from a separate mobile and backend team into cross-disciplinary feature teams. In this blog post I am going to explain our aims as we undertake this change, some of the issues we are trying address and even some of the challenges we think we will face and how we’re planning to mitigate them. 
 
 ## Current Problems
 
