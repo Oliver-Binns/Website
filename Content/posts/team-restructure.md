@@ -1,7 +1,7 @@
 ---
-date: tbc
-title: Why we’re restructuring our teams
-image: tbc
+date: 2023-11-16 18:00
+title: Why we’ve restructured our teams
+image: Images/teams.jpg
 tags: Management
 ---
 
@@ -21,13 +21,13 @@ When each of these different specialisms sit in different teams, it requires a l
 When there are more members of each specialism (i.e. Android developers) in a larger mobile team, we try and give them unrelated pieces of work to avoid merge conflicts in the code that is being written.
 This means there are multiple features or pieces of work being delivered in parallel by the team.
 Unless we clearly assign team members to a particular feature, this can result in a lot of communication overheads and redundancy.
-For example, the whole team often end up invited to meetings for **every single** feature when only a single developer is needed to provide guidance.
+For example, the whole team often end up invited to meetings for **every _single_** feature when only a single developer is needed to provide guidance.
 
 Alternatively, it may be the team lead or a single individual that takes on the responsibility in all meetings, which results in a very top-down hierarchy where the team as a whole does not feel empowered.
 What’s more, this can result in expert overload where this team lead accumulates more knowledge because they are at the centre of everything, resulting in them becoming indispensable in many situations.
-This is a vicious cycle because as their presence is now vital, they will gain even more knowledge — until they burn out and the team comes to a standstill.
+This is a vicious cycle because, as their presence is now vital, they will gain even more knowledge — until they burn out and the team comes to a standstill.
 
-> _"Business people and developers must work together daily throughout the project."_
+> _‘Business people and developers must work together daily throughout the project.’_
 > 
 > — Principles behind the Agile Manifesto, [agilemanifesto.org](http://agilemanifesto.org/principles.html)
 
@@ -67,7 +67,7 @@ We’re aware that some of our less experienced developers are now the most seni
 We’ve attempted to mitigate this by putting them alongside a more experienced developer from another specialism.
 As part of this, we’re encouraging our senior developers to have a basic knowledge of the whole stack, not just their own code – after all general engineering principles should carry across these specialisms.
 
-> ”Individuals and interactions over processes and tools.“
+> ‘Individuals and interactions over processes and tools.’
 >
 > — Manifesto for Agile Software Development, [agilemanifesto.org](http://agilemanifesto.org)
 
@@ -75,21 +75,37 @@ While we want to keep as much of our work within our team silos, we know that th
 We’re encouraging our teams to keep their regular specialism specific catch-up calls to help maintain the cross-team relationships that we're carrying over from our previous teams.
 We don’t want to go much further than this and over-define any inter-team ways of working preferring to follow the Agile Manifesto and trust individuals and interactions over processes.
 
-Our teams have raised concerns about loss of responsibility
-
 ## Opportunities
 
 We think our new multi-disciplinary teams should provide a range of new opportunities to our team members.
 
-Those interested in pursuing their technical development will have more opportunities to work more closely with other disciplines and learn a new programming language or technology stack. They will also have more opportunities to define their work more closely: now the teams have the ability to work independently, they have the freedom to decide how to deliver a requirement for themselves.
- 
-More leadership opportunities for our team: delegating responsibility into the team. Discipline leadership opportunities.
+Those interested in pursuing their technical development will have more opportunities to work more closely with other disciplines and learn a new programming language or technology stack.
+They will also have more opportunities to define their work more closely: now the teams have the ability to work independently, they have the freedom to decide how to deliver a requirement for themselves.
+
+Distributing responsibility by delegating it into the teams will also hopefully create more chances for people to lead.
+Our focus on _‘individuals and interactions over processes’_ means everyone will have opportunities to develop on their people skills.
+This isn’t just about leading a team in the classic sense, they could lead the design or development of a new feature or take a leading role in evangelising technical excellence for the discipline.
 
 ## The Future
 
 It’s actually been over a year since we first discussed our aspiration for multi-discipline teams.
 
-We’ve put a lot of thought into this and overall we think this is going to be a huge improvement to the way our teams work. We’ve spent a lot of time ensuring that the responsibilities of each of our teams is both well defined and well communicated. We’ve worked hard to train our team to the point where everyone is comfortable and able to take on their new roles and responsibilities.
+We’ve put a lot of thought into this and overall we think this is going to be a huge improvement to the way our teams work.
+We’ve spent a lot of time ensuring that the responsibilities of each of our teams is both well defined and well communicated.
+We’ve worked hard to train our people to the point where everyone is comfortable and able to take on their new roles and responsibilities.
 
 We’re certainly not complacent so we’ll be keeping a close eye out for feedback from our teams in their retros, and work to address any problems.
 
+## Thanks
+
+I want to give a huge thanks to everyone who’s made this change possible, especially my colleague Elishka who has helped me to appreciate all the advantages of this way of working and how we can be more successful as a result.
+
+> prettylink https://www.twitter.com/elishka_f
+> image /Images/elishka.jpg
+> title @elishka_f | Twitter
+> description The latest Tweets from @elishka_f. 💻 Full Stack Senior Dev @DeloitteDigital | 👩🏼‍🎓 @makersacademy alum | 🚴‍♀️ probably out riding
+
+> prettylink https://www.twitter.com/oliver-binns
+> image /Images/profile-yellow.jpg
+> title @Oliver_Binns | Twitter
+> description The latest Tweets from @Oliver_Binns. iOS Development Craft Lead for @DeloitteDigital | Apple Alliance.
