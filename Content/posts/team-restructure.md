@@ -1,5 +1,5 @@
 ---
-date: 2023-11-16 18:00
+date: 2023-11-27 18:00
 title: Why we’ve restructured our teams
 image: Images/teams.jpg
 tags: Management
