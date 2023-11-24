@@ -5,7 +5,7 @@ image: Images/teams.jpg
 tags: Management
 ---
 
-I recently [posted on Twitter](https://x.com/oliver_binns/status/1712736226447409264?s=46) about how we’re restructuring our teams from a separate mobile and backend team into cross-disciplinary feature teams. In this blog post I am going to explain our aims as we undertake this change, some of the issues we are trying address and even some of the challenges we think we will face and how we’re planning to mitigate them. 
+I recently [posted on Twitter](https://twitter.com/oliver_binns/status/1712736226447409264?s=46) about how we’re restructuring our teams from a separate mobile and backend team into cross-disciplinary feature teams. In this blog post I am going to explain our aims as we undertake this change, some of the issues we are trying address and even some of the challenges we think we will face and how we’re planning to mitigate them. 
 
 ## Current Problems
 
@@ -101,7 +101,7 @@ We’re certainly not complacent so we’ll be keeping a close eye out for feedb
 I want to give a huge thanks to everyone who’s made this change possible, especially my colleague Elishka who has helped me to appreciate all the advantages of this way of working and how we can be more successful as a result.
 
 > prettylink https://www.twitter.com/elishka_f
-> image /Images/elishka.jpg
+> image /Images/team-elishka.jpg
 > title @elishka_f | Twitter
 > description The latest Tweets from @elishka_f. 💻 Full Stack Senior Dev @DeloitteDigital | 👩🏼‍🎓 @makersacademy alum | 🚴‍♀️ probably out riding
 
