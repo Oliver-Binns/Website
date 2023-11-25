@@ -57,8 +57,6 @@ We created each of our teams around an end-to-end component of our app, with ful
 We have drawn the lines between the teams responsibilities with the aim of minimising cross-team dependencies.
 We wanted to ensure they have all skills to be able to successfully manage this _within_ the team, including making day-to-day decisions on maintenance and any enhancements.
 We’re hoping that this will enable the team to have a full understanding of their area and current work without being distracted by work going on in other parts of the app.
-Our leadership team should be an escalation path for the team to use at their discretion when problems arise.
-They are not there to micromanage the team or step in to make decisions on the team’s behalf.
 
 ## Things we want to avoid
 
@@ -74,6 +72,9 @@ As part of this, we’re encouraging our senior developers to have a basic knowl
 While we want to keep as much of our work within our team silos, we know that there will be occasions where our people will want advice and support from others in their specialism.
 We’re encouraging our teams to keep their regular specialism specific catch-up calls to help maintain the cross-team relationships that we're carrying over from our previous teams.
 We don’t want to go much further than this and over-define any inter-team ways of working preferring to follow the Agile Manifesto and trust individuals and interactions over processes.
+
+Finally, our leadership team should be an escalation path for the team to use at their discretion when problems arise.
+They are not there to micromanage the team or step in to make decisions on the team’s behalf.
 
 ## Opportunities
 
@@ -98,7 +99,7 @@ We’re certainly not complacent so we’ll be keeping a close eye out for feedb
 
 ## Thanks
 
-I want to give a huge thanks to everyone who’s made this change possible, especially my colleague Elishka who has helped me to appreciate all the advantages of this way of working and how we can be more successful as a result.
+I want to give a huge thanks to everyone who’s made this change possible, especially my colleague Elishka, who has helped me to appreciate all the advantages of this way of working and how we can be more successful as a result.
 
 > prettylink https://www.twitter.com/elishka_f
 > image /Images/team-elishka.jpg
