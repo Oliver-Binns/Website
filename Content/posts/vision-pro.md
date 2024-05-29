@@ -23,9 +23,9 @@ When exploring SwiftData during WWDC, I found that it wouldn’t support the new
 This is all before the workarounds I’d need to make to ensure I could use Git, XCTest and other tools.
 
 Meanwhile, while iPad is great for consuming content, I don't find it much more convenience than my MacBook Air.
-The only strength that iPad has here is wide-support for downloading film and TV from Netflix, Prime and BBC iPlayer for travel.
+The main strength that iPad has here is wide-support for downloading film and TV from Netflix, Prime and other streaming services when travelling.
 
-|Netflix download Mac?|iPlayer download Mac?|
+|![Netflix on Mac App Store - not compatible with this device](../../Images/netflix-mac-appstore.png)|![BBC iPlayer on Mac App Store - not compatible with this device](../../Images/iplayer-mac-appstore.png)|
 |-|-|
 
 I’ve also tried to make more use of iPad in my work-life.
