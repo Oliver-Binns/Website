@@ -7,8 +7,8 @@ tags: Apple Vision Pro, Swift
 
 Two months ago I made a decision I’ve been putting off for several years.
 I had really wanted to make iPad my only personal device; the size is more in-keeping with my love for smaller devices and I'd been inspired to be more creative by [my friend Anna’s award-winning talk on using Swift Playgrounds](https://www.youtube.com/watch?v=zfMmHiYi53Q).
-iPad (especially iPad Pro) should be more than capable of performing any task (and more) that I would want to achieve.
-I mean, it even contains the same M-series chips as the MacBook line-up.
+iPad — especially iPad Pro — should be more than capable of performing any task that I would want to achieve (and more!).
+It even contains the same M-series chips as the MacBook line-up.
 
 In the end, I finally upgraded from my 2013 MacBook Air 11-inch to the new 2024 M3 13-inch model.
 
@@ -22,7 +22,7 @@ When building [a musical party game app](https://github.com/Oliver-Binns/Crescen
 When exploring SwiftData during WWDC, I found that it wouldn’t support the new APIs until they were released later in the year.
 This is all before the workarounds I’d need to make to ensure I could use Git, XCTest and other tools.
 
-Meanwhile, while iPad is great for consuming content, I don't find it much more convenience than my MacBook Air.
+Meanwhile, while iPad is great for consuming content, I don't find it much more convenient than my MacBook Air.
 The main strength that iPad has here is wide-support for downloading film and TV from Netflix, Prime and other streaming services when travelling.
 
 |![Netflix on Mac App Store - not compatible with this device](../../Images/netflix-mac-appstore.png)|![BBC iPlayer on Mac App Store - not compatible with this device](../../Images/iplayer-mac-appstore.png)|
@@ -44,7 +44,7 @@ Perhaps it’s not too surprising then, that I approached Apple Vision Pro with 
 
 Apple have always been great at designing hardware, so it didn’t surprise me that the Vision Pro is an incredibly impressive and visually stunning device.
 
-I only tested with the [...name] strap but it seemed comfortable for an hour or so of continuous use, which is all you will get from the battery.
+I only tested with the [Solo Knit Band](https://www.apple.com/shop/product/MT073LL/A/apple-vision-pro-solo-knit-band-m) but it seemed comfortable for an hour or two of continuous use, which is all you will get from the battery.
 The battery life easily gave me two hours which was plenty for my workflow at home while developing apps, especially since I was often sat and able to remain close to power – you can use and charge simulaneously.
 The only time I ran low was when demoing to other colleagues in the office – a continuously growing queue once the word got out – but if this is a problem for you, it's detachable so you can always buy extra ones to swap out.
 
@@ -109,9 +109,9 @@ I’ve really enjoyed my time with Apple Vision Pro, and I’ll be keen to spend
 New immersive use-cases mean it stands out from the Mac in a way that the iPad has struggled to do.
 For the timebeing, just like the iPad, it’s unfortunately very much an additional device rather than an alternative.
 
-With a likely price-tag of £3499, I will find it hard to justify the cost each time I need to upgrade my devices, however I’ll be interested to see how it evolves into the future.
-WWDC is coming up in just a few weeks so we don’t have long to wait for new features in visionOS 2.0.
+With a likely price-tag of £3,499, I will find it hard to justify the cost each time I need to upgrade my devices, however I’ll be interested to see how it evolves into the future.
+WWDC24 is just around the corner so we don’t have long to wait for new features in visionOS 2.0.
 Apple Vision Pro runs on the same M2 chip as the Mac, so a world where you could just open up a macOS window or app doesn’t feel unattainable.
-It’s also exciting to see Apple bringing their learnings from the Vision Pro across to other devices with the new iPad accessibility features they announced last week.
+It’s also exciting to see Apple bringing their learnings from the Vision Pro across to other devices with the new iPad accessibility features they [announced last week](https://www.apple.com/newsroom/2024/05/apple-announces-new-accessibility-features-including-eye-tracking/).
 
-Meanwhile, I am also loving my new MacBook Air, but if Apple update Swift Playgrounds to add support for Swift Packages, unit tests and more, I may be kicking myself for not holding out just a little longer for the iPad Pro.
+Meanwhile, I am also loving my new MacBook Air, but if Apple updates Swift Playgrounds to add support for Swift Packages, unit tests and more, I may be kicking myself for not holding out just a little longer for the iPad Pro.
