@@ -1,7 +1,7 @@
 ---
 date: 2023-10-11 10:00
 description: Speaker @ Design System Day
-icon: fa-microphone
+icon: fa-person-chalkboard
 ---
 # Speaker
 ## Design System Day
