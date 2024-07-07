@@ -29,9 +29,9 @@ The main strength that iPad has here is wide-support for downloading film and TV
 |-|-|
 
 I’ve also tried to make more use of iPad in my work-life.
-Basic functions like email work well, but I find it frustrating for more in-depth work such as creating slides.
-It’s trickier to align objects and to create more complex transitions.
-I find myself returning to my Mac to refine documents, even if I manage to create a first draft on iPad.
+Basic functions like email work well, but I find it frustrating for more in-depth work, such as creating slides.
+It’s far trickier to align objects and to create more complex transitions.
+Even if I manage to create a first draft on iPad, I always find myself returning to my Mac to refine documents.
 
 Perhaps it’s not too surprising then, that I approached Apple Vision Pro with a very sceptical mind; I borrowed one from a colleague for a week trial and summarised some of my thoughts in this post.
 
@@ -55,7 +55,7 @@ The field-of-view is not as wide as it could be, though, as a glasses wearer, I 
 
 The passthrough of video from the real world into augmented reality works really well for keeping you connected to the real world when working in the virtual world.
 I have experienced only minor bouts of motion sickness which is a significant improvement when compared to my experience with other virtual reality headsets.
-Unfortunately, the quality of the video is not quite similar enough to the human eye yet and the illusion breaks somewhat when trying to perform tasks in the real world – I trialed watching Disney+ while doing the washing up.
+Unfortunately, the quality of the video is not quite close enough to the human eye yet so the illusion breaks somewhat when trying to perform tasks in the real world – I trialed watching Disney+ while doing the washing up.
 
 |![Media playing in Apple Vision Pro in a real world environment](../../Images/disney.png)_Media playing in Apple Vision Pro in a real world environment_|![](../../Images/wearing-vision-pro.png)|
 |-|-|
