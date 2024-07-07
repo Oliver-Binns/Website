@@ -1,5 +1,5 @@
 ---
-date: 2023-12-31 00:00
+date: 2024-12-31 00:00
 description: Manager @ Deloitte Digital
 icon: fa-briefcase
 ---
@@ -8,6 +8,6 @@ icon: fa-briefcase
 ### Since Jun 2022
 
 
-As a Manager at Deloitte I have led an app development team at a large public sector client from the first line of code to peak at #1 Free App in both the App Store and Google Play Store with over three million downloads across both platforms.
+As a Manager at Deloitte, I have led development teams to deliver a range of products including a proof-of-concept app for the Apple Vision Pro and scaling a public-sector mobile app from the first line of code to peak at #1 Free App in both the App Store and Google Play Store with over three million downloads across both platforms.
 
-[Open Source on GitHub](https://github.com/orgs/govuk-one-login/repositories?q=mobile&type=public&language=&sort=)
+[About the Deloitte | Apple Alliance](https://www.deloitte.com/uk/en/alliances/apple.html) | [Open Source on GitHub](https://github.com/orgs/govuk-one-login/repositories?q=mobile&type=public&language=&sort=)
