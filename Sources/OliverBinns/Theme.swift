@@ -185,7 +185,7 @@ private struct SiteFooter: Component {
     }
 }
 
-extension Item<OliverBinns>: Comparable {
+extension Item<OliverBinns>: @retroactive Comparable {
     public static func < (lhs: Publish.Item<Site>, rhs: Publish.Item<Site>) -> Bool {
         lhs.date > rhs.date
     }
