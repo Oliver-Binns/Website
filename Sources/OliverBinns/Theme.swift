@@ -167,10 +167,10 @@ private struct SiteFooter: Component {
                     }.linkTarget(.blank)
                 }
                 H2 {
-                    Link(url: "https://www.twitter.com/oliver_binns") {
-                        Image(url: "/Images/twitter.svg", description: "Twitter Logo")
+                    Link(url: "https://bsky.app/profile/oliverbinns.co.uk") {
+                        Image(url: "/Images/bluesky.svg", description: "Bluesky Logo")
                             .class("icon")
-                        Text(" oliver_binns")
+                        Text(" oliverbinns.co.uk")
                     }.linkTarget(.blank)
                 }
                 H2 {

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="25px"
+   height="20px"
+   viewBox="0 0 25 20"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="bluesky.svg"
+   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="13.054862"
+     inkscape:cx="11.375073"
+     inkscape:cy="7.889781"
+     inkscape:window-width="1472"
+     inkscape:window-height="891"
+     inkscape:window-x="0"
+     inkscape:window-y="65"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg1" />
+  <title
+     id="title1">Bitmap</title>
+  <path
+     d="m 6.5117635,1.879125 c 2.4740007,1.8573237 5.1350685,5.623202 6.1120785,7.6441912 0.977084,-2.0208409 3.638003,-5.7869052 6.112079,-7.6441912 1.785107,-1.34016997 4.677443,-2.37711747 4.677443,0.9225041 0,0.6589794 -0.377819,5.5357696 -0.599413,6.3274968 -0.770261,2.7525931 -3.577062,3.4546561 -6.073758,3.0297351 4.364177,0.742766 5.474381,3.203075 3.076763,5.663383 -4.55355,4.672608 -6.544775,-1.172374 -7.055232,-2.670071 -0.09353,-0.274565 -0.137302,-0.403009 -0.137945,-0.293788 -6.48e-4,-0.109224 -0.04441,0.01922 -0.137946,0.293788 C 11.9756,16.64987 9.9844123,22.495 5.4306011,17.822244 3.0329466,15.361936 4.1431141,12.901478 8.5073639,12.158861 6.0105935,12.583782 3.2037557,11.881715 2.4336067,9.1291259 2.2120049,8.337324 1.8341931,3.4605347 1.8341931,2.8016291 c 0,-3.29962157 2.8924101,-2.26267407 4.6774436,-0.9225041 z"
+     fill="#1185fe"
+     id="path1"
+     style="stroke-width:0.0372053" />
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Bitmap</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

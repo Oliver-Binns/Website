@@ -83,8 +83,8 @@ It can be hard to merge small discrete changes when working on larger features, 
 
 What do you think? I’d love to hear how you approach branching and automation in your team or for your side-projects and whether you’ve found any of these processes useful in your work.
 
-> prettylink https://www.twitter.com/oliver-binns
+> prettylink https://bsky.app/profile/oliverbinns.co.uk
 > image /Images/profile-yellow.jpg
-> title @Oliver_Binns | Twitter
-> description The latest Tweets from @Oliver_Binns. iOS Development Craft Lead for @DeloitteDigital | Apple Alliance.
+> title Oliver Binns | Bluesky
+> description The latest postss from Oliver Binns. iOS Development Craft Lead for @DeloitteDigital | Apple Alliance.
 
