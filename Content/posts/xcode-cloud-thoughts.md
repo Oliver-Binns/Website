@@ -152,7 +152,7 @@ In the future, I’d love to see some additions to the pre-installed software (S
 
 How have you found Xcode Cloud? Are you going to adopt it? Let me know on Twitter:
 
-> prettylink https://www.twitter.com/oliver-binns
+> prettylink https://bsky.app/profile/oliverbinns.co.uk
 > image /Images/profile-yellow.jpg
-> title @Oliver_Binns | Twitter
-> description The latest Tweets from @Oliver_Binns. iOS Development Craft Lead for @DeloitteDigital | Apple Alliance.
+> title Oliver Binns | Bluesky
+> description The latest posts from Oliver Binns. iOS Development Craft Lead for @DeloitteDigital | Apple Alliance.

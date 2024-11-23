@@ -306,7 +306,7 @@ struct SwiftUILabel: UIViewRepresentable {
 }
 ```
 
-If you know a better way of doing this in SwiftUI, [please do let me know](https://twitter.com/oliver_binns)!
+If you know a better way of doing this in SwiftUI, [please do let me know](https://bsky.app/profile/oliverbinns.co.uk)!
 
 In the final code, I’ve also added support for links within text which is fairly easy to do thanks to UITextView.
 
