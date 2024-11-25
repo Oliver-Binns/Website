@@ -106,7 +106,7 @@ I want to give a huge thanks to everyone who’s made this change possible, espe
 > title @elishka_f | Twitter
 > description The latest Tweets from @elishka_f. 💻 Full Stack Senior Dev @DeloitteDigital | 👩🏼‍🎓 @makersacademy alum | 🚴‍♀️ probably out riding
 
-> prettylink https://www.twitter.com/oliver-binns
+> prettylink https://bsky.app/profile/oliverbinns.co.uk
 > image /Images/profile-yellow.jpg
-> title @Oliver_Binns | Twitter
-> description The latest Tweets from @Oliver_Binns. iOS Development Craft Lead for @DeloitteDigital | Apple Alliance.
+> title Oliver Binns | Bluesky
+> description The latest posts from Oliver Binns. iOS Development Craft Lead for @DeloitteDigital | Apple Alliance.
