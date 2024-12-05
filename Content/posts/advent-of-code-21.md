@@ -1,6 +1,6 @@
 ---
 date: 2021-12-26 19:00
-title: What I've learnt from Advent of Code 21
+title: What I’ve learnt from Advent of Code 21
 image: images/advent-of-code.png
 tags: Swift
 ---
@@ -92,9 +92,9 @@ final class Day1: Day {
 
 Since there are two (related) challenges to complete each day, often the first is easier than the second. On several occasions the difference is simply down to a requirement for additional computation. A solution that may quickly return an answer for the first task, may take hours or days to run for the extension task.
 
-For me, this has been one of the hardest parts of Advent of Code. It's been a few years since I was at university studying the theory of computational complexity and I've definitely gotten a little rusty. As most mobile devices now have an unbelievable amount of computing power (see the graph below!), I don't often need to produce code that is highly efficient in my day to day work. However, by knowing these techniques, we can write better code and reduce the impact of our inefficient code on the device's battery life.
+For me, this has been one of the hardest parts of Advent of Code. It’s been a few years since I was at university studying the theory of computational complexity and I’ve definitely gotten a little rusty. As most mobile devices now have an unbelievable amount of computing power (see the graph below!), I don’t often need to produce code that is highly efficient in my day to day work. However, by knowing these techniques, we can write better code and reduce the impact of our inefficient code on the device’s battery life.
 
-![iPhone 13's A15 Bionic GPU gains the most impressive in 5 years](../../Images/a15-bionic.png)
+![iPhone 13’s A15 Bionic GPU gains the most impressive in 5 years](../../Images/a15-bionic.png)
 
 _Apple Silicon Single Core CPU Performance from iPhone 5s to iPhone 13 (c) Creative Strategies_
 
