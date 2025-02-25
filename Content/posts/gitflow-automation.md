@@ -86,5 +86,5 @@ What do you think? I’d love to hear how you approach branching and automation 
 > prettylink https://bsky.app/profile/oliverbinns.co.uk
 > image /Images/profile-yellow.jpg
 > title Oliver Binns | Bluesky
-> description The latest postss from Oliver Binns. iOS Development Craft Lead for @DeloitteDigital | Apple Alliance.
+> description The latest posts from Oliver Binns. iOS Development Craft Lead for @DeloitteDigital | Apple Alliance.
 
