@@ -15,6 +15,7 @@ Even if you've never heard of Terraform before, don't worry – this post is a b
 
 Before we dive in, let’s address the elephant in the room: what exactly is Terraform?
 Terraform is an open-source tool that allows you to define and manage your infrastructure using code.
+It’s a declarative language, so the style is similar to Jetpack Compose and SwiftUI.
 Infrastructure-as-Code (IaC) has traditionally been used by DevOps teams to provision cloud resources like servers and databases.
 However, its principles can be applied to any API-driven service – including the Google Play Console.
 
@@ -31,10 +32,32 @@ Put simply, Terraform lets you replace manual clicking ("click-ops") through the
 My unofficial Terraform provider for managing Google Play permissions is now available on the Terraform registry.
 If you’re interested, I’m planning talk a lot more about how I built this - and some of the challenges I faced - in a future blog post.
 
+> prettylink https://github.com/Oliver-Binns/terraform-provider-googleplay
+> image /Images/roundel.png
+> title Terraform Provider for Google Play Console
+> description Terraform Provider for managing user permissions in Google Play Console.
 
 ## The setup 
 
-First you’ll need to set up a new repository:
+First you’ll need to set up a new repository to host your Terraform code.
+
+Install Terraform
+
+Import the provider: https://registry.terraform.io/providers/Oliver-Binns/googleplay/latest
+
+```tf
+terraform {
+  required_providers {
+    googleplay = {
+      source  = "Oliver-Binns/googleplay"
+      version = "~> 0.4.3"
+    }
+  }
+
+  required_version = ">= 1.2.0"
+}
+
+```
 
 ## Integrating with Google Play
 
@@ -51,6 +74,9 @@ provider "googleplay" {
 }
 ```
 
+If you’re hosting this remotely, be sure to handle the `service-account.json` file safely as it is secret and can be used to access your account!
+For example, if you’re running on GitHub Actions, be sure to save the file information as a [secret](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions), rather than checking it into the repository.
+
 ## Declaring a user
 
 Users are declared using a ‘resource’ in Terraform.
@@ -63,9 +89,14 @@ resource "googleplay_user" "oliver" {
 }
 ```
 
+The permissions here are at user level and would give the user these permissions over all apps in the developer account.
+The possible values you can specify are specified in the [Google Play Developer API documentation](https://developers.google.com/android-publisher/api-ref/rest/v3/users).
+
+As it’s not possible to create a user with no permissions, this value cannot be empty.
+
 ## App-specific permissions
 
-Users can be granted specific permissions to a particular app using the `googleplay_app_iam` ‘resource’.
+Users can also be granted specific permissions to a particular app using the `googleplay_app_iam` ‘resource’.
 
 Each App IAM resource declares:
 
@@ -83,17 +114,20 @@ resource "googleplay_app_iam" "test_app" {
 }
 ```
 
+Again, you can find the possible values for permissions in the [Google Play Developer API documentation](https://developers.google.com/android-publisher/api-ref/rest/v3/grants#applevelpermission).
+
 # The result
 
 ## Tying it together
 
 something something invite email + example pull request
+running it in GitHub Actions
 
 ## Taking it further...
 
 The great thing about Terraform is there’s a whole ecosystem of other providers that you can tie together into your Infrastructure-as-Code.
 For example: there’s an [official Firebase Terraform provider](https://firebase.google.com/docs/projects/terraform/get-started) for managing projects, permissions and other resources.
-You could create a role that gives your developers access to Google Play, Firebase, AWS and more with single easy change.
+You could create a role that gives your developers access to Google Play, Firebase, GitHub, AWS and more with single easy change.
 And even more importantly, you can ensure that access gets revoked from all these systems once it is no longer needed!!
 
 ## Get in touch
