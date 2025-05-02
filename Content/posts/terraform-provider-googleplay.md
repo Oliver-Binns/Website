@@ -5,7 +5,7 @@ image: /Images/wearing-vision-pro.png
 tags: Terraform, Google Play, Android
 ---
 
-As mobile developers, we're all familiar with the Google Play Console – it’s the gateway to publishing our Android apps to millions of users.
+As mobile developers, we’re all familiar with the Google Play Console – it’s the gateway to publishing our Android apps to millions of users.
 But managing user permissions in the Play Console can quickly become a headache, especially as our teams grows and app portfolio expands.
 
 In this post, I'll walk you through my journey of creating a [Terraform provider for Google Play Console user management](https://github.com/Oliver-Binns/terraform-provider-googleplay), which has transformed how we handle access permissions across our organisation.
@@ -39,13 +39,17 @@ If you’re interested, I’m planning talk a lot more about how I built this - 
 
 ## The setup 
 
-First you’ll need to set up a new repository to host your Terraform code.
+First you’ll need to install Terraform.
+I found this easiest using Homebrew, but the [official guide](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) will always contain the latest guidance on how to achieve this.
+```sh
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform
+```
 
-Install Terraform
+Once this is done, you can create a main file `main.tf` and start writing your Terraform code!
+Since we’re wanting to manage Google Play permissions, we’ll want to import my [community provider from the Terraform registry](https://registry.terraform.io/providers/Oliver-Binns/googleplay/latest).
 
-Import the provider: https://registry.terraform.io/providers/Oliver-Binns/googleplay/latest
-
-```tf
+```hcl
 terraform {
   required_providers {
     googleplay = {
@@ -59,6 +63,12 @@ terraform {
 
 ```
 
+Then we can run the `init` command to ensure that the provider gets downloaded correctly.
+
+```sh
+terraform init
+```
+
 ## Integrating with Google Play
 
 As with any automated integration with Google Play, you’ll need a service account.
@@ -67,22 +77,19 @@ If you’re struggling, I’d recommend the official Google documentation or, fa
 
 Once you have this, you can set-up the provider using the `json` file, along with your 19-digit developer ID:
 
-```tf
+```hcl
 provider "googleplay" {
   service_account_json_base64 = filebase64("~/service-account.json")
   developer_id = "1234567890123456789"
 }
 ```
 
-If you’re hosting this remotely, be sure to handle the `service-account.json` file safely as it is secret and can be used to access your account!
-For example, if you’re running on GitHub Actions, be sure to save the file information as a [secret](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions), rather than checking it into the repository.
-
 ## Declaring a user
 
 Users are declared using a ‘resource’ in Terraform.
 A resource is Terraform-speak for something that can be managed; as in: it can be created, managed and deleted once it is no longer needed.
 
-```tf
+```hcl
 resource "googleplay_user" "oliver" {
   email = "example@oliverbinns.co.uk"
   global_permissions = ["CAN_MANAGE_DRAFT_APPS_GLOBAL"]
@@ -94,6 +101,63 @@ The possible values you can specify are specified in the [Google Play Developer 
 
 As it’s not possible to create a user with no permissions, this value cannot be empty.
 
+If you run `terraform plan` it will tell you the actions it *wants* to take to sync your resources:
+
+```sh
+oliver@Olivers-MacBook-Air personal-infra % terraform plan
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # googleplay_user.abc will be created
+  + resource "googleplay_user" "oliver" {
+      + email                = "example@oliverbinns.co.uk"
+      + expanded_permissions = (known after apply)
+      + global_permissions   = [
+          + "CAN_MANAGE_DRAFT_APPS_GLOBAL",
+        ]
+      + name                 = (known after apply)
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+```
+
+If you’re happy with this, you can run `terraform apply` to *make* the changes:
+
+```sh
+oliver@Olivers-MacBook-Air personal-infra % terraform apply
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # googleplay_user.example will be updated in-place
+  + resource "googleplay_user" "example" {
+      + email                = "example@oliverbinns.co.uk"
+      + expanded_permissions = (known after apply)
+      + global_permissions   = [
+          + "CAN_MANAGE_DRAFT_APPS_GLOBAL",
+        ]
+      + name                 = (known after apply)
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+googleplay_user.example: Modifying... [name=developers/5166846112789481453/users/example@oliverbinns.co.uk]
+googleplay_user.example: Modifications complete after 1s [name=developers/5166846112789481453/users/example@oliverbinns.co.uk]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+```
+
 ## App-specific permissions
 
 Users can also be granted specific permissions to a particular app using the `googleplay_app_iam` ‘resource’.
@@ -104,7 +168,7 @@ Each App IAM resource declares:
 - the 19-digit app ID
 - the set of permissions to be granted
 
-```tf
+```hcl
 resource "googleplay_app_iam" "test_app" {
   app_id  = "0000000000000000000"
   user_id = googleplay_user.oliver.email
@@ -116,12 +180,46 @@ resource "googleplay_app_iam" "test_app" {
 
 Again, you can find the possible values for permissions in the [Google Play Developer API documentation](https://developers.google.com/android-publisher/api-ref/rest/v3/grants#applevelpermission).
 
+## Running on the CI
+
+Some of the main advantages of Infrastructure-as-Code only apply once we start managing our code using version control. In particular — as I mentioned in the introduction — being able to see changes to permissions over time, being able to enforce peer reviews on changes, and being able to prevent mistakes using automated builds: the same way as we do with _any_ of our code.
+
+The first two of these are trivial if you’ve used version control (such as Git) before. There are [many articles covering this](https://docs.github.com/en/get-started/start-your-journey/about-github-and-git) already, so I’m going to assume you’re familiar with GitHub and GitHub Actions already, and skip straight to automating the builds.
+
+The first step is to install Terraform on the build agent. Luckily this is easy using GitHub Actions with the [first-party setup-terraform action](https://github.com/hashicorp/setup-terraform) from Hashicorp.
+
+When declaring our Terraform provider for Google Play, we'll want to  handle the `service-account.json` file safely as it is secret and can be used to access our account!
+On GitHub Actions, be sure to save the file information as a [secret](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions), rather than checking it into the repository.
+
+Now we
+
+state management..
+
+commenting the plan on a pull request
+
+> prettylink https://docs.github.com/en/get-started/start-your-journey/about-github-and-git
+> image /Images/profile-yellow.jpg
+> title About GitHub and Git - GitHub Docs
+> description Get started with GitHub and Git. GitHub is a collaborative platform that enables version control and team collaboration on software projects.
+
+> prettylink https://www.donnywals.com/git-basics-for-ios-developers
+> image /Images/profile-yellow.jpg
+> title GitHub basics for iOS Developers - Donny Wals
+> description Discover essential Git fundamentals from @donnywals - perfect for mobile developers looking to master version control and collaborate effectively.
+
 # The result
 
 ## Tying it together
 
 something something invite email + example pull request
 running it in GitHub Actions
+
+You can see this all working in the public GitHub repo I use for managing permissions on my own account:
+
+> prettylink https://github.com/Oliver-Binns/personal-infra
+> image /Images/roundel.png
+> title personal-infra
+> description A repository for managing infrastructure related to my personal projects using code.
 
 ## Taking it further...
 
