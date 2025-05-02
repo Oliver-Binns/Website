@@ -1,7 +1,8 @@
 ---
-date: 2025-06-01 22:00
+date: 2025-05-02 22:00
 title: Managing Google Play users in Terraform
-image: /Images/wearing-vision-pro.png
+image: /Images/terraform-googleplay.png
+color: #2D4686
 tags: Terraform, Google Play, Android
 ---
 
