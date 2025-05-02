@@ -33,7 +33,7 @@ My unofficial Terraform provider for managing Google Play permissions is now ava
 If you’re interested, I’m planning talk a lot more about how I built this - and some of the challenges I faced - in a future blog post.
 
 > prettylink https://github.com/Oliver-Binns/terraform-provider-googleplay
-> image /Images/roundel.png
+> image /Images/github-terraform-googleplay.png
 > title Terraform Provider for Google Play Console
 > description Terraform Provider for managing user permissions in Google Play Console.
 
@@ -186,38 +186,66 @@ Some of the main advantages of Infrastructure-as-Code only apply once we start m
 
 The first two of these are trivial if you’ve used version control (such as Git) before. There are [many articles covering this](https://docs.github.com/en/get-started/start-your-journey/about-github-and-git) already, so I’m going to assume you’re familiar with GitHub and GitHub Actions already, and skip straight to automating the builds.
 
-The first step is to install Terraform on the build agent. Luckily this is easy using GitHub Actions with the [first-party setup-terraform action](https://github.com/hashicorp/setup-terraform) from Hashicorp.
-
-When declaring our Terraform provider for Google Play, we'll want to  handle the `service-account.json` file safely as it is secret and can be used to access our account!
-On GitHub Actions, be sure to save the file information as a [secret](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions), rather than checking it into the repository.
-
-Now we
-
-state management..
-
-commenting the plan on a pull request
-
 > prettylink https://docs.github.com/en/get-started/start-your-journey/about-github-and-git
-> image /Images/profile-yellow.jpg
+> image /Images/github-docs.png
 > title About GitHub and Git - GitHub Docs
 > description Get started with GitHub and Git. GitHub is a collaborative platform that enables version control and team collaboration on software projects.
 
-> prettylink https://www.donnywals.com/git-basics-for-ios-developers
-> image /Images/profile-yellow.jpg
-> title GitHub basics for iOS Developers - Donny Wals
-> description Discover essential Git fundamentals from @donnywals - perfect for mobile developers looking to master version control and collaborate effectively.
+The first step is to install Terraform on the build agent. Luckily this is easy using GitHub Actions with the [first-party setup-terraform action](https://github.com/hashicorp/setup-terraform) from Hashicorp:
+
+```yml
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+```
+
+When declaring our Terraform provider for Google Play, we’ll want to  handle the `service-account.json` file safely as it is secret and can be used to access our account!
+On GitHub Actions, be sure to save the file information as a [secret](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions), rather than checking it into the repository.
+
+We also need to know about more about how Terraform tracks the state of the resources it is managing. When we ran the plan and apply commands locally, Terraform will have created a `terraform.tfstate` file which contains all the information about our resources. As this file will potentially contain sensitive information, we **don’t** want to check this in with the rest of our code. There are a few ways to handle this. When managing cloud resources, the standard pattern is to store it in that cloud (such as AWS S3). As we’re not doing that here, another option is to use [Terraform Cloud Platform](https://www.hashicorp.com/en/products/terraform): this is even [**free** for a small number of resources](https://www.hashicorp.com/en/pricing). 
+
+There are multiple ways to achieve this, but I [created a new workspace](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/create#create-a-workspace) using the Web UI, set it to use [local execution](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/create#create-a-workspace) (so it *runs* in GitHub Actions rather than on Terraform Cloud), then [created a user token](https://developer.hashicorp.com/terraform/cloud-docs/users-teams-organizations/api-tokens) to allow GitHub Actions to call it. You can provide this to Terraform using an environment variable:
+
+```yml
+env:
+  TF_CLOUD_ORGANIZATION: "oliver-binns"
+  TF_TOKEN_app_terraform_io: "${{ secrets.TF_API_TOKEN }}"
+  TF_WORKSPACE: "prod"
+```
+
+We should now be able to run our `init`, `plan` and `apply` steps easily on GitHub Actions. You’ll probably want to run `plan` on pull requests and `apply` once the request has been approved and merged.
+```yml
+- name: Terraform Init
+  id: init
+  run: terraform init -input=false
+
+- name: Terraform Apply
+  id: apply
+  run: terraform apply -no-color -input=false
+```
+
+When running plan on the pull request, you can [use GitHub script](https://github.com/hashicorp/setup-terraform) to comment the plan, so that it's easy for others to peer review the changes that you've made.
 
 # The result
 
 ## Tying it together
 
-something something invite email + example pull request
-running it in GitHub Actions
+You can see this all working in the [public GitHub repo](https://github.com/Oliver-Binns/personal-infra) I now use for managing permissions on my own account.
 
-You can see this all working in the public GitHub repo I use for managing permissions on my own account:
+It can be used for inviting new users to the Play Console:
+
+![Invite email for the Google Play Console](../../Images/googleplay-invite.png)
+
+And it runs GitHub Actions for any changes, you can just take a look at some [previous pull requests](https://github.com/Oliver-Binns/personal-infra/pull/3) to see the `terraform plan` output commented by the GitHub Actions bot.
+
+In the future, I’d love to expand the provider to include management of other functionality within the Google Play Console, such as apps and testing tracks.
+
 
 > prettylink https://github.com/Oliver-Binns/personal-infra
-> image /Images/roundel.png
+> image /Images/github-infra.png
 > title personal-infra
 > description A repository for managing infrastructure related to my personal projects using code.
 
@@ -231,9 +259,11 @@ And even more importantly, you can ensure that access gets revoked from all thes
 ## Get in touch
 
 What do you think? If you found my Terraform provider useful I’d love to hear about it.
+
+
 And.. if you didn’t I’d love to chat about how we can improve it to make it work for you & your team!
 
 > prettylink https://bsky.app/profile/oliverbinns.co.uk
 > image /Images/profile-yellow.jpg
 > title Oliver Binns | Bluesky
-> description The latest posts from Oliver Binns. iOS Development Craft Lead for @DeloitteDigital | Apple Alliance.
+> description The latest posts from Oliver Binns, Lead Mobile Developer @ Deloitte Digital. Finalist for Engineer of the Year @ UK IT Industry Awards 2024
