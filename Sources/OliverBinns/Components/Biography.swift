@@ -11,7 +11,7 @@ struct About: Component {
 
             Paragraph {
                 Text("""
-                Oliver is an experienced software engineer specialising in native iOS development with Swift, holding an MEng in Computer Science from the University of York. As a Manager at Deloitte Digital, he leads teams delivering high-profile mobile apps primary for the public sector. His work has included scaling a public sector app from the very first lines of code to multiple cross-functional feature teams, reaching #1 on the App Store and Google Play. 
+                Oliver is an experienced software engineer specialising in native iOS development with Swift, holding an Master of Engineering degree in Computer Science from the University of York. As a Manager at Deloitte Digital, he leads teams delivering high-profile mobile apps primarily within the public sector. His work has included scaling a public sector app from the very first lines of code to multiple cross-functional feature teams, reaching #1 on the App Store and Google Play. 
                 """).addLineBreak().addLineBreak()
 
                 Text("""
