@@ -40,7 +40,7 @@ You can’t create a new user with zero permissions: so every user must have at 
 
 # 2. The Terraform provider
 
-Also Go
+The Terraform provider repository is created from Hashicorp‘s [quick start template](https://github.com/hashicorp/terraform-provider-scaffolding-framework). 
 
 ## Challenge 2 - Part 2: Nested schema
 
