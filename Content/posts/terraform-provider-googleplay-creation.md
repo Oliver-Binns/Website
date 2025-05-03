@@ -12,7 +12,7 @@ I *also* promised to talk more about how I achieved it, so here is the full stor
 Quick disclaimer: I’m an experienced mobile developer dabbling in Terraform, not an SRE expert, so while this solution works well for me, it may not always follow language conventions and best practices.
 
 > prettylink /posts/terraform-provider-googleplay
-> image /Images/roundel.png
+> image /Images/terraform-googleplay.png
 > title Managing Google Play users in Terraform
 > description In this article, I will introduce a Terraform provider to manage Google Play Console users, enabling automated, scalable, and consistent user permission handling for mobile development teams through Infrastructure-as-Code.
 
