@@ -1,13 +1,13 @@
 ---
 date: 2025-06-14 22:00
 title: Creating a Google Play Terraform provider
-image: /Images/wearing-vision-pro.png
+image: /Images/terraform-googleplay-post2.png
 tags: Terraform, Google Play, Android
 ---
 
 Recently I posted about my open-source community Terraform provider for managing permissions on the Google Play Console.
 In that article, I explained the benefits of Infrastructure-as-Code for administering a range of cloud resources and how it can be useful to us as mobile developers.
-I *also* promised to talk more about how I achieved it, so here is the full story explaning the challenges I faced, decisions I took and things I’d love to improve with time - and support from Google.
+I *also* promised to talk more about how I achieved it, so here is the full story explaning the challenges I faced, decisions I took, and things I’d love to improve with time - and support from Google.
 
 Quick disclaimer: I’m an experienced mobile developer dabbling in Terraform, not an SRE expert, so while this solution works well for me, it may not always follow language conventions and best practices.
 
@@ -18,14 +18,27 @@ Quick disclaimer: I’m an experienced mobile developer dabbling in Terraform, n
 
 # The overall architecture
 
-multiple repositories:
-- interface with Google
-- Terraform provider
-- reference implementation using my account
+The provider and sample code itself comes in the form of three repositories:
+
+> prettylink https://github.com/Oliver-Binns/personal-infra
+> image /Images/googleplay-go.png
+> title Google Play Console Go Client Integration
+> description The interface with the Google Play Developer API, written in Go, implements API calls to the Google Play Android Developer API
+
+> prettylink https://github.com/Oliver-Binns/terraform-provider-googleplay
+> image /Images/github-terraform-googleplay.png
+> title Terraform Provider for Google Play Console
+> description The Terraform provider itself, this defines the Terraform schema and calls the Google Play Go interface to make changes based on the Terraform code
+
+> prettylink https://github.com/Oliver-Binns/personal-infra
+> image /Images/github-infra.png
+> title personal-infra
+> description A reference implementation which shows the provider being used to manage users within my own Google Play Account
 
 # 1. Interfacing with the Google Play API
 
 Go
+[Google Play Android Developer API](https://developers.google.com/android-publisher/api-ref/rest)
 
 ## Challenge 1: Limited APIs
 
