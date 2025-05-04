@@ -2,6 +2,7 @@
 date: 2025-06-14 22:00
 title: Creating a Google Play Terraform provider
 image: /Images/terraform-googleplay-post2.png
+color: #2D3361
 tags: Terraform, Google Play, Android
 ---
 
@@ -35,11 +36,12 @@ The provider and sample code itself comes in the form of three repositories:
 > title personal-infra
 > description A reference implementation which shows the provider being used to manage users within my own Google Play Account
 
-# 1. Interfacing with the Google Play API
+# Interfacing with the Google Play API
 
 Firstly, I needed to build code that would allow the Terraform provider to integrate with Google Play to manage users.
 This is done through the [Google Play Android Developer API](https://developers.google.com/android-publisher/api-ref/rest).
 Since Terraform providers are generally build in Go, it made the most sense to build the API integration in Go too.
+I used [Visual Studio Code](https://code.visualstudio.com), and found the [GitHub Co-Pilot](https://github.com/features/copilot) extension particularly useful for helping me adapt to the quirks of a new language.
 
 Authentication to the API is via a Google Cloud Service Account.
 Clients must use the private key for the account to sign JWTs which can be exchanged by the [Google Authorization Service](https://developers.google.com/identity/protocols/oauth2) for API bearer tokens.
@@ -85,38 +87,62 @@ resp, _ := t.httpClient.Do(req)
 
 ## Challenge 1: Limited APIs
 
+**TLDR; Everything I needed is available, but not always in the form I wanted or expected.**
+
 Since we’re now in a position where we can make successful API calls, it’s time to talk about the first major limitation I faced in this project: the limited range of APIs that are available.
-Everything I needed is available, but not always in the form I needed or expected.
+It seems to me that the Google Play Console team have only created the APIs that they *needed* to make Web UI and then made those public, rather than building out a full set of APIs.
 
-### Users
-Google Play don‘t offering filtering on their list user API so you have to grab the full list each time
+Google Play Console has three mechanisms for managing user permissions: 
 
-### Grants
+- [Developer Level Permissions](https://developers.google.com/android-publisher/api-ref/rest/v3/users#DeveloperLevelPermission) (global for *all* apps in the account) 
+- [App Level Permissions](https://developers.google.com/android-publisher/api-ref/rest/v3/grants#Grant.AppLevelPermission) (for a specific package ID)
+- [Permission Groups](https://android-developers.googleblog.com/2021/09/improved-google-play-console-user.html) (access inherited from a named group)
 
+It seems that only the first two of these are available to use via an API.
+That’s mostly ok because we can define our groups in Terraform anyway, but it means we couldn’t easily share groups between Terraform and click-ops.
 
-## Challenge 2 - Part 1: Nested permissions
+### Users & Developer Level Permissions
 
-Google Play permissions are nested - they have global and app specific ones
+When managing users, there are APIs for [create, update, delete and list](https://developers.google.com/android-publisher/api-ref/rest/v3/users).
+Unfortunately there is no mechanism for filtering the list API and no API available for fetching a specific user by their ID.
+This means if you want to fetch a specific user on-demand, you need to fetch the whole list of users and then search through it for the one you’re looking for - not very efficient!
 
-You can’t create a new user with zero permissions: so every user must have at least one global permission because you can’t create app specific permissions at the same time you create a user
+Developer Level Permissions are an attribute of a user, so we can use the create, update and delete APIs to set this permission.
+Frustratingly, users created with the API must have *some* permission(s), and app specific permissions **cannot** be set when creating a user.
+This means (as far as I can tell) it‘s impossible to manage users with *only* App Level Permissions.
 
+### Grants & App Level Permissions
 
-# 2. The Terraform provider
+Grants are a mapping between a user, a set of App Level Permissions and a Google Play App ID.
+
+```json
+{
+  "name": string,
+  "packageName": string,
+  "appLevelPermissions": [
+    enum (AppLevelPermission)
+  ]
+}
+```
+
+To create, update or delete a Grant, we must use the [Grant resource API](https://developers.google.com/android-publisher/api-ref/rest/v3/grants).
+However, there is no API for reading the state of a Grant or even listing Grants.
+To get the state, we must access them via the same User resource API as with Developer Level Permissions.
+As mentioned about, the User API has no filtering functionality, so we must retrieve the state of *all* users and *all* grants and filter them ourselves - again: not very efficient!
+
+# The Terraform provider
 
 The Terraform provider repository is created from Hashicorp‘s [quick start template](https://github.com/hashicorp/terraform-provider-scaffolding-framework). 
 
-## Challenge 2 - Part 2: Nested schema
+## Challenge 2: Nested schema
 
-## Challenge 2 - Part 3: Zero permissions strikes again
 
-Terraform is declarative, and is designed to be redeployable.
-The new state should be reachable from both _new_ and _existing_ states: is this possible?
 
 ## Challenge 3: Implicit additional permissions
 
 Permissions have implicit inheritance of additional permissions that then get returned from the API and cause Terraform to panic
 
-# 3. The reference implementation
+# The reference implementation
 
 Terraform - at last!
 
