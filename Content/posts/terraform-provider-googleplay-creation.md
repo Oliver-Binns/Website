@@ -160,12 +160,43 @@ Since everything we need in this implementation can be modified, so we only care
 As I mentioned above, there are two related types of permission that can be managed with this provider: developer level permissions and app level permissions.
 Since app level permissions must be granted to a specific developer, they are effectively nested inside the developer level resource.
 
+I considered two approaches to this.
+The first was to create a nesting within the user resource object:
+
+```hcl
+resource "googleplay_user" "oliver" {
+  email = "example@oliverbinns.co.uk"
+  global_permissions = ["CAN_MANAGE_DRAFT_APPS_GLOBAL"]
+  app_permissions = [{
+    app_id  = "0000000000000000000"
+    permissions = [
+      "CAN_REPLY_TO_REVIEWS"
+    ]
+  }]
+}
+```
+
+However, in the end, I decided to implement the app level permissions as a separate resource type.
+As well as being easier to implement, this felt more in keeping with Terraform conventions.
+
+```hcl
+resource "googleplay_app_iam" "test_app" {
+  app_id  = "0000000000000000000"
+  user_id = googleplay_user.oliver.email
+  permissions = [
+    "CAN_REPLY_TO_REVIEWS"
+  ]
+}
+```
+
+Terraform automatically manages dependencies between objects, so if you add both a new user and app-level permission linked with the user ID like the example above, then it will create the user first and then add the app permission.
+
 ## Challenge 3: Implicit additional permissions
 
 Terraform tracks the changes that it makes and asserts that change it makes were made successfully.
 However, the Google Play Console implicitly adds additional lower-ranking permissions when adding more powerful permissions.
 These additional permissions are then returned from the API and causes Terraform to throw errors that the change had unexpected side-effects.
-For example: when setting the user permission to `` the permissions are _actually_ set to: ``.
+For example: when setting the developer level permission to `["CAN_MANAGE_PUBLIC_LISTING"]` the permissions are _actually_ set to: `["CAN_MANAGE_PUBLIC_LISTING", "CAN_VIEW_NON_FINANCIAL_DATA", "CAN_VIEW_APP_QUALITY"]`.
 
 
 Unfortunately, this behaviour doesn‘t appear to be documented so I had to discover each manually.
