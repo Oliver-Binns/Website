@@ -39,9 +39,15 @@ The provider and sample code itself comes in the form of three repositories:
 # Interfacing with the Google Play API
 
 Firstly, I needed to build code that would allow the Terraform provider to integrate with Google Play to manage users.
-This is done through the [Google Play Android Developer API](https://developers.google.com/android-publisher/api-ref/rest).
+
+## Tooling
+
+Integrating with Google Play is done through the [Google Play Android Developer API](https://developers.google.com/android-publisher/api-ref/rest).
 Since Terraform providers are generally build in Go, it made the most sense to build the API integration in Go too.
 I used [Visual Studio Code](https://code.visualstudio.com), and found the [GitHub Co-Pilot](https://github.com/features/copilot) extension particularly useful for helping me adapt to the quirks of a new language.
+I also use [Claude](https://claude.ai) for more easily digesting large pieces of documentation quickly.
+
+## Authenticating
 
 Authentication to the API is via a Google Cloud Service Account.
 Clients must use the private key for the account to sign JWTs which can be exchanged by the [Google Authorization Service](https://developers.google.com/identity/protocols/oauth2) for API bearer tokens.
@@ -132,23 +138,45 @@ As mentioned about, the User API has no filtering functionality, so we must retr
 
 # The Terraform provider
 
-The Terraform provider repository is created from Hashicorp‘s [quick start template](https://github.com/hashicorp/terraform-provider-scaffolding-framework). 
+The Terraform provider repository is created from Hashicorp‘s [quick start template](https://github.com/hashicorp/terraform-provider-scaffolding-framework).
+The template was particularly useful to understand how the provider should be structured.
+I also used this similar [App Store Terraform provider](https://github.com/alexprogrammr/terraform-provider-appstore) by Alex *name??* as inspiration.
+
+As I mentioned above, the proivider is written in Go.
+The tooling I used for creating this repository is the same as for Google Play Developer API integration.
+
+## The schema
+
+There are three main concepts that we need to understand to build a Terraform provider:
+
+- A provider is 
+- A resource is anything that is managed (created, modified, deleted) by Terraform.
+- A data source is anything that can be _read_ by Terraform.
+
+Since everything we need in this implementation can be modified, so we only care about the provider and resource.
 
 ## Challenge 2: Nested schema
 
-
+As I mentioned above, there are two related types of permission that can be managed with this provider: developer level permissions and app level permissions.
+Since app level permissions must be granted to a specific developer, they are effectively nested inside the developer level resource.
 
 ## Challenge 3: Implicit additional permissions
 
-Permissions have implicit inheritance of additional permissions that then get returned from the API and cause Terraform to panic
+Terraform tracks the changes that it makes and asserts that change it makes were made successfully.
+However, the Google Play Console implicitly adds additional lower-ranking permissions when adding more powerful permissions.
+These additional permissions are then returned from the API and causes Terraform to throw errors that the change had unexpected side-effects.
+For example: when setting the user permission to `` the permissions are _actually_ set to: ``.
 
-# The reference implementation
+
+Unfortunately, this behaviour doesn‘t appear to be documented so I had to discover each manually.
+Moreover, the behaviour does not appear to be entirely consistent between the developer level and app level permissions.
+This may cause issues in the future if Google change this undocumented behaviour without notice.
+
+# The result: a reference implementation
 
 Terraform - at last!
 
 You’ve seen this before - it‘s the previous article.
-
-# The result
 
 ## Get in touch
 
