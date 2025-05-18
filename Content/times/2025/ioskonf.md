@@ -10,3 +10,5 @@ icon: fa-person-chalkboard
 Presented a talk titled “I’m Oliver: Let me prove it” at [iO**SK**onf 2025](https://www.ioskonf.mk).
 
 The talk covered how we will soon be able to use our mobile devices to prove our identity, including how we know our data is safe, and how we can trust data in a decentralised world.
+
+[View the slides and resources](https://github.com/obinns-dd/identity)
