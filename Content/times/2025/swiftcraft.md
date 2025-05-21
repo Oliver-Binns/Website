@@ -10,3 +10,5 @@ icon: fa-person-chalkboard
 Presented a talk titled “What could possibly go wrong?” at [SwiftCraft 2025](https://swiftcraft.uk/2025/session/what-could-possibly-go-wrong).
 
 The talk covered some historic disasters caused by software, how to design safe IT systems and creating a psychologically safe environment in development teams.
+
+[View the slides and resources](https://github.com/obinns-dd/talks/tree/main/2025/swift-craft)
