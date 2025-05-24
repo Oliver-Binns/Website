@@ -26,7 +26,7 @@ Managing resources (or user access using IaC) has several _key_ benefits:
 - Safety: Define main roles separately from onboarding users and enforce reviews before access can be granted
 - Documentation: Self-documenting code that shows exactly who has what permissions
 
-Put simply, Terraform lets you replace manual clicking ("click-ops") through the Google Play Console UI with code that automatically handles user management for you.
+Put simply, Terraform lets you replace manual clicking (“click-ops”) through the Google Play Console UI with code that automatically handles user management for you.
 
 # How to use it
 
