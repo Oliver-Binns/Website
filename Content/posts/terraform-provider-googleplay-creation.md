@@ -140,20 +140,115 @@ As mentioned about, the User API has no filtering functionality, so we must retr
 
 The Terraform provider repository is created from Hashicorp‘s [quick start template](https://github.com/hashicorp/terraform-provider-scaffolding-framework).
 The template was particularly useful to understand how the provider should be structured.
-I also used this similar [App Store Terraform provider](https://github.com/alexprogrammr/terraform-provider-appstore) by Alex *name??* as inspiration.
+I also used this similar [App Store Terraform provider](https://github.com/alexprogrammr/terraform-provider-appstore) by Oleksandr Chaikovskyi as inspiration.
 
-As I mentioned above, the proivider is written in Go.
+As I mentioned above, the provider is written in Go.
 The tooling I used for creating this repository is the same as for Google Play Developer API integration.
 
-## The schema
+## Core concepts
 
 There are three main concepts that we need to understand to build a Terraform provider:
 
-- A provider is 
+- A provider enables communication with external APIs and services
 - A resource is anything that is managed (created, modified, deleted) by Terraform.
 - A data source is anything that can be _read_ by Terraform.
 
+### Provider
+
+The provider itself is a type which is configured with a model.
 Since everything we need in this implementation can be modified, so we only care about the provider and resource.
+The create the type we must implement several methods:
+
+- Metadata: names and versioning for the provider
+- Schema: the schema for our Terraform code
+- Configure: a method that takes the provider model from Terraform and configures input data for resources and data sources written in Go
+- Resources: any resources we will allow to be managed (user permissions, app permissions)
+- Data Sources: any data sources we will provide (none!)
+- Functions: any transformation functions we provide (none!)
+
+### Resources
+
+Our resources follow a similar pattern:
+
+- Metadata: the name of our resource
+- Schema: the schema for our Terraform code
+- Configure: a method that takes the provider model from Terraform and configures input data for resources and data sources written in Go
+
+but then deviate, with methods for Validate, Create, Read, Update and Delete ([CRUD!](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)).
+
+### Schema
+
+Our schema is the contract between our provider and the Terraform code that we’ll use to manage users in Google Play.
+It declares the shape and properties that consumers of our provider must provide in order for the users to be created.
+
+Our provider schema states that the consumer should provide a valid base-64 encoded service account json file and their 19-digit Google Play Developer account ID. Both of these are marked as required attributes meaning that they must be provided. The service account configuration is marked as sensitive to ensure it does not get printed to the console.
+
+```go
+resp.Schema = schema.Schema{
+  Description: "Interact with Google Play Console",
+  Attributes: map[string]schema.Attribute{
+    "service_account_json_base64": schema.StringAttribute{
+      MarkdownDescription: `The service account JSON data used to authenticate with Google:
+      https://developers.google.com/android-publisher/getting_started#service-account`,
+      Required:  true,
+      Sensitive: true,
+    },
+    "developer_id": schema.StringAttribute{
+      MarkdownDescription: `Your unique 19-digit Google Play Developer account ID:
+      https://support.google.com/googleplay/android-developer/answer/13634081?hl=en-GB`,
+      Required:  true,
+      Sensitive: false,
+    },
+  },
+}
+```
+
+This is mapped into a data model which get provided with when writing our `Configure` method:
+
+```go
+type GooglePlayProviderModel struct {
+  ServiceAccountJson types.String `tfsdk:"service_account_json_base64"`
+  DeveloperID        types.String `tfsdk:"developer_id"`
+}
+```
+
+You can see how Go creates this model from the Terraform configuration that we provide:
+
+```hcl
+provider "googleplay" {
+  service_account_json_base64 = filebase64("~/service-account.json")
+  developer_id = "1234567890123456789"
+}
+```
+
+The Kotlin equivalent of this model would be something like this:
+
+```kt
+data class GooglePlayProviderModel(
+  val serviceAccountJson: String,
+  val developerId: String,
+)
+```
+
+While the `Configure` method signature may seem a bit strange to begin with, it’s basically just an initaliser that sets up the `GooglePlayProvider` project which is passed in:
+
+```go
+func (p *GooglePlayProvider) Configure(
+  ctx context.Context, 
+  req provider.ConfigureRequest, 
+  resp *provider.ConfigureResponse
+)
+```
+
+So the equivalent in Kotlin might look like:
+
+```kt
+class GooglePlayProvider(
+  ctx Context, 
+  req: ConfigureRequest,
+  resp: ConfigureResponse,
+)
+```
 
 ## Challenge 2: Nested schema
 
@@ -177,7 +272,9 @@ resource "googleplay_user" "oliver" {
 ```
 
 However, in the end, I decided to implement the app level permissions as a separate resource type.
-As well as being easier to implement, this felt more in keeping with Terraform conventions.
+Implementing the nested permissions was simple enough for creation and deletion, but would mean manually implementing the diffing between the nested objects.
+When implementing this as separate resources, Terraform does this automatically.
+As well as being easier to implement, this also felt more in keeping with Terraform conventions.
 
 ```hcl
 resource "googleplay_app_iam" "test_app" {
@@ -199,15 +296,40 @@ These additional permissions are then returned from the API and causes Terraform
 For example: when setting the developer level permission to `["CAN_MANAGE_PUBLIC_LISTING"]` the permissions are _actually_ set to: `["CAN_MANAGE_PUBLIC_LISTING", "CAN_VIEW_NON_FINANCIAL_DATA", "CAN_VIEW_APP_QUALITY"]`.
 
 
-Unfortunately, this behaviour doesn‘t appear to be documented so I had to discover each manually.
+Unfortunately, this behaviour doesn’t appear to be documented so I had to discover each manually.
 Moreover, the behaviour does not appear to be entirely consistent between the developer level and app level permissions.
 This may cause issues in the future if Google change this undocumented behaviour without notice.
 
+In order to work around this, I had to manually map the behaviours in Go.
+I then added a computed property (`expanded_permissions`) to the Terraform schema.
+The `permissions` that the user declares is mapped to this computed property, so that Terraform always sets (and therefore expects) the full list of permissions:
+
+```go
+"expanded_permissions": schema.SetAttribute{
+  MarkdownDescription: `Permissions for the user which apply to this specific app:
+  https://developers.google.com/android-publisher/api-ref/rest/v3/grants#applevelpermission`,
+  ElementType: types.StringType,
+  Computed:    true,
+  PlanModifiers: []planmodifier.Set{
+    expandUserPermissionsPlanModifier(path.Root("global_permissions")),
+  },
+},
+```
+
+For the full implementation, see the [pull request on GitHub](https://github.com/Oliver-Binns/terraform-provider-googleplay/pull/26/files).
+
 # The result: a reference implementation
 
-Terraform - at last!
+Some Terraform - at last! You’ve probably seen this before - it’s in my [previous article](../terraform-provider-googleplay):
 
-You’ve seen this before - it‘s the previous article.
+```hcl
+resource "googleplay_user" "oliver" {
+  email = "example@oliverbinns.co.uk"
+  global_permissions = ["CAN_MANAGE_DRAFT_APPS_GLOBAL"]
+}
+```
+
+I use the reference implementation to manage permissions to my own personal Google Play account.
 
 ## Get in touch
 
