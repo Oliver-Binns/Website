@@ -1,5 +1,5 @@
 ---
-date: 2025-06-14 22:00
+date: 2025-05-24 14:00
 title: Creating a Google Play Terraform provider
 image: /Images/terraform-googleplay-post2.png
 color: #2D3361
