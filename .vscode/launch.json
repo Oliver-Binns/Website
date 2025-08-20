@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:Website}",
+            "name": "Debug OliverBinns",
+            "program": "${workspaceFolder:Website}/.build/debug/OliverBinns",
+            "preLaunchTask": "swift: Build Debug OliverBinns"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:Website}",
+            "name": "Release OliverBinns",
+            "program": "${workspaceFolder:Website}/.build/release/OliverBinns",
+            "preLaunchTask": "swift: Build Release OliverBinns"
+        }
+    ]
+}
