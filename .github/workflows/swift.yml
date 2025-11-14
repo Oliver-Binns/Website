@@ -19,7 +19,7 @@ jobs:
     - name: Build & run (Generate Site)
       run: swift run
     - name: Export Artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: Site
         path: Output/
