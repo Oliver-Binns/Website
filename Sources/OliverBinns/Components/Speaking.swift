@@ -40,15 +40,28 @@ private struct TalkCard: Component {
     /// badge updates whenever the site is rebuilt.
     private var isUpcoming: Bool { item.date > Date() }
 
+    /// e.g. "Leeds Mobile · June 2025": the venue from `event` metadata plus
+    /// the month and year of the talk's (latest) date.
+    private var meta: String {
+        [item.metadata.event, Self.monthYear.string(from: item.date)]
+            .compactMap { $0 }
+            .joined(separator: " · ")
+    }
+
+    private static let monthYear: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_GB")
+        formatter.dateFormat = "MMMM yyyy"
+        return formatter
+    }()
+
     var body: Component {
         Article {
             if isUpcoming {
                 Span("Upcoming").class("talk-badge")
             }
             H3(item.title)
-            if let event = item.metadata.event {
-                Paragraph(event).class("talk-meta")
-            }
+            Paragraph(meta).class("talk-meta")
             Div { item.body.openingExternalLinksInNewTab }.class("talk-body")
         }
         .class(isUpcoming ? "talk-card talk-card-featured" : "talk-card")

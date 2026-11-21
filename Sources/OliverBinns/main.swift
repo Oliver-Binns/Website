@@ -28,8 +28,8 @@ struct OliverBinns: Website {
         let link: String?
         let linkText: String?
 
-        // Speaking-only metadata (see `Content/speaking`): venue and date line
-        // for single-event talks.
+        // Speaking-only metadata (see `Content/speaking`): the venue, shown
+        // alongside the month and year from the item's `date`.
         let event: String?
     }
 

@@ -1,7 +1,7 @@
 ---
 date: 2024-11-21 18:00
 title: Check yo device
-event: NSLondon at Apple, Battersea · November 2024
+event: NSLondon at Apple, Battersea
 description: Apple's DeviceCheck framework, asymmetric cryptography, a reference implementation of App Attest and industry standards for client attestation.
 ---
 Apple's [DeviceCheck framework](https://developer.apple.com/documentation/devicecheck), asymmetric cryptography, a reference implementation of App Attest and industry standards for client attestation.

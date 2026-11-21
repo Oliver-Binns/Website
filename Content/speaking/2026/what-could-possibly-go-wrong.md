@@ -1,7 +1,7 @@
 ---
 date: 2026-12-10 09:00
 title: What could possibly go wrong?
-event: droidcon London TechLead Summit · 10 to 11 December 2026
+event: droidcon London TechLead Summit
 description: Historic software disasters, designing safe IT systems and building psychologically safe teams, now updated for an AI-enabled world.
 ---
 Historic software disasters, designing safe IT systems and building psychologically safe teams, now updated for an AI-enabled world.
