@@ -22,6 +22,8 @@ private struct OliverHTMLFactory: HTMLFactory {
 
                 Hero()
 
+                Highlights()
+
                 Divider()
 
                 Wrapper {
