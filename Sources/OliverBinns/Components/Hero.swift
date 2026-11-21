@@ -34,7 +34,7 @@ struct Hero: Component {
 
                 Div {
                     Image(url: "/Images/profile-right.jpg",
-                          description: "A photo of Oliver")
+                          description: "Oliver speaking on stage at a conference, standing at a lectern with a sticker-covered laptop")
                 }.class("hero-photo")
             }.class("hero")
         }
