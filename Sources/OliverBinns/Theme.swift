@@ -20,7 +20,7 @@ private struct OliverHTMLFactory: HTMLFactory {
             .body {
                 SiteHeader()
 
-                About()
+                Hero()
 
                 Divider()
 
