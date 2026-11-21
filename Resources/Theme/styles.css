@@ -340,17 +340,25 @@ footer .icon { filter: brightness(0) invert(1); margin-top: 0; }
     text-align: center;
 }
 
-pre { margin: 24px 0; }
-pre code {
-    font-family: Menlo, Consolas, "Liberation Mono", monospace !important;
-    font-size: 15px;
-    color: #A9BCBC;
-    display: block;
+/* The <pre> is the scroll container: it's focusable (see
+   Plugin.accessibleCodeBlocks), so keyboard users can scroll it with the
+   arrow keys (WCAG 2.1.1). */
+pre {
+    margin: 24px 0;
     background-color: #1a1a1a;
     padding: 16px 20px;
     border-radius: 12px;
-    line-height: 1.6;
     overflow-x: auto;
+}
+pre code {
+    font-family: Menlo, Consolas, "Liberation Mono", monospace !important;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #A9BCBC;
+    display: block;
+    padding: 0;
+    background: none;
+    border-radius: 0;
 }
 
 /* Inline code */
@@ -435,7 +443,7 @@ a .pretty-link p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--co
 }
 
 @media (prefers-color-scheme: dark) {
-    pre code { background-color: var(--color-bg-alt); }
+    pre { background-color: var(--color-bg-alt); }
     code { color: var(--color-text); }
 }
 
