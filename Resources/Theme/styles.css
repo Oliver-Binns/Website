@@ -33,11 +33,9 @@
 
 .section { padding: 64px 0; }
 
-/* Leave room for the sticky header when jumping to a section (e.g. /#apps).
-   The header grows as the nav wraps on narrower screens. */
+/* Leave room for the sticky header (under 80px at every width) when jumping
+   to a section (e.g. /#apps). */
 html { scroll-padding-top: 88px; }
-@media (max-width: 800px) { html { scroll-padding-top: 154px; } }
-@media (max-width: 600px) { html { scroll-padding-top: 197px; } }
 .section:nth-of-type(even) { background: var(--color-bg-alt); }
 
 .hero { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
@@ -134,7 +132,9 @@ header {
     background: var(--color-accent);
     color: var(--color-ink);
     border-bottom: 2px solid var(--color-ink);
-    padding: 14px 48px;
+    /* No side padding: the inner .wrapper supplies it, so the header lines
+       up with the page content at every width. */
+    padding: 14px 0;
 }
 .header-content {
     display: flex;
@@ -147,6 +147,27 @@ header {
 .nav-links { display: flex; flex-wrap: wrap; gap: 24px; font-size: 15px; }
 header a:not(.btn), header a:not(.btn):visited, header a:not(.btn):hover { color: var(--color-ink); }
 header .btn-dark, header .btn-dark:visited, header .btn-dark:hover { color: var(--color-paper); }
+
+/* Phones and small tablets: the name on one row and the section links on a
+   second row, without "Get in touch" (it's in the footer). The links scroll
+   sideways if a very narrow screen can't fit them. */
+@media (max-width: 720px) {
+    header { padding: 10px 0 0; }
+    .header-content { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .header-content .btn { display: none; }
+    .nav-links {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: 14px;
+        width: 100%;
+        font-size: 14px;
+        overflow-x: auto;
+        padding: 6px 0 10px;
+        white-space: nowrap;
+        scrollbar-width: none;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+}
 footer {
     background: var(--color-ink);
     color: var(--color-paper);
