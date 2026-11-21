@@ -10,6 +10,7 @@ import YoutubePublishPlugin
 struct OliverBinns: Website {
     enum SectionID: String, WebsiteSectionID {
         case posts
+        case apps
         case things
         case experience
         case speaking
@@ -18,6 +19,14 @@ struct OliverBinns: Website {
     struct ItemMetadata: WebsiteItemMetadata {
         let icon: String?
         let color: String?
+
+        // Apps-only metadata (see `Content/apps`).
+        let appIcon: String?
+        let platform: String?
+        let released: String?
+        let status: String?
+        let link: String?
+        let linkText: String?
     }
 
     // Update these properties to configure your website:

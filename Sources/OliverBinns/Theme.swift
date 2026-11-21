@@ -24,6 +24,8 @@ private struct OliverHTMLFactory: HTMLFactory {
 
                 Highlights()
 
+                Apps(section: context.sections[.apps])
+
                 Divider()
 
                 Wrapper {
