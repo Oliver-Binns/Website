@@ -6,6 +6,10 @@
     --color-text-soft: #3d3a33;
     --color-accent: #F5C518;
     --color-border: #e6e1d3;
+    /* Fixed colours that don't change in dark mode, for elements that sit on
+       (or contrast with) the yellow accent: header, buttons, footer. */
+    --color-ink: #1a1a1a;
+    --color-paper: #fffdf7;
     --font-body: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
     --radius-pill: 999px;
     --radius-card: 16px;
@@ -22,11 +26,17 @@
 }
 
 .btn { display:inline-block; font-weight:600; text-decoration:none; border-radius: var(--radius-pill); padding: 14px 24px; }
-.btn-primary { background: var(--color-accent); color: var(--color-text); }
-.btn-dark { background: var(--color-text); color: var(--color-bg); }
+.btn-primary, .btn-primary:visited, .btn-primary:hover { background: var(--color-accent); color: var(--color-ink); }
+.btn-dark { background: var(--color-ink); color: var(--color-paper); }
 .btn-outline { border: 2px solid var(--color-text); color: var(--color-text); background: transparent; box-sizing: border-box; }
 
 .section { padding: 64px 0; }
+
+/* Leave room for the sticky header when jumping to a section (e.g. /#apps).
+   The header grows as the nav wraps on narrower screens. */
+html { scroll-padding-top: 88px; }
+@media (max-width: 800px) { html { scroll-padding-top: 154px; } }
+@media (max-width: 600px) { html { scroll-padding-top: 197px; } }
 .section:nth-of-type(even) { background: var(--color-bg-alt); }
 
 .hero { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
@@ -102,7 +112,7 @@
 html, body { padding: 0; color: var(--color-text); background: var(--color-bg); margin: 0; font-family: 'Quicksand', sans-serif; }
 h2 { font-weight: 500; }
 h2 { margin-bottom:0; }
-a, a:hover, a:visited { color: #333; text-decoration: none; }
+a, a:hover, a:visited { color: var(--color-text); text-decoration: none; }
 .blog {
     margin-left:-10px;
     margin-right:-10px;
@@ -134,12 +144,16 @@ h4.year { color: #F9C300; margin-block-start: 0.7em; margin-block-end: 0.7em; }
 .timeline-item i.fas { margin-left:-34px; margin-right:8px; text-align:center; line-height:15px; height:15px; width:15px; padding:5px; background-color:#f9c300; border-radius:50%; color:white; font-size: 12px;  }
 
 .icon { filter: brightness(0); margin-top:5px; }
+@media (prefers-color-scheme: dark) {
+    .icon { filter: brightness(0) invert(1); }
+}
 header {
     position: sticky;
     top: 0;
     z-index: 5;
     background: var(--color-accent);
-    border-bottom: 2px solid var(--color-text);
+    color: var(--color-ink);
+    border-bottom: 2px solid var(--color-ink);
     padding: 14px 48px;
 }
 .header-content {
@@ -151,10 +165,16 @@ header {
 }
 .site-title { font-weight: 700; font-size: 18px; }
 .nav-links { display: flex; flex-wrap: wrap; gap: 24px; font-size: 15px; }
+header a:not(.btn), header a:not(.btn):visited, header a:not(.btn):hover { color: var(--color-ink); }
+header .btn-dark, header .btn-dark:visited, header .btn-dark:hover { color: var(--color-paper); }
 footer {
-    background: var(--color-text);
-    color: var(--color-bg);
+    background: var(--color-ink);
+    color: var(--color-paper);
     padding: 48px;
+}
+@media (prefers-color-scheme: dark) {
+    /* The footer matches the dark page background, so give it an edge. */
+    footer { border-top: 1px solid var(--color-border); }
 }
 .footer-content {
     display: flex;
@@ -167,7 +187,7 @@ footer {
 .footer-email, .footer-email:hover, .footer-email:visited { color: var(--color-accent); }
 .footer-links { display: flex; flex-wrap: wrap; gap: 24px; }
 .footer-links a { display: inline-flex; align-items: center; gap: 8px; }
-footer a, footer a:hover, footer a:visited { color: var(--color-bg); }
+footer a, footer a:hover, footer a:visited { color: var(--color-paper); }
 footer .icon { filter: brightness(0) invert(1); margin-top: 0; }
 .divider { width:100%; height: 20px; background-color: #F9C300; margin-top:5px; }
 .wrapper { max-width:1000px; margin:auto; }
