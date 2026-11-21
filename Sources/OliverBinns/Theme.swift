@@ -1,3 +1,4 @@
+import Foundation
 import Plot
 import Publish
 
@@ -47,8 +48,12 @@ private struct OliverHTMLFactory: HTMLFactory {
                 SiteHeader()
                 Wrapper {
                     H1(section.title)
-                    ItemList(items: section.items, site: context.site)
-                }
+                    if !section.description.isEmpty {
+                        Paragraph(section.description).class("section-intro")
+                    }
+                    ItemList(items: section.items.sorted { $0.date > $1.date },
+                             showsDates: section.id == .posts)
+                }.class("list-page")
                 SiteFooter()
             }
         )
@@ -68,14 +73,17 @@ private struct OliverHTMLFactory: HTMLFactory {
                         Article {
                             Div {
                                 H1(item.title)
-                                Text("Approx: \(item.readingTime.minutes) minutes reading time")
-                                    .italic()
+                                // Other sections' dates are only used for
+                                // ordering, so only posts show a byline.
+                                if item.sectionID == .posts {
+                                    Paragraph(item.byline).class("post-byline")
+                                }
                                 item.content.body
                             }
                             .class("content")
                             .class("post-content")
                         }
-                    }.style("max-width:800px")
+                    }.class("post-page")
                     SiteFooter()
                 }
             ),
@@ -127,18 +135,44 @@ private struct SiteHeader: Component {
     }
 }
 
-private struct ItemList<Site: Website>: Component {
-    var items: [Item<Site>]
-    var site: Site
+/// A full list of a section's items (e.g. every post on `/posts/`), in the
+/// same style as the homepage Writing list, with each item's description.
+private struct ItemList: Component {
+    var items: [Item<OliverBinns>]
+    /// Only posts have meaningful dates; other sections' dates just set order.
+    var showsDates: Bool
 
     var body: Component {
         List(items) { item in
-            Article {
-                H1(Link(item.title, url: item.path.absoluteString))
-                Paragraph(item.description)
+            ListItem {
+                Div {
+                    Link(item.title, url: item.path.absoluteString)
+                        .class("post-link")
+                    if !item.description.isEmpty {
+                        Paragraph(item.description).class("post-description")
+                    }
+                }
+                if showsDates {
+                    Span(item.listMeta).class("post-meta")
+                }
             }
         }
-        .class("item-list")
+        .class("post-list")
+    }
+}
+
+private extension Item where Site == OliverBinns {
+    /// e.g. "24 May 2025 · Terraform, Google Play"
+    var listMeta: String {
+        let tagList = tags.map(\.string).joined(separator: ", ")
+        return [DateFormatter.dayMonthYear.string(from: date), tagList]
+            .filter { !$0.isEmpty }
+            .joined(separator: " · ")
+    }
+
+    /// e.g. "24 May 2025 · 12 min read"
+    var byline: String {
+        "\(DateFormatter.dayMonthYear.string(from: date)) · \(readingTime.minutes) min read"
     }
 }
 
