@@ -14,9 +14,9 @@ struct Hero: Component {
                     H1("Lead mobile developer building apps used by millions.")
 
                     Paragraph("""
-                    Native iOS specialist (Swift), conference speaker and host of the SwiftLounge podcast. \
-                    I lead teams building high-profile mobile apps and share what I learn through talks, \
-                    open source and the podcast.
+                    I lead teams building high-profile mobile apps, and I'm happiest deep in native iOS. \
+                    When I learn something useful, I share it, whether that's a conference talk, \
+                    a blog post or open source code.
                     """).class("hero-description")
 
                     Div {
