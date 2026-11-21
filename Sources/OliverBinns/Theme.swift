@@ -18,21 +18,19 @@ private struct OliverHTMLFactory: HTMLFactory {
             .lang(context.site.language),
             .siteHead(for: index, on: context.site),
             .body {
-                SiteHeader()
+                PageChrome {
+                    Hero()
 
-                Hero()
+                    Highlights()
 
-                Highlights()
+                    Apps(section: context.sections[.apps])
 
-                Apps(section: context.sections[.apps])
+                    Speaking(section: context.sections[.speaking])
 
-                Speaking(section: context.sections[.speaking])
+                    Experience(section: context.sections[.experience])
 
-                Experience(section: context.sections[.experience])
-
-                Writing(section: context.sections[.posts])
-
-                SiteFooter()
+                    Writing(section: context.sections[.posts])
+                }
             }
         )
     }
@@ -43,45 +41,52 @@ private struct OliverHTMLFactory: HTMLFactory {
             .lang(context.site.language),
             .siteHead(for: section, on: context.site),
             .body {
-                SiteHeader()
-                Wrapper {
-                    H1(section.title)
-                    if !section.description.isEmpty {
-                        Paragraph(section.description).class("section-intro")
-                    }
-                    ItemList(items: section.items.sorted { $0.date > $1.date },
-                             showsDates: section.id == .posts)
-                }.class("list-page")
-                SiteFooter()
+                PageChrome {
+                    Wrapper {
+                        Breadcrumbs(trail: [], current: section.title)
+                        H1(section.title)
+                        if !section.description.isEmpty {
+                            Paragraph(section.description).class("section-intro")
+                        }
+                        ItemList(items: section.items.sorted { $0.date > $1.date },
+                                 showsDates: section.id == .posts)
+                    }.class("list-page")
+                }
             }
         )
     }
 
     func makeItemHTML(for item: Item<OliverBinns>,
                       context: PublishingContext<OliverBinns>) throws -> HTML {
-        HTML(
+        let section = context.sections[item.sectionID]
+        return HTML(
             .lang(context.site.language),
             .siteHead(for: item, on: context.site, includeAnalytics: true),
             .body(
                 .class("item-page"),
                 .components {
-                    SiteHeader()
-                    Wrapper {
-                        Article {
-                            Div {
-                                H1(item.title)
-                                // Other sections' dates are only used for
-                                // ordering, so only posts show a byline.
-                                if item.sectionID == .posts {
-                                    Paragraph(item.byline).class("post-byline")
+                    PageChrome {
+                        Wrapper {
+                            Breadcrumbs(trail: [(section.title, section.path.absoluteString)],
+                                        current: item.title)
+                            Article {
+                                Div {
+                                    H1(item.title)
+                                    // Other sections' dates are only used for
+                                    // ordering, so only posts show the date.
+                                    if item.sectionID == .posts {
+                                        Paragraph {
+                                            DateText(date: item.date)
+                                            Text(" · \(item.readingTime.minutes) min read")
+                                        }.class("post-byline")
+                                    }
+                                    item.content.body
                                 }
-                                item.content.body
+                                .class("content")
+                                .class("post-content")
                             }
-                            .class("content")
-                            .class("post-content")
-                        }
-                    }.class("post-page")
-                    SiteFooter()
+                        }.class("post-page")
+                    }
                 }
             )
         )
@@ -93,9 +98,12 @@ private struct OliverHTMLFactory: HTMLFactory {
             .lang(context.site.language),
             .siteHead(for: page, on: context.site),
             .body {
-                SiteHeader()
-                Wrapper(page.body)
-                SiteFooter()
+                PageChrome {
+                    Wrapper {
+                        Breadcrumbs(trail: [], current: page.title)
+                        Div { page.body }.class("content post-content")
+                    }.class("post-page")
+                }
             }
         )
     }
@@ -111,22 +119,63 @@ private struct OliverHTMLFactory: HTMLFactory {
     }
 }
 
+/// Everything every page shares: a skip link (WCAG 2.4.1), the header, the
+/// page's own content inside `<main>`, and the footer.
+private struct PageChrome: Component {
+    @ComponentBuilder var content: () -> Component
+
+    var body: Component {
+        ComponentGroup {
+            Link("Skip to main content", url: "#main").class("skip-link")
+            SiteHeader()
+            // `tabindex="-1"` lets the skip link move keyboard focus here,
+            // not just scroll.
+            Main { content() }
+                .id("main")
+                .attribute(named: "tabindex", value: "-1")
+            SiteFooter()
+        }
+    }
+}
+
 private struct SiteHeader: Component {
     var body: Component {
         Header {
             Wrapper {
                 Link("Oliver Binns", url: "/").class("site-title")
-                Div {
+                Navigation {
                     Link("Highlights", url: "/#highlights")
                     Link("Apps", url: "/#apps")
                     Link("Speaking", url: "/#speaking")
                     Link("Experience", url: "/#experience")
                     Link("Writing", url: "/#writing")
-                }.class("nav-links")
+                }
+                .class("nav-links")
+                .attribute(named: "aria-label", value: "Primary")
                 Link("Get in touch", url: "mailto:mail@oliverbinns.co.uk")
                     .class("btn btn-dark")
             }.class("header-content")
         }
+    }
+}
+
+/// Shows where a page sits in the site, e.g. "Home › Writing › Post title"
+/// (WCAG 2.4.8 Location).
+private struct Breadcrumbs: Component {
+    /// Ancestor pages between Home and this page, as (title, URL).
+    let trail: [(String, String)]
+    let current: String
+
+    var body: Component {
+        Navigation {
+            Node<HTML.BodyContext>.ol(
+                .li(.a(.href("/"), .text("Home"))),
+                .forEach(trail) { title, url in .li(.a(.href(url), .text(title))) },
+                .li(.span(.attribute(named: "aria-current", value: "page"), .text(current)))
+            )
+        }
+        .class("breadcrumbs")
+        .attribute(named: "aria-label", value: "Breadcrumb")
     }
 }
 
@@ -148,26 +197,16 @@ private struct ItemList: Component {
                     }
                 }
                 if showsDates {
-                    Span(item.listMeta).class("post-meta")
+                    Span {
+                        DateText(date: item.date)
+                        if !item.tags.isEmpty {
+                            Text(" · " + item.tags.map(\.string).joined(separator: ", "))
+                        }
+                    }.class("post-meta")
                 }
             }
         }
         .class("post-list")
-    }
-}
-
-private extension Item where Site == OliverBinns {
-    /// e.g. "24 May 2025 · Terraform, Google Play"
-    var listMeta: String {
-        let tagList = tags.map(\.string).joined(separator: ", ")
-        return [DateFormatter.dayMonthYear.string(from: date), tagList]
-            .filter { !$0.isEmpty }
-            .joined(separator: " · ")
-    }
-
-    /// e.g. "24 May 2025 · 12 min read"
-    var byline: String {
-        "\(DateFormatter.dayMonthYear.string(from: date)) · \(readingTime.minutes) min read"
     }
 }
 
@@ -180,7 +219,7 @@ private struct SiteFooter: Component {
                     Link("mail@oliverbinns.co.uk", url: "mailto:mail@oliverbinns.co.uk")
                         .class("footer-email")
                 }
-                Div {
+                Navigation {
                     Link(url: "https://www.github.com/oliver-binns") {
                         Image(url: "/Images/github.svg", description: "GitHub Logo")
                             .class("icon")
@@ -196,7 +235,9 @@ private struct SiteFooter: Component {
                             .class("icon")
                         Text("obinns")
                     }.linkTarget(.blank)
-                }.class("footer-links")
+                }
+                .class("footer-links")
+                .attribute(named: "aria-label", value: "Social and site links")
             }.class("footer-content")
         }
     }

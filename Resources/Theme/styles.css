@@ -37,6 +37,37 @@
 /* Leave room for the sticky header (under 80px at every width) when jumping
    to a section (e.g. /#apps). */
 html { scroll-padding-top: 88px; }
+
+/* ---- Accessibility utilities ---- */
+
+/* Hidden visually but still read by screen readers. */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* First thing a keyboard user reaches; appears when focused (WCAG 2.4.1). */
+.skip-link {
+    position: absolute;
+    left: 16px;
+    top: -100px;
+    z-index: 10;
+    padding: 12px 20px;
+    min-height: 44px;
+    box-sizing: border-box;
+    background: var(--color-ink);
+    color: var(--color-paper) !important;
+    font-weight: 600;
+    border-radius: 0 0 12px 12px;
+}
+.skip-link:focus { top: 0; }
+main:focus { outline: none; }
 .section:nth-of-type(even) { background: var(--color-bg-alt); }
 
 .hero { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
@@ -61,8 +92,8 @@ html { scroll-padding-top: 88px; }
 
 .highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
 .highlight-card { background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 24px; }
-.highlight-title { font-size: 42px; line-height: 1.1; }
-.highlight-description { color: var(--color-text-muted); }
+.highlight-title { margin: 0 0 8px; font-size: 42px; line-height: 1.1; }
+.highlight-description { margin: 0; color: var(--color-text-muted); }
 
 .section h2 { margin: 0 0 8px; font-size: 44px; line-height: 1.1; }
 .section-intro { margin: 0 0 32px; color: var(--color-text-soft); }
@@ -336,7 +367,8 @@ code {
 .pretty-link div:only-child { grid-column: 2; }
 .pretty-link div { display: inline; }
 .post-content .pretty-link img { width: 160px; margin: 0; border-radius: 10px; }
-a .pretty-link h1 { margin: 0 0 6px; font-family: var(--font-body); font-size: 18px; font-weight: 600; line-height: 1.35; letter-spacing: 0; color: var(--color-text); }
+a .pretty-link .pretty-link-title, a .pretty-link p { overflow-wrap: anywhere; }
+a .pretty-link .pretty-link-title { display: block; margin: 0 0 6px; font-size: 18px; font-weight: 600; line-height: 1.35; color: var(--color-text); }
 a .pretty-link p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--color-text-muted); }
 .post-content a.pretty-link-container,
 .post-content a.pretty-link-container:visited { text-decoration: none; }
@@ -367,3 +399,10 @@ table {
 table td {
     vertical-align:top;
 }
+
+/* Breadcrumbs on list and item pages (WCAG 2.4.8 Location). */
+.breadcrumbs ol { display: flex; flex-wrap: wrap; align-items: center; list-style: none; margin: 0 0 16px; padding: 0; font-size: 15px; color: var(--color-text-muted); }
+.breadcrumbs li { display: inline-flex; align-items: center; }
+.breadcrumbs li + li::before { content: "\203A" / ""; margin: 0 8px; }
+.breadcrumbs a { text-decoration: underline; }
+.breadcrumbs [aria-current] { color: var(--color-text); }

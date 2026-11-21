@@ -12,6 +12,7 @@ struct Hero: Component {
                         .class("eyebrow")
 
                     H1("Lead mobile developer building apps used by millions.")
+                        .id(PageSection.headingID(for: "top"))
 
                     Paragraph("""
                     I lead teams building high-profile mobile apps, and I'm happiest deep in native iOS. \

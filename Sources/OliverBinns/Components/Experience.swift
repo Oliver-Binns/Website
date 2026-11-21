@@ -17,7 +17,7 @@ struct Experience: Component {
 
     var body: Component {
         PageSection(id: "experience") {
-            H2(section.title)
+            H2(section.title).id(PageSection.headingID(for: "experience"))
             Div {
                 ComponentGroup(members: featuredRoles.map(RoleSummary.init))
             }.class("experience-grid")

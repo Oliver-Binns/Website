@@ -14,7 +14,7 @@ struct Speaking: Component {
 
     var body: Component {
         PageSection(id: "speaking") {
-            H2(section.title)
+            H2(section.title).id(PageSection.headingID(for: "speaking"))
             if !section.description.isEmpty {
                 Paragraph(section.description).class("section-intro")
             }
@@ -40,14 +40,8 @@ private struct TalkCard: Component {
     /// badge updates whenever the site is rebuilt.
     private var isUpcoming: Bool { item.date > Date() }
 
-    /// e.g. "Leeds Mobile · Jun 2025": the venue from `event` metadata plus
-    /// the month and year of the talk's (latest) date.
-    private var meta: String {
-        [item.metadata.event, Self.monthYear.string(from: item.date)]
-            .compactMap { $0 }
-            .joined(separator: " · ")
-    }
-
+    /// The talk's meta line reads e.g. "Leeds Mobile · Jun 2025": the venue
+    /// from `event` metadata plus the month and year of the (latest) date.
     private static let monthYear: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
@@ -61,7 +55,12 @@ private struct TalkCard: Component {
                 Span("Upcoming").class("talk-badge")
             }
             H3(item.title)
-            Paragraph(meta).class("talk-meta")
+            Paragraph {
+                if let event = item.metadata.event {
+                    Text("\(event) · ")
+                }
+                DateText(date: item.date, formatter: Self.monthYear)
+            }.class("talk-meta")
             Div { item.body }.class("talk-body")
         }
         .class(isUpcoming ? "talk-card talk-card-featured" : "talk-card")
