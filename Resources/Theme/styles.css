@@ -74,7 +74,7 @@ html { scroll-padding-top: 88px; }
 .app-header { display: flex; gap: 16px; align-items: center; }
 .app-header h3 { margin: 0; font-size: 20px; font-weight: 600; }
 .app-icon { width: 64px; height: 64px; flex: none; border-radius: 16px; }
-.app-icon-placeholder { background: var(--app-icon-bg, var(--color-accent)); color: var(--app-icon-fg, #1a1a1a); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; }
+.app-icon-placeholder { background: var(--color-accent); color: #1a1a1a; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; }
 .app-card .app-meta { font-size: 14px; color: var(--color-text-muted); }
 .app-link, .app-link:visited, .app-link:hover { margin-top: auto; color: var(--color-text); font-weight: 600; text-decoration: underline; }
 

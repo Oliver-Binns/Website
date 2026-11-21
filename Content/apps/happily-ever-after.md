@@ -7,5 +7,4 @@ released: 2027
 status: Coming soon
 link: https://ourhappilyeverafter.app
 linkText: Find out more
-color: #2F5D50
 ---
