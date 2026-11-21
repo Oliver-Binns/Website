@@ -122,11 +122,11 @@ private struct SiteHeader: Component {
             Wrapper {
                 Link("Oliver Binns", url: "/").class("site-title")
                 Div {
-                    Link("Highlights", url: "#highlights")
-                    Link("Apps", url: "#apps")
-                    Link("Speaking", url: "#speaking")
-                    Link("Experience", url: "#experience")
-                    Link("Writing", url: "#writing")
+                    Link("Highlights", url: "/#highlights")
+                    Link("Apps", url: "/#apps")
+                    Link("Speaking", url: "/#speaking")
+                    Link("Experience", url: "/#experience")
+                    Link("Writing", url: "/#writing")
                 }.class("nav-links")
                 Link("Get in touch", url: "mailto:mail@oliverbinns.co.uk")
                     .class("btn btn-dark")
