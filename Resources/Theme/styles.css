@@ -2,7 +2,8 @@
     --color-bg: #fffdf7;
     --color-bg-alt: #f6f1e1;
     --color-text: #1a1a1a;
-    --color-text-muted: #55524a;
+    /* At least 7:1 on both --color-bg and --color-bg-alt (WCAG 1.4.6 AAA). */
+    --color-text-muted: #524f48;
     --color-text-soft: #3d3a33;
     --color-accent: #F5C518;
     --color-border: #e6e1d3;
@@ -109,6 +110,10 @@ html { scroll-padding-top: 88px; }
 .posts-all a, .posts-all a:visited, .posts-all a:hover { color: var(--color-text); text-decoration: underline; }
 
 html, body { padding: 0; color: var(--color-text); background: var(--color-bg); margin: 0; font-family: var(--font-body); }
+/* At least 1.5 line spacing and 1.5× that between paragraphs
+   (WCAG 1.4.8 AAA). Headings set their own, tighter line height. */
+body { line-height: 1.5; }
+p { margin-block: 0 1.5em; }
 
 /* Display headings use Instrument Serif (regular only; there's no bold, so
    never synthesise one). Small card titles stay in the body font for
@@ -210,8 +215,13 @@ footer .icon { filter: brightness(0) invert(1); margin-top: 0; }
 
 /* Same 1000px wrapper as other pages (so it lines up with the header),
    with the article capped at a comfortable reading width. */
-.post-page .post-content { max-width: 720px; }
+/* Lines of at most about 80 characters (WCAG 1.4.8 AAA). */
+.post-page .post-content { max-width: 68ch; }
 .post-content { font-size: 18px; line-height: 1.7; }
+/* Let long inline code and URLs wrap, so the page never scrolls sideways at
+   320px wide (WCAG 1.4.10). Code blocks scroll instead. */
+.post-content p, .post-content li, .post-content a, .post-content code { overflow-wrap: anywhere; }
+.post-content pre code { overflow-wrap: normal; }
 .post-content h1 { margin: 0 0 12px; font-size: 54px; line-height: 1.08; }
 .post-byline { margin: 0 0 32px; font-size: 15px; color: var(--color-text-muted); }
 .post-content h4, .post-content h5, .post-content h6 { font-weight: 700; line-height: 1.3; }
@@ -273,46 +283,48 @@ code {
     box-decoration-break: clone;
 }
 
+/* Syntax highlighting (Splash). Every colour is at least 7:1 on both code
+   backgrounds, #1a1a1a and #242424 (WCAG 1.4.6 AAA). */
 .preprocessing {
-    color: #B68A00;
+    color: #DCA700;
 }
 
 .comment {
-    color: #6B8A94;
+    color: #9FB3B9;
 }
 
 .number {
-    color: #DB6F57;
+    color: #E79E8E;
 }
 
 .call {
-    color: #348FE5;
+    color: #78B4EE;
 }
 
 .property {
-    color: #21AB9D;
+    color: #26C3B3;
 }
 
 .keyword {
-    color: #E83B8E;
+    color: #F292C0;
 }
 
 .dotAccess {
-    color: #92B300;
+    color: #A3C700;
 }
 
 .type {
-    color: #8281CA;
+    color: #ADACDC;
 }
 
 .string {
-    color: #FA641E;
+    color: #FC9464;
 }
 
 /* Link preview cards (`> prettylink` blockquotes, see LinkPlugin) */
 .pretty-link {
     display: grid;
-    grid-template-columns: 160px auto;
+    grid-template-columns: 160px minmax(0, 1fr);
     gap: 16px;
     align-items: center;
     margin: 0 0 16px;
@@ -330,7 +342,7 @@ a .pretty-link p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--co
 .post-content a.pretty-link-container:visited { text-decoration: none; }
 .post-content a.pretty-link-container:hover .pretty-link { border-color: var(--color-accent); }
 @media (max-width: 600px) {
-    .pretty-link { grid-template-columns: 88px auto; gap: 12px; }
+    .pretty-link { grid-template-columns: 88px minmax(0, 1fr); gap: 12px; }
     .post-content .pretty-link img { width: 88px; }
     .list-page h1, .post-content h1 { font-size: 42px; }
     .hero-text h1 { font-size: 48px; }
