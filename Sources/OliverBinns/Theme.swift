@@ -28,18 +28,13 @@ private struct OliverHTMLFactory: HTMLFactory {
 
                 Speaking(section: context.sections[.speaking])
 
+                Experience(section: context.sections[.experience])
+
                 Divider()
 
                 Wrapper {
                     H3("Posts")
                     PostList(posts: context.sections[.posts].items)
-                }
-
-                Divider()
-
-                Wrapper {
-                    H3("Positions")
-                    Timeline(items: context.sections[.experience].items)
                 }
 
                 SiteFooter()
