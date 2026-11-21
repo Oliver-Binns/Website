@@ -17,7 +17,7 @@ Quick disclaimer: I’m an experienced mobile developer dabbling in Terraform, n
 > title Managing Google Play users in Terraform
 > description In this article, I will introduce a Terraform provider to manage Google Play Console users, enabling automated, scalable, and consistent user permission handling for mobile development teams through Infrastructure-as-Code.
 
-# The overall architecture
+## The overall architecture
 
 The provider and sample code itself comes in the form of three repositories:
 
@@ -36,18 +36,18 @@ The provider and sample code itself comes in the form of three repositories:
 > title personal-infra
 > description A reference implementation which shows the provider being used to manage users within my own Google Play Account
 
-# Interfacing with the Google Play API
+## Interfacing with the Google Play API
 
 Firstly, I needed to build code that would allow the Terraform provider to integrate with Google Play to manage users.
 
-## Tooling
+### Tooling
 
 Integrating with Google Play is done through the [Google Play Android Developer API](https://developers.google.com/android-publisher/api-ref/rest).
 Since Terraform providers are generally build in Go, it made the most sense to build the API integration in Go too.
 I used [Visual Studio Code](https://code.visualstudio.com), and found the [GitHub Co-Pilot](https://github.com/features/copilot) extension particularly useful for helping me adapt to the quirks of a new language.
 I also use [Claude](https://claude.ai) for more easily digesting large pieces of documentation quickly.
 
-## Authenticating
+### Authenticating
 
 Authentication to the API is via a Google Cloud Service Account.
 Clients must use the private key for the account to sign JWTs which can be exchanged by the [Google Authorization Service](https://developers.google.com/identity/protocols/oauth2) for API bearer tokens.
@@ -91,7 +91,7 @@ resp, _ := t.httpClient.Do(req)
 
 `resp` is a JSON object containing a standard access token response, that we can use to make authorised requests to the Google Play Android Developer API.
 
-## Challenge 1: Limited APIs
+### Challenge 1: Limited APIs
 
 **TLDR; Everything I needed is available, but not always in the form I wanted or expected.**
 
@@ -107,7 +107,7 @@ Google Play Console has three mechanisms for managing user permissions:
 It seems that only the first two of these are available to use via an API.
 That’s mostly ok because we can define our groups in Terraform anyway, but it means we couldn’t easily share groups between Terraform and click-ops.
 
-### Users & Developer Level Permissions
+#### Users & Developer Level Permissions
 
 When managing users, there are APIs for [create, update, delete and list](https://developers.google.com/android-publisher/api-ref/rest/v3/users).
 Unfortunately there is no mechanism for filtering the list API and no API available for fetching a specific user by their ID.
@@ -117,7 +117,7 @@ Developer Level Permissions are an attribute of a user, so we can use the create
 Frustratingly, users created with the API must have *some* permission(s), and app specific permissions **cannot** be set when creating a user.
 This means (as far as I can tell) it‘s impossible to manage users with *only* App Level Permissions.
 
-### Grants & App Level Permissions
+#### Grants & App Level Permissions
 
 Grants are a mapping between a user, a set of App Level Permissions and a Google Play App ID.
 
@@ -136,7 +136,7 @@ However, there is no API for reading the state of a Grant or even listing Grants
 To get the state, we must access them via the same User resource API as with Developer Level Permissions.
 As mentioned about, the User API has no filtering functionality, so we must retrieve the state of *all* users and *all* grants and filter them ourselves - again: not very efficient!
 
-# The Terraform provider
+## The Terraform provider
 
 The Terraform provider repository is created from Hashicorp‘s [quick start template](https://github.com/hashicorp/terraform-provider-scaffolding-framework).
 The template was particularly useful to understand how the provider should be structured.
@@ -145,7 +145,7 @@ I also used this similar [App Store Terraform provider](https://github.com/alexp
 As I mentioned above, the provider is written in Go.
 The tooling I used for creating this repository is the same as for Google Play Developer API integration.
 
-## Core concepts
+### Core concepts
 
 There are three main concepts that we need to understand to build a Terraform provider:
 
@@ -153,7 +153,7 @@ There are three main concepts that we need to understand to build a Terraform pr
 - A resource is anything that is managed (created, modified, deleted) by Terraform.
 - A data source is anything that can be _read_ by Terraform.
 
-### Provider
+#### Provider
 
 The provider itself is a type which is configured with a model.
 Since everything we need in this implementation can be modified, so we only care about the provider and resource.
@@ -166,7 +166,7 @@ The create the type we must implement several methods:
 - Data Sources: any data sources we will provide (none!)
 - Functions: any transformation functions we provide (none!)
 
-### Resources
+#### Resources
 
 Our resources follow a similar pattern:
 
@@ -176,7 +176,7 @@ Our resources follow a similar pattern:
 
 but then deviate, with methods for Validate, Create, Read, Update and Delete ([CRUD!](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)).
 
-### Schema
+#### Schema
 
 Our schema is the contract between our provider and the Terraform code that we’ll use to manage users in Google Play.
 It declares the shape and properties that consumers of our provider must provide in order for the users to be created.
@@ -250,7 +250,7 @@ class GooglePlayProvider(
 )
 ```
 
-## Challenge 2: Nested schema
+### Challenge 2: Nested schema
 
 As I mentioned above, there are two related types of permission that can be managed with this provider: developer level permissions and app level permissions.
 Since app level permissions must be granted to a specific developer, they are effectively nested inside the developer level resource.
@@ -288,7 +288,7 @@ resource "googleplay_app_iam" "test_app" {
 
 Terraform automatically manages dependencies between objects, so if you add both a new user and app-level permission linked with the user ID like the example above, then it will create the user first and then add the app permission.
 
-## Challenge 3: Implicit additional permissions
+### Challenge 3: Implicit additional permissions
 
 Terraform tracks the changes that it makes and asserts that change it makes were made successfully.
 However, the Google Play Console implicitly adds additional lower-ranking permissions when adding more powerful permissions.
@@ -318,7 +318,7 @@ The `permissions` that the user declares is mapped to this computed property, so
 
 For the full implementation, see the [pull request on GitHub](https://github.com/Oliver-Binns/terraform-provider-googleplay/pull/26/files).
 
-# The result: a reference implementation
+## The result: a reference implementation
 
 Some Terraform - at last! You’ve probably seen this before - it’s in my [previous article](../terraform-provider-googleplay):
 
@@ -331,7 +331,7 @@ resource "googleplay_user" "oliver" {
 
 I use the reference implementation to manage permissions to my own personal Google Play account.
 
-## Get in touch
+### Get in touch
 
 What do you think? If you found my Terraform provider useful I’d love to hear about it.
 

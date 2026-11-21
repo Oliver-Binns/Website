@@ -1,11 +1,9 @@
 ---
 date: 2019-11-01 00:00
 description: App Developer @ General Election 2019
+title: App Developer, General Election 2019
+period: Nov 2019, May 2017
 ---
-# App Developer
-## General Election 2019
-### Nov 2019, May 2017
-
 Unsure who to vote for?\
 Use this helpful app to decide based on policies, not people.
 

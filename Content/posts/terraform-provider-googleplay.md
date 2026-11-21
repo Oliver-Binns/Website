@@ -12,7 +12,7 @@ But managing user permissions in the Play Console can quickly become a headache,
 In this post, I'll walk you through my journey of creating a [Terraform provider for Google Play Console user management](https://github.com/Oliver-Binns/terraform-provider-googleplay), which has transformed how we handle access permissions across our organisation.
 Even if you've never heard of Terraform before, don't worry – this post is a beginner’s introduction into the world of mobile dev-ops!
 
-# What is Terraform (and why should mobile developers care)?
+## What is Terraform (and why should mobile developers care)?
 
 Before we dive in, let’s address the elephant in the room: what exactly is Terraform?
 Terraform is an open-source tool that allows you to define and manage your infrastructure using code.
@@ -28,7 +28,7 @@ Managing resources (or user access using IaC) has several _key_ benefits:
 
 Put simply, Terraform lets you replace manual clicking (“click-ops”) through the Google Play Console UI with code that automatically handles user management for you.
 
-# How to use it
+## How to use it
 
 My unofficial Terraform provider for managing Google Play permissions is now available on the Terraform registry.
 If you’re interested, I’m planning talk a lot more about how I built this - and some of the challenges I faced - in a future blog post.
@@ -38,7 +38,7 @@ If you’re interested, I’m planning talk a lot more about how I built this - 
 > title Terraform Provider for Google Play Console
 > description Terraform Provider for managing user permissions in Google Play Console.
 
-## The setup 
+### The setup 
 
 First you’ll need to install Terraform.
 I found this easiest using Homebrew, but the [official guide](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) will always contain the latest guidance on how to achieve this.
@@ -70,7 +70,7 @@ Then we can run the `init` command to ensure that the provider gets downloaded c
 terraform init
 ```
 
-## Integrating with Google Play
+### Integrating with Google Play
 
 As with any automated integration with Google Play, you’ll need a service account.
 I won't go into details about how to manage that here because it’s been extensively covered before.
@@ -85,7 +85,7 @@ provider "googleplay" {
 }
 ```
 
-## Declaring a user
+### Declaring a user
 
 Users are declared using a ‘resource’ in Terraform.
 A resource is Terraform-speak for something that can be managed; as in: it can be created, managed and deleted once it is no longer needed.
@@ -159,7 +159,7 @@ googleplay_user.example: Modifications complete after 1s [name=developers/516684
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
-## App-specific permissions
+### App-specific permissions
 
 Users can also be granted specific permissions to a particular app using the `googleplay_app_iam` ‘resource’.
 
@@ -181,7 +181,7 @@ resource "googleplay_app_iam" "test_app" {
 
 Again, you can find the possible values for permissions in the [Google Play Developer API documentation](https://developers.google.com/android-publisher/api-ref/rest/v3/grants#applevelpermission).
 
-## Running on the CI
+### Running on the CI
 
 Some of the main advantages of Infrastructure-as-Code only apply once we start managing our code using version control. In particular — as I mentioned in the introduction — being able to see changes to permissions over time, being able to enforce peer reviews on changes, and being able to prevent mistakes using automated builds: the same way as we do with _any_ of our code.
 
@@ -230,9 +230,9 @@ We should now be able to run our `init`, `plan` and `apply` steps easily on GitH
 
 When running plan on the pull request, you can [use GitHub script](https://github.com/hashicorp/setup-terraform) to comment the plan, so that it's easy for others to peer review the changes that you've made.
 
-# The result
+## The result
 
-## Tying it together
+### Tying it together
 
 You can see this all working in the [public GitHub repo](https://github.com/Oliver-Binns/personal-infra) I now use for managing permissions on my own account.
 
@@ -250,14 +250,14 @@ In the future, I’d love to expand the provider to include management of other 
 > title personal-infra
 > description A repository for managing infrastructure related to my personal projects using code.
 
-## Taking it further...
+### Taking it further...
 
 The great thing about Terraform is there’s a whole ecosystem of other providers that you can tie together into your Infrastructure-as-Code.
 For example: there’s an [official Firebase Terraform provider](https://firebase.google.com/docs/projects/terraform/get-started) for managing projects, permissions and other resources.
 You could create a role that gives your developers access to Google Play, Firebase, GitHub, AWS and more with single easy change.
 And even more importantly, you can ensure that access gets revoked from all these systems once it is no longer needed!!
 
-## Get in touch
+### Get in touch
 
 What do you think? If you found my Terraform provider useful I’d love to hear about it.
 

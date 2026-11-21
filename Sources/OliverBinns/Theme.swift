@@ -79,6 +79,8 @@ private struct OliverHTMLFactory: HTMLFactory {
                                             DateText(date: item.date)
                                             Text(" · \(item.readingTime.minutes) min read")
                                         }.class("post-byline")
+                                    } else if let byline = item.metadata.period ?? item.metadata.event {
+                                        Paragraph(byline).class("post-byline")
                                     }
                                     item.content.body
                                 }

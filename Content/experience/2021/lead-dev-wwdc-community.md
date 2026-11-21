@@ -1,11 +1,9 @@
 ---
 date: 2021-06-01 00:00
 description: Lead Developer @ wwdc.community
+title: Lead Developer, wwdc.community
+period: Apr — Jun 2021
 ---
-# Lead Developer
-## wwdc.community
-### Apr — Jun 2021
-
 As Web Lead for WWDC Community Week, I oversaw a team of developers to create the website for a major iOS community conference which coincided with the official annual Apple Worldwide Developer Conference. The website was built in React.js using Firebase and AirTable for authentication and data storage.
 
 
