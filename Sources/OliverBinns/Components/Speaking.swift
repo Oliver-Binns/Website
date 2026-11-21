@@ -40,7 +40,7 @@ private struct TalkCard: Component {
     /// badge updates whenever the site is rebuilt.
     private var isUpcoming: Bool { item.date > Date() }
 
-    /// e.g. "Leeds Mobile · June 2025": the venue from `event` metadata plus
+    /// e.g. "Leeds Mobile · Jun 2025": the venue from `event` metadata plus
     /// the month and year of the talk's (latest) date.
     private var meta: String {
         [item.metadata.event, Self.monthYear.string(from: item.date)]
@@ -50,8 +50,8 @@ private struct TalkCard: Component {
 
     private static let monthYear: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_GB")
-        formatter.dateFormat = "MMMM yyyy"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "MMM yyyy"
         return formatter
     }()
 
