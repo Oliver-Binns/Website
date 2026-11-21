@@ -1,7 +1,6 @@
 ---
 date: 2018-06-29 00:00
 description: Conductor @ Vanbrugh Chamber Choir
-icon: fa-music
 ---
 # Conductor
 ## Vanbrugh Chamber Choir

@@ -1,7 +1,6 @@
 ---
 date: 2023-05-31 00:00
 description: Speaker @ plSwift
-icon: fa-person-chalkboard
 ---
 # Speaker
 ## plSwift

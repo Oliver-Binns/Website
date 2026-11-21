@@ -1,7 +1,6 @@
 ---
 date: 2012-06-29 00:00
 description: Company Secretary @ cloud-nine
-icon: fa-user-edit
 ---
 # Company Secretary
 ## cloud-nine

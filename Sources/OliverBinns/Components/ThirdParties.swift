@@ -12,17 +12,7 @@ extension Node where Context == HTML.DocumentContext {
     private static var theme: Node<Context> {
         .head(
             .meta(.name("viewport"), .content("width=device-width, initial-scale=1, maximum-scale=1")),
-            .meta(.name("theme-color"), .content("#F9C300"))
-        )
-    }
-
-    private static var fontAwesome: Node<Context> {
-        .head(
-            .script(
-                .async(),
-                .src("https://kit.fontawesome.com/99e4242f25.js"),
-                .attribute(named: "crossorigin", value: "anonymous")
-            )
+            .meta(.name("theme-color"), .content("#F5C518"))
         )
     }
 
@@ -57,7 +47,7 @@ extension Node where Context == HTML.DocumentContext {
     }
 
     static var global: Node<Context> {
-        .group([displayFont, fontAwesome, theme, appStore])
+        .group([displayFont, theme, appStore])
     }
 
     static var scripts: Node<Context> {

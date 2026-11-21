@@ -1,7 +1,6 @@
 ---
 date: 2022-07-06 18:30
 description: Speaker @ NSLondon
-icon: fa-person-chalkboard
 ---
 # Speaker
 ## NSLondon

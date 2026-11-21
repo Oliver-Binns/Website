@@ -1,7 +1,6 @@
 ---
 date: 2017-09-01 00:00
 description: App Developer @ York Colleges
-icon: fa-mobile-alt
 ---
 # App Developer
 ## York Colleges

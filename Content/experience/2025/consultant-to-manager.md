@@ -4,7 +4,6 @@ title: Consultant to Manager, Deloitte Digital
 period: Sep 2019 to May 2025
 featured: true
 description: Led iOS teams on NHS Test and Trace, then scaled a public-sector app across multiple feature teams.
-icon: fa-briefcase
 ---
 ## Manager · Jun 2022 to May 2025
 

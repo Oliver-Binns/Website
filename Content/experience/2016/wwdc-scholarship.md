@@ -1,7 +1,6 @@
 ---
 date: 2016-06-30 00:00
 description:  WWDC Scholar @ Apple Developer Programme
-icon: fa-graduation-cap
 ---
 # WWDC Scholar
 ## Apple Developer Programme

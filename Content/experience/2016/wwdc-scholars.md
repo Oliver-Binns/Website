@@ -1,7 +1,6 @@
 ---
 date: 2016-07-01 00:00
 description:  Developer @ WWDC Scholars
-icon: fa-mobile-alt
 ---
 # Developer
 ## WWDC Scholars
