@@ -223,6 +223,7 @@ private struct SiteFooter: Component {
                 }
                 Navigation {
                     ComponentGroup(members: SocialLink.all)
+                    Link("Accessibility", url: "/accessibility/")
                 }
                 .class("footer-links")
                 .attribute(named: "aria-label", value: "Social and site links")
