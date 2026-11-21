@@ -1,56 +1,63 @@
 import Plot
+import Publish
 
 extension Node where Context == HTML.DocumentContext {
-    private static var displayFont: Node<Context> {
-        .head(
+    /// The page's single `<head>`. This is Publish's `.head(for:on:)` plus the
+    /// site's fonts, theme colour, App Store banner and analytics. Adding
+    /// extra `.head(...)` nodes instead would output several `<head>` elements,
+    /// which is invalid HTML.
+    ///
+    /// The viewport comes from `.viewport(.accordingToDevice)`. It must not
+    /// set `maximum-scale` or `user-scalable`, so pinch-zoom keeps working
+    /// (WCAG 1.4.4).
+    ///
+    /// - parameter includeAnalytics: Load Google Analytics. Only item pages do.
+    static func siteHead<T: Website>(for location: Location,
+                                     on site: T,
+                                     includeAnalytics: Bool = false) -> Node {
+        let title = location.title.isEmpty
+            ? site.name
+            : "\(location.title) | \(site.name)"
+        let description = location.description.isEmpty
+            ? site.description
+            : location.description
+
+        return .head(
+            .encoding(.utf8),
+            .siteName(site.name),
+            .url(site.url(for: location)),
+            .title(title),
+            .description(description),
+            .twitterCardType(location.imagePath == nil ? .summary : .summaryLargeImage),
+            .stylesheet("/styles.css"),
+            .viewport(.accordingToDevice),
+            .unwrap(site.favicon, { .favicon($0) }),
+            .rssFeedLink(Path.defaultForRSSFeed.absoluteString, title: "Subscribe to \(site.name)"),
+            .unwrap(location.imagePath ?? site.imagePath, { .socialImageLink(site.url(for: $0)) }),
+
+            // Instrument Serif (headings)
             .link(.rel(.preconnect), .href("https://fonts.googleapis.com")),
-            .link(.rel(.preconnect), .href("https://fonts.gstatic.com"), .attribute(named: "crossorigin", value: "")),
-            .link(.rel(.stylesheet), .href("https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap"))
-        )
-    }
+            .link(.rel(.preconnect), .href("https://fonts.gstatic.com"),
+                  .attribute(named: "crossorigin", value: "")),
+            .link(.rel(.stylesheet),
+                  .href("https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap")),
 
-    private static var theme: Node<Context> {
-        .head(
-            .meta(.name("viewport"), .content("width=device-width, initial-scale=1, maximum-scale=1")),
-            .meta(.name("theme-color"), .content("#F5C518"))
-        )
-    }
-
-    private static var googleAnalytics: Node<Context> {
-        .head(
-            .script(
-                .async(),
-                .src("https://www.googletagmanager.com/gtag/js?id=G-Y17266J9BZ")
+            .meta(.name("theme-color"), .content("#F5C518")),
+            .meta(
+                .name("apple-itunes-app"),
+                .content("app-id=1535326851, app-clip-bundle-id=uk.co.oliverbinns.oliverbinns.clip")
             ),
-            .script(.raw("""
+
+            .if(includeAnalytics, .group([
+                .script(.async(), .src("https://www.googletagmanager.com/gtag/js?id=G-Y17266J9BZ")),
+                .script(.raw("""
             window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
 
               gtag('config', 'G-Y17266J9BZ');
             """))
+            ]))
         )
-    }
-
-    private static var appStore: Node<Context> {
-        .head(.meta(
-            .name("apple-itunes-app"),
-            .content("app-id=1535326851, app-clip-bundle-id=uk.co.oliverbinns.oliverbinns.clip")
-        ))
-    }
-
-    private static var juxtapose: Node<Context> {
-        .head(
-            .script(.src("https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js")),
-            .link(.rel(.stylesheet), .href("https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css"))
-        )
-    }
-
-    static var global: Node<Context> {
-        .group([displayFont, theme, appStore])
-    }
-
-    static var scripts: Node<Context> {
-        .group([googleAnalytics, juxtapose])
     }
 }

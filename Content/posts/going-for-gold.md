@@ -45,10 +45,7 @@ Text(update.line.displayName)
     .background(update.line.color)
 ```
 
-<div class="juxtapose">
-    <img src="/Images/bakerloo-light.png" />
-    <img src="/Images/bakerloo-dark.png" />
-</div>
+![Bakerloo line status in light mode. The line name is white text on a brown background, next to a warning icon and "Special Service" in black on a white background.](../../Images/bakerloo-light.png) ![Bakerloo line status in dark mode. The line name is still white text on a brown background, and "Special Service" is now white on a black background.](../../Images/bakerloo-dark.png)
 
 TL;DR: Only use white and black when the colours should remain the same between dark and light modes.
 

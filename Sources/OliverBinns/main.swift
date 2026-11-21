@@ -40,7 +40,8 @@ struct OliverBinns: Website {
     var url = URL(string: "https://www.oliverbinns.co.uk")!
     var name = "Oliver Binns"
     var description = "Lead Mobile Developer"
-    var language: Language { .english }
+    // British English, so screen readers use the right pronunciation.
+    var language: Language { .ukEnglish }
     var imagePath: Path? { nil }
 }
 
