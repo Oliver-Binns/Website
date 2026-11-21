@@ -1,7 +1,6 @@
 ---
 date: 2021-06-01 00:00
 description: Lead Developer @ wwdc.community
-icon: fa-code
 ---
 # Lead Developer
 ## wwdc.community

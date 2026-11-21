@@ -1,7 +1,6 @@
 ---
 date: 2018-06-30 00:00
 description: Master's Student @ University of York
-icon: fa-graduation-cap
 ---
 # Master's Student
 ## University of York

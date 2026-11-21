@@ -1,7 +1,6 @@
 ---
 date: 2015-04-29 00:00
 description: W/W (Waiter) @ TGI Fridays
-icon: fa-hamburger
 ---
 # W/W (Waiter)
 ## TGI Fridays

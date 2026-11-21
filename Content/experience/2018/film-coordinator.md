@@ -1,7 +1,6 @@
 ---
 date: 2018-06-29 00:00
 description: Film Coordinator @ York Student Cinema
-icon: fa-film
 ---
 # Film Coordinator
 ## York Student Cinema

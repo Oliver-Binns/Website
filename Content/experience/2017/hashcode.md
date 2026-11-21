@@ -1,7 +1,6 @@
 ---
 date: 2017-02-23 00:00
 description: Hackathon @ Google Hash Code
-icon: fa-stopwatch
 ---
 # Hackathon
 ## Google Hash Code

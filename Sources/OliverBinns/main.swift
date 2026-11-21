@@ -11,13 +11,11 @@ struct OliverBinns: Website {
     enum SectionID: String, WebsiteSectionID {
         case posts
         case apps
-        case things
         case experience
         case speaking
     }
 
     struct ItemMetadata: WebsiteItemMetadata {
-        let icon: String?
         let color: String?
 
         // Apps-only metadata (see `Content/apps`).

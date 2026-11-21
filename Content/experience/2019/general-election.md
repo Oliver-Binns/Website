@@ -1,7 +1,6 @@
 ---
 date: 2019-11-01 00:00
 description: App Developer @ General Election 2019
-icon: fa-mobile-alt
 ---
 # App Developer
 ## General Election 2019

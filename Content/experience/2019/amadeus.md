@@ -1,7 +1,6 @@
 ---
 date: 2019-08-01 00:00
 description: Full-stack Developer @ Amadeus
-icon: fa-briefcase
 ---
 # Full-stack developer
 ## Amadeus
