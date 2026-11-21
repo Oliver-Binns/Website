@@ -30,12 +30,7 @@ private struct OliverHTMLFactory: HTMLFactory {
 
                 Experience(section: context.sections[.experience])
 
-                Divider()
-
-                Wrapper {
-                    H3("Posts")
-                    PostList(posts: context.sections[.posts].items)
-                }
+                Writing(section: context.sections[.posts])
 
                 SiteFooter()
             }
@@ -131,18 +126,6 @@ private struct SiteHeader: Component {
         }
     }
 }
-
-private struct PostList: Component {
-    let posts: [Item<OliverBinns>]
-
-    var body: Component {
-        Div {
-            ComponentGroup(members: posts.sorted().map(PostThumbnail.init))
-        }.class("blog")
-    }
-}
-
-
 
 private struct ItemList<Site: Website>: Component {
     var items: [Item<Site>]
