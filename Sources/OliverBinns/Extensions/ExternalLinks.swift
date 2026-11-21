@@ -18,4 +18,16 @@ extension Plugin {
             })
         }
     }
+
+    /// Code blocks scroll horizontally, so make each one focusable and give
+    /// it a name, so keyboard users can scroll it (WCAG 2.1.1).
+    static var accessibleCodeBlocks: Self {
+        Plugin(name: "Accessible code blocks") { context in
+            context.markdownParser.addModifier(Modifier(target: .codeBlocks) { html, _ in
+                guard html.hasPrefix("<pre>") else { return html }
+                return "<pre tabindex=\"0\" role=\"region\" aria-label=\"Code sample\">"
+                    + html.dropFirst("<pre>".count)
+            })
+        }
+    }
 }

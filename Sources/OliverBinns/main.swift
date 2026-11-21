@@ -49,7 +49,8 @@ struct OliverBinns: Website {
 try OliverBinns()
     .publish(using: [
         .installPlugin(.splash(withClassPrefix: "")),
-        .installPlugin(.youtube()),
+        .installPlugin(.accessibleCodeBlocks),
+        .installPlugin(.youtube(renderer: AccessibleYoutubeRenderer())),
         .installPlugin(.links()),
         .installPlugin(.externalLinksInNewTab),
 
