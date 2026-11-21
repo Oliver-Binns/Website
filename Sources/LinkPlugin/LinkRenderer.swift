@@ -18,11 +18,16 @@ struct PrettyLinkComponent: Component {
         Link(url: link.href) {
             Div {
                 if let image = link.image {
-                    Image(image)
-                        .attribute(named: "aria-hidden", value: "true")
+                    // Decorative: the title and description name the link.
+                    Node<HTML.BodyContext>.img(
+                        .src(image),
+                        Attribute(name: "alt", value: "", ignoreIfValueIsEmpty: false)
+                    )
                 }
                 Div {
-                    H1(link.title)
+                    // Not a heading: these cards sit inside a post's text, so
+                    // a heading here would break the post's outline.
+                    Span(link.title).class("pretty-link-title")
                     Paragraph(link.description)
                 }
             }.class("pretty-link")

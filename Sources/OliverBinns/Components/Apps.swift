@@ -9,7 +9,7 @@ struct Apps: Component {
 
     var body: Component {
         PageSection(id: "apps") {
-            H2(section.title)
+            H2(section.title).id(PageSection.headingID(for: "apps"))
             if !section.description.isEmpty {
                 Paragraph(section.description).class("section-intro")
             }

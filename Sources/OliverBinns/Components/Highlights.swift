@@ -31,11 +31,16 @@ struct Highlights: Component {
 
     var body: Component {
         PageSection(id: "highlights") {
+            // Every section needs a heading (WCAG 2.4.10); this one is only
+            // for screen readers, as the cards speak for themselves visually.
+            H2("Highlights")
+                .id(PageSection.headingID(for: "highlights"))
+                .class("visually-hidden")
             Div {
                 ComponentGroup(members: Self.items.map { item in
                     Div {
-                        Div { Text(item.title) }.class("highlight-title")
-                        Div { Text(item.description) }.class("highlight-description")
+                        H3(item.title).class("highlight-title")
+                        Paragraph(item.description).class("highlight-description")
                     }.class("highlight-card")
                 })
             }.class("highlights-grid")

@@ -12,12 +12,17 @@ struct Writing: Component {
 
     var body: Component {
         PageSection(id: "writing") {
-            H2(section.title)
+            H2(section.title).id(PageSection.headingID(for: "writing"))
             List(section.items.sorted { $0.date > $1.date }.prefix(Self.maxPosts)) { post in
                 ListItem {
                     Link(post.title, url: post.path.absoluteString)
                         .class("post-link")
-                    Span(Self.meta(for: post)).class("post-meta")
+                    Span {
+                        DateText(date: post.date)
+                        if let tag = post.tags.first {
+                            Text(" · \(tag.string)")
+                        }
+                    }.class("post-meta")
                 }
             }.class("post-list")
             Paragraph {
@@ -25,12 +30,5 @@ struct Writing: Component {
                      url: section.path.absoluteString)
             }.class("posts-all")
         }
-    }
-
-    /// e.g. "24 May 2025 · Terraform"
-    private static func meta(for post: Item<OliverBinns>) -> String {
-        [DateFormatter.dayMonthYear.string(from: post.date), post.tags.first?.string]
-            .compactMap { $0 }
-            .joined(separator: " · ")
     }
 }
