@@ -193,7 +193,9 @@ footer .icon { filter: brightness(0) invert(1); margin-top: 0; }
 .post-list li > div { flex: 1 1 420px; }
 .post-list .post-description { margin: 4px 0 0; color: var(--color-text-soft); }
 
-.wrapper.post-page { max-width: 720px; }
+/* Same 1000px wrapper as other pages (so it lines up with the header),
+   with the article capped at a comfortable reading width. */
+.post-page .post-content { max-width: 720px; }
 .post-content { font-size: 18px; line-height: 1.7; }
 .post-content h1 { margin: 0 0 12px; font-size: 44px; line-height: 1.15; font-weight: 700; }
 .post-byline { margin: 0 0 32px; font-size: 15px; color: var(--color-text-muted); }
