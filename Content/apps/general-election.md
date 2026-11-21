@@ -6,5 +6,5 @@ appIcon: /Images/app-icon-general-election.webp
 platform: iOS
 released: 2017 and 2019
 link: https://apps.apple.com/gb/app/general-election-2019/id1240254142
-linkText: Download General Election 2019 on the App Store
+linkText: Download on the App Store
 ---
