@@ -220,21 +220,7 @@ private struct SiteFooter: Component {
                         .class("footer-email")
                 }
                 Navigation {
-                    Link(url: "https://www.github.com/oliver-binns") {
-                        Image(url: "/Images/github.svg", description: "GitHub Logo")
-                            .class("icon")
-                        Text("oliver-binns")
-                    }.linkTarget(.blank)
-                    Link(url: "https://bsky.app/profile/oliverbinns.co.uk") {
-                        Image(url: "/Images/bluesky.svg", description: "Bluesky Logo")
-                            .class("icon")
-                        Text("oliverbinns.co.uk")
-                    }.linkTarget(.blank)
-                    Link(url: "https://www.linkedin.com/in/obinns/") {
-                        Image(url: "/Images/in.svg", description: "LinkedIn Logo")
-                            .class("icon")
-                        Text("obinns")
-                    }.linkTarget(.blank)
+                    ComponentGroup(members: SocialLink.all)
                 }
                 .class("footer-links")
                 .attribute(named: "aria-label", value: "Social and site links")

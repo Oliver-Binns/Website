@@ -25,9 +25,10 @@ struct Speaking: Component {
                     .map(TalkCard.init))
             }.class("talks-grid")
             Paragraph {
-                Link("All talks, slides and resources on GitHub →",
-                     url: Self.allTalksURL)
-                    .linkTarget(.blank)
+                ExternalLink(url: Self.allTalksURL) {
+                    Text("All talks, slides and resources on GitHub ")
+                    Decorative("→")
+                }
             }.class("talks-all")
         }
     }
@@ -39,6 +40,19 @@ private struct TalkCard: Component {
     /// A talk is upcoming until its (latest) event date has passed. The
     /// badge updates whenever the site is rebuilt.
     private var isUpcoming: Bool { item.date > Date() }
+
+    /// The talk's Markdown body. Every card has links like "Watch the talk",
+    /// so each link also gets the talk's name as hidden text, e.g. "Watch the
+    /// talk: Building the Foundations", to make it unique (WCAG 2.4.9).
+    private var bodyHTML: String {
+        let title = item.title
+            .replacingOccurrences(of: "&", with: "&amp;")
+            .replacingOccurrences(of: "<", with: "&lt;")
+        return item.body.html.replacingOccurrences(
+            of: newTabWarningHTML,
+            with: "<span class=\"visually-hidden\">: \(title) (opens in new tab)</span>"
+        )
+    }
 
     /// The talk's meta line reads e.g. "Leeds Mobile · Jun 2025": the venue
     /// from `event` metadata plus the month and year of the (latest) date.
@@ -61,7 +75,7 @@ private struct TalkCard: Component {
                 }
                 DateText(date: item.date, formatter: Self.monthYear)
             }.class("talk-meta")
-            Div { item.body }.class("talk-body")
+            Div { Node<HTML.BodyContext>.raw(bodyHTML) }.class("talk-body")
         }
         .class(isUpcoming ? "talk-card talk-card-featured" : "talk-card")
     }

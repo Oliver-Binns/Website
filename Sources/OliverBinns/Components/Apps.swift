@@ -62,14 +62,13 @@ private struct AppCard: Component {
             }.class("app-header")
             Paragraph(item.description)
             if let link = item.metadata.link {
-                let appLink = Link(item.metadata.linkText ?? item.title, url: link)
-                    .class("app-link")
+                let text = item.metadata.linkText ?? item.title
                 // External links (e.g. the App Store) open in a new tab;
                 // `mailto:` links don't need to.
                 if link.hasPrefix("http") {
-                    appLink.linkTarget(.blank)
+                    ExternalLink(text, url: link).class("app-link")
                 } else {
-                    appLink
+                    Link(text, url: link).class("app-link")
                 }
             }
         }
