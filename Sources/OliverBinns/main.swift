@@ -31,6 +31,11 @@ struct OliverBinns: Website {
         // Speaking-only metadata (see `Content/speaking`): the venue, shown
         // alongside the month and year from the item's `date`.
         let event: String?
+
+        // Experience-only metadata (see `Content/experience`): the role's date
+        // range, and whether it gets a card on the homepage.
+        let period: String?
+        let featured: Bool?
     }
 
     // Update these properties to configure your website:
