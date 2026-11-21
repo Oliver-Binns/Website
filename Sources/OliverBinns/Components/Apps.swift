@@ -48,10 +48,18 @@ private struct AppCard: Component {
                         .attribute(named: "loading", value: "lazy")
                     )
                 } else {
-                    // Placeholder until the app has an icon asset.
+                    // Placeholder until the app has an icon asset. An app's
+                    // brand `color` (if set) replaces the site accent, with
+                    // light text so the letter stays readable on dark colours.
                     Div { Text(String(item.title.prefix(1))) }
                         .class("app-icon app-icon-placeholder")
                         .attribute(named: "aria-hidden", value: "true")
+                        .attribute(
+                            named: "style",
+                            value: item.metadata.color.map {
+                                "--app-icon-bg: \($0); --app-icon-fg: #fff"
+                            }
+                        )
                 }
                 Div {
                     H3(item.title)
@@ -62,8 +70,17 @@ private struct AppCard: Component {
             }.class("app-header")
             Paragraph(item.description)
             if let link = item.metadata.link {
-                let appLink = Link(item.metadata.linkText ?? item.title, url: link)
+                let linkText = item.metadata.linkText ?? item.title
+                // Short visible text like "Download on the App Store" is
+                // ambiguous out of context (e.g. a screen reader's link
+                // list), so name the app in the accessible label. It starts
+                // with the visible text, so voice control still matches it.
+                let accessibleLabel = linkText.contains(item.title)
+                    ? nil
+                    : "\(linkText): \(item.title)"
+                let appLink = Link(linkText, url: link)
                     .class("app-link")
+                    .attribute(named: "aria-label", value: accessibleLabel)
                 // External links (e.g. the App Store) open in a new tab;
                 // `mailto:` links don't need to.
                 if link.hasPrefix("http") {

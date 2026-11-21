@@ -6,5 +6,6 @@ platform: iOS and Android
 released: 2027
 status: Coming soon
 link: https://ourhappilyeverafter.app
-linkText: Find out more about Happily Ever After
+linkText: Find out more
+color: #2F5D50
 ---
