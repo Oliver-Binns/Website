@@ -26,8 +26,10 @@ struct Writing: Component {
                 }
             }.class("post-list")
             Paragraph {
-                Link("View all \(section.items.count) posts →",
-                     url: section.path.absoluteString)
+                Link(url: section.path.absoluteString) {
+                    Text("View all \(section.items.count) posts ")
+                    Decorative("→")
+                }
             }.class("posts-all")
         }
     }

@@ -68,6 +68,19 @@ html { scroll-padding-top: 88px; }
 }
 .skip-link:focus { top: 0; }
 main:focus { outline: none; }
+
+/* Links that open a new tab show an arrow; screen readers hear
+   "(opens in new tab)" from hidden text in the link (WCAG 3.2.5). */
+a[target="_blank"]::after {
+    content: "\2197" / "";
+    display: inline-block;
+    margin-left: 0.2em;
+    font-size: 0.85em;
+    text-decoration: none;
+}
+.pretty-link-container[target="_blank"]::after { content: none; }
+/* In flex links (icon + text) the gap would push the arrow away. */
+.hero-socials a::after, .footer-links a::after { margin-left: -4px; }
 .section:nth-of-type(even) { background: var(--color-bg-alt); }
 
 .hero { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
@@ -370,6 +383,9 @@ code {
 a .pretty-link .pretty-link-title, a .pretty-link p { overflow-wrap: anywhere; }
 a .pretty-link .pretty-link-title { display: block; margin: 0 0 6px; font-size: 18px; font-weight: 600; line-height: 1.35; color: var(--color-text); }
 a .pretty-link p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--color-text-muted); }
+/* A block-level card with a visible border, not a link within text, so it
+   doesn't need an underline to stand out (WCAG 1.4.1). */
+.post-content a.pretty-link-container { display: block; }
 .post-content a.pretty-link-container,
 .post-content a.pretty-link-container:visited { text-decoration: none; }
 .post-content a.pretty-link-container:hover .pretty-link { border-color: var(--color-accent); }

@@ -23,27 +23,12 @@ struct Hero: Component {
                     Div {
                         Link("See my talks", url: "#speaking")
                             .class("btn btn-primary")
-                        Link("GitHub", url: "https://www.github.com/oliver-binns")
+                        ExternalLink("GitHub", url: "https://www.github.com/oliver-binns")
                             .class("btn btn-outline")
-                            .linkTarget(.blank)
                     }.class("hero-ctas")
 
                     Div {
-                        Link(url: "https://www.github.com/oliver-binns") {
-                            Image(url: "/Images/github.svg", description: "GitHub Logo")
-                                .class("icon")
-                            Text("oliver-binns")
-                        }.linkTarget(.blank)
-                        Link(url: "https://bsky.app/profile/oliverbinns.co.uk") {
-                            Image(url: "/Images/bluesky.svg", description: "Bluesky Logo")
-                                .class("icon")
-                            Text("oliverbinns.co.uk")
-                        }.linkTarget(.blank)
-                        Link(url: "https://www.linkedin.com/in/obinns/") {
-                            Image(url: "/Images/in.svg", description: "LinkedIn Logo")
-                                .class("icon")
-                            Text("obinns")
-                        }.linkTarget(.blank)
+                        ComponentGroup(members: SocialLink.all)
                     }.class("hero-socials")
                 }.class("hero-text")
 

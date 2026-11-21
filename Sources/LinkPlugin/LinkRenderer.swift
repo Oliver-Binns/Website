@@ -31,8 +31,10 @@ struct PrettyLinkComponent: Component {
                     Paragraph(link.description)
                 }
             }.class("pretty-link")
+            Span(" (opens in new tab)").class("visually-hidden")
         }
         .class("pretty-link-container")
         .linkTarget(.blank)
+        .attribute(named: "rel", value: "noopener")
     }
 }
