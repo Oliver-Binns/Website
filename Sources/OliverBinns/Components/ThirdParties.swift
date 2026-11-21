@@ -9,12 +9,6 @@ extension Node where Context == HTML.DocumentContext {
         )
     }
 
-    private static var playfairFont: Node<Context> {
-        .head(
-            .link(.rel(.stylesheet), .href("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600;1,900&display=swap"))
-        )
-    }
-
     private static var theme: Node<Context> {
         .head(
             .meta(.name("viewport"), .content("width=device-width, initial-scale=1, maximum-scale=1")),
@@ -63,7 +57,7 @@ extension Node where Context == HTML.DocumentContext {
     }
 
     static var global: Node<Context> {
-        .group([quicksandFont, playfairFont, fontAwesome, theme, appStore])
+        .group([quicksandFont, fontAwesome, theme, appStore])
     }
 
     static var scripts: Node<Context> {

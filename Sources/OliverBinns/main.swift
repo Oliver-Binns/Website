@@ -52,6 +52,7 @@ try OliverBinns()
         .installPlugin(.splash(withClassPrefix: "")),
         .installPlugin(.youtube()),
         .installPlugin(.links()),
+        .installPlugin(.externalLinksInNewTab),
 
         .addMarkdownFiles(),
 

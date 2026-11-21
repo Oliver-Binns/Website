@@ -29,15 +29,8 @@ struct Writing: Component {
 
     /// e.g. "24 May 2025 · Terraform"
     private static func meta(for post: Item<OliverBinns>) -> String {
-        [dayMonthYear.string(from: post.date), post.tags.first?.string]
+        [DateFormatter.dayMonthYear.string(from: post.date), post.tags.first?.string]
             .compactMap { $0 }
             .joined(separator: " · ")
     }
-
-    private static let dayMonthYear: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.dateFormat = "d MMM yyyy"
-        return formatter
-    }()
 }

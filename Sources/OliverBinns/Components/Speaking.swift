@@ -62,20 +62,8 @@ private struct TalkCard: Component {
             }
             H3(item.title)
             Paragraph(meta).class("talk-meta")
-            Div { item.body.openingExternalLinksInNewTab }.class("talk-body")
+            Div { item.body }.class("talk-body")
         }
         .class(isUpcoming ? "talk-card talk-card-featured" : "talk-card")
-    }
-}
-
-private extension Content.Body {
-    /// Markdown has no syntax for link targets, so add `target="_blank"` to
-    /// external (http/https) links in rendered talk bodies, matching the
-    /// `.linkTarget(.blank)` used for external links elsewhere on the site.
-    var openingExternalLinksInNewTab: Content.Body {
-        Content.Body(html: html.replacingOccurrences(
-            of: "<a href=\"http",
-            with: "<a target=\"_blank\" href=\"http"
-        ))
     }
 }
