@@ -116,11 +116,17 @@ private struct SiteHeader: Component {
     var body: Component {
         Header {
             Wrapper {
-                Link(url: "/") {
-                    Image(url: "/Images/oliver-binns.svg", description: "Oliver Binns")
-                    H2("Lead Mobile Developer")
-                }
-            }
+                Link("Oliver Binns", url: "/").class("site-title")
+                Div {
+                    Link("Highlights", url: "#highlights")
+                    Link("Apps", url: "#apps")
+                    Link("Speaking", url: "#speaking")
+                    Link("Experience", url: "#experience")
+                    Link("Writing", url: "#writing")
+                }.class("nav-links")
+                Link("Get in touch", url: "mailto:mail@oliverbinns.co.uk")
+                    .class("btn btn-dark")
+            }.class("header-content")
         }
     }
 }
@@ -156,31 +162,29 @@ private struct SiteFooter: Component {
     var body: Component {
         Footer {
             Wrapper {
-                H2 {
+                Div {
+                    H2("Let's talk mobile.")
                     Link("mail@oliverbinns.co.uk", url: "mailto:mail@oliverbinns.co.uk")
+                        .class("footer-email")
                 }
-                H2 {
+                Div {
                     Link(url: "https://www.github.com/oliver-binns") {
                         Image(url: "/Images/github.svg", description: "GitHub Logo")
                             .class("icon")
-                        Text(" oliver-binns")
+                        Text("oliver-binns")
                     }.linkTarget(.blank)
-                }
-                H2 {
                     Link(url: "https://bsky.app/profile/oliverbinns.co.uk") {
                         Image(url: "/Images/bluesky.svg", description: "Bluesky Logo")
                             .class("icon")
-                        Text(" oliverbinns.co.uk")
+                        Text("oliverbinns.co.uk")
                     }.linkTarget(.blank)
-                }
-                H2 {
                     Link(url: "https://www.linkedin.com/in/obinns/") {
                         Image(url: "/Images/in.svg", description: "LinkedIn Logo")
                             .class("icon")
-                        Text(" obinns")
+                        Text("obinns")
                     }.linkTarget(.blank)
-                }
-            }
+                }.class("footer-links")
+            }.class("footer-content")
         }
     }
 }
