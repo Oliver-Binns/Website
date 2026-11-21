@@ -1,3 +1,31 @@
+:root {
+    --color-bg: #fffdf7;
+    --color-bg-alt: #f6f1e1;
+    --color-text: #1a1a1a;
+    --color-text-muted: #55524a;
+    --color-text-soft: #3d3a33;
+    --color-accent: #F5C518;
+    --color-border: #e6e1d3;
+    --font-body: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+    --radius-pill: 999px;
+    --radius-card: 16px;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #1a1a1a;
+        --color-bg-alt: #242424;
+        --color-text: #fffdf7;
+        --color-text-muted: #b8b4a8;
+        --color-text-soft: #d8d4c8;
+        --color-border: #3a382f;
+    }
+}
+
+.btn { display:inline-block; font-weight:600; text-decoration:none; border-radius: var(--radius-pill); padding: 14px 24px; }
+.btn-primary { background: var(--color-accent); color: var(--color-text); }
+.btn-dark { background: var(--color-text); color: var(--color-bg); }
+.btn-outline { border: 2px solid var(--color-text); color: var(--color-text); background: transparent; box-sizing: border-box; }
+
 html, body { padding: 0; color:#333; margin: 0; font-family: 'Quicksand', sans-serif; }
 h2 { font-weight: 500; }
 h2 { margin-bottom:0; }
