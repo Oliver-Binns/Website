@@ -26,6 +26,8 @@ private struct OliverHTMLFactory: HTMLFactory {
 
                 Apps(section: context.sections[.apps])
 
+                Speaking(section: context.sections[.speaking])
+
                 Divider()
 
                 Wrapper {
@@ -37,7 +39,7 @@ private struct OliverHTMLFactory: HTMLFactory {
 
                 Wrapper {
                     H3("Positions")
-                    Timeline(items: context.sections[.experience].items + context.sections[.speaking].items)
+                    Timeline(items: context.sections[.experience].items)
                 }
 
                 SiteFooter()
