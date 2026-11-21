@@ -26,6 +26,9 @@
 .btn-dark { background: var(--color-text); color: var(--color-bg); }
 .btn-outline { border: 2px solid var(--color-text); color: var(--color-text); background: transparent; box-sizing: border-box; }
 
+.section { padding: 64px 0; }
+.section:nth-of-type(even) { background: var(--color-bg-alt); }
+
 html, body { padding: 0; color:#333; margin: 0; font-family: 'Quicksand', sans-serif; }
 h2 { font-weight: 500; }
 h2 { margin-bottom:0; }
