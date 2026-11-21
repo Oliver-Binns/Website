@@ -1,11 +1,11 @@
 import Plot
 
 extension Node where Context == HTML.DocumentContext {
-    private static var quicksandFont: Node<Context> {
+    private static var displayFont: Node<Context> {
         .head(
             .link(.rel(.preconnect), .href("https://fonts.googleapis.com")),
             .link(.rel(.preconnect), .href("https://fonts.gstatic.com"), .attribute(named: "crossorigin", value: "")),
-            .link(.rel(.stylesheet), .href("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"))
+            .link(.rel(.stylesheet), .href("https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap"))
         )
     }
 
@@ -57,7 +57,7 @@ extension Node where Context == HTML.DocumentContext {
     }
 
     static var global: Node<Context> {
-        .group([quicksandFont, fontAwesome, theme, appStore])
+        .group([displayFont, fontAwesome, theme, appStore])
     }
 
     static var scripts: Node<Context> {
