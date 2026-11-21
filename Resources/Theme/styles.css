@@ -236,12 +236,6 @@ footer .icon { filter: brightness(0) invert(1); margin-top: 0; }
     border-radius: 12px;
 }
 
-/* Juxtapose before/after sliders (loaded on post pages via
-   ThirdParties.scripts): the images are positioned by the library, so
-   undo the general post image spacing and round the slider instead. */
-.post-content .juxtapose { margin: 24px 0; border-radius: 12px; overflow: hidden; }
-.post-content .juxtapose img { margin: 0; border-radius: 0; }
-
 /* Image and video captions */
 .post-content img + p,
 .post-content img + em,
@@ -360,7 +354,4 @@ table {
 }
 table td {
     vertical-align:top;
-}
-.jx-knightlab {
-    display:none !important;
 }

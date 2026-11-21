@@ -16,8 +16,7 @@ private struct OliverHTMLFactory: HTMLFactory {
                        context: PublishingContext<OliverBinns>) throws -> HTML {
         HTML(
             .lang(context.site.language),
-            .head(for: index, on: context.site),
-            .global,
+            .siteHead(for: index, on: context.site),
             .body {
                 SiteHeader()
 
@@ -42,8 +41,7 @@ private struct OliverHTMLFactory: HTMLFactory {
                          context: PublishingContext<Site>) throws -> HTML {
         HTML(
             .lang(context.site.language),
-            .head(for: section, on: context.site),
-            .global,
+            .siteHead(for: section, on: context.site),
             .body {
                 SiteHeader()
                 Wrapper {
@@ -63,8 +61,7 @@ private struct OliverHTMLFactory: HTMLFactory {
                       context: PublishingContext<OliverBinns>) throws -> HTML {
         HTML(
             .lang(context.site.language),
-            .head(for: item, on: context.site),
-            .global,
+            .siteHead(for: item, on: context.site, includeAnalytics: true),
             .body(
                 .class("item-page"),
                 .components {
@@ -86,8 +83,7 @@ private struct OliverHTMLFactory: HTMLFactory {
                     }.class("post-page")
                     SiteFooter()
                 }
-            ),
-            .scripts
+            )
         )
     }
 
@@ -95,8 +91,7 @@ private struct OliverHTMLFactory: HTMLFactory {
                       context: PublishingContext<OliverBinns>) throws -> HTML {
         HTML(
             .lang(context.site.language),
-            .head(for: page, on: context.site),
-            .global,
+            .siteHead(for: page, on: context.site),
             .body {
                 SiteHeader()
                 Wrapper(page.body)
