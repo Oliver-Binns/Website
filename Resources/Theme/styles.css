@@ -34,9 +34,12 @@
 
 .section { padding: 64px 0; }
 
-/* Leave room for the sticky header (under 80px at every width) when jumping
-   to a section (e.g. /#apps). */
+/* Leave room for the sticky header when jumping to a section (e.g. /#apps)
+   or when keyboard focus moves under it (WCAG 2.4.11/2.4.12). The header is
+   static on short viewports (see below), so no padding is needed there. */
 html { scroll-padding-top: 88px; }
+@media (max-width: 720px) { html { scroll-padding-top: 116px; } }
+@media (max-height: 500px) { html { scroll-padding-top: 0; } }
 
 /* ---- Accessibility utilities ---- */
 
@@ -69,6 +72,17 @@ html { scroll-padding-top: 88px; }
 .skip-link:focus { top: 0; }
 main:focus { outline: none; }
 
+/* A clear, high-contrast focus ring on everything (WCAG 2.4.7, 2.4.13 AAA):
+   3px thick, offset so it never touches the element, and at least 7:1
+   against every background it can sit on. */
+:focus-visible {
+    outline: 3px solid var(--color-text);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+header :focus-visible, .btn-primary:focus-visible { outline-color: var(--color-ink); }
+footer :focus-visible, .skip-link:focus-visible { outline-color: var(--color-accent); }
+
 /* Links that open a new tab show an arrow; screen readers hear
    "(opens in new tab)" from hidden text in the link (WCAG 3.2.5). */
 a[target="_blank"]::after {
@@ -81,6 +95,16 @@ a[target="_blank"]::after {
 .pretty-link-container[target="_blank"]::after { content: none; }
 /* In flex links (icon + text) the gap would push the arrow away. */
 .hero-socials a::after, .footer-links a::after { margin-left: -4px; }
+
+/* Respect a preference for less motion (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
 .section:nth-of-type(even) { background: var(--color-bg-alt); }
 
 .hero { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
@@ -90,7 +114,7 @@ a[target="_blank"]::after {
 .hero-description { margin: 0 0 28px; font-size: 18px; color: var(--color-text-soft); }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
 .hero-socials { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 28px; font-size: 15px; }
-.hero-socials a { display: inline-flex; align-items: center; gap: 8px; }
+.hero-socials a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
 .hero-photo {
     flex: 0 1 360px;
     width: 360px;
@@ -121,7 +145,7 @@ a[target="_blank"]::after {
 .app-icon { width: 64px; height: 64px; flex: none; border-radius: 16px; }
 .app-icon-placeholder { background: var(--color-accent); color: #1a1a1a; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; }
 .app-card .app-meta { font-size: 14px; color: var(--color-text-muted); }
-.app-link, .app-link:visited, .app-link:hover { margin-top: auto; color: var(--color-text); font-weight: 600; text-decoration: underline; }
+.app-link, .app-link:visited, .app-link:hover { margin-top: auto; align-self: flex-start; min-height: 44px; display: inline-flex; align-items: center; color: var(--color-text); font-weight: 600; text-decoration: underline; }
 
 .talks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
 .talk-card { background: var(--color-bg); border-radius: var(--radius-card); padding: 24px; }
@@ -134,9 +158,11 @@ a[target="_blank"]::after {
 .talk-body ul { margin: 0; padding-left: 20px; font-size: 15px; }
 .talk-body li { margin-bottom: 6px; }
 .talk-body li:last-child { margin-bottom: 0; }
+.talk-body a { display: inline-flex; align-items: center; min-height: 44px; }
 .talk-body a, .talk-body a:visited, .talk-body a:hover,
 .talks-all a, .talks-all a:visited, .talks-all a:hover { color: var(--color-text); text-decoration: underline; }
 .talks-all { margin: 28px 0 0; font-weight: 600; }
+.talks-all a, .posts-all a { display: inline-flex; align-items: center; min-height: 44px; }
 
 .experience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 24px; }
 .role p { margin: 0; }
@@ -147,8 +173,8 @@ a[target="_blank"]::after {
 .experience-earlier-body p { margin: 12px 0 0; color: var(--color-text-soft); }
 
 .post-list { list-style: none; margin: 24px 0 0; padding: 0; border-top: 1px solid var(--color-border); }
-.post-list li { padding: 16px 0; border-bottom: 1px solid var(--color-border); display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
-.post-link, .post-link:visited, .post-link:hover { font-weight: 600; color: var(--color-text); text-decoration: underline; }
+.post-list li { padding: 8px 0; border-bottom: 1px solid var(--color-border); display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+.post-link, .post-link:visited, .post-link:hover { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: var(--color-text); text-decoration: underline; }
 .post-meta { color: var(--color-text-muted); font-size: 14px; }
 .posts-all { margin: 20px 0 0; font-weight: 600; }
 .posts-all a, .posts-all a:visited, .posts-all a:hover { color: var(--color-text); text-decoration: underline; }
@@ -192,8 +218,11 @@ header {
     justify-content: space-between;
     gap: 12px;
 }
-.site-title { font-size: 27px; line-height: 1; }
-.nav-links { display: flex; flex-wrap: wrap; gap: 24px; font-size: 15px; }
+/* Every header link is at least 44×44px (WCAG 2.5.5 AAA). */
+.site-title { font-size: 27px; line-height: 1; display: inline-flex; align-items: center; min-height: 44px; }
+.nav-links { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 15px; }
+.nav-links a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; }
+header a:not(.btn):hover { text-decoration: underline; }
 header a:not(.btn), header a:not(.btn):visited, header a:not(.btn):hover { color: var(--color-ink); }
 header .btn-dark, header .btn-dark:visited, header .btn-dark:hover { color: var(--color-paper); }
 
@@ -201,21 +230,28 @@ header .btn-dark, header .btn-dark:visited, header .btn-dark:hover { color: var(
    second row, without "Get in touch" (it's in the footer). The links scroll
    sideways if a very narrow screen can't fit them. */
 @media (max-width: 720px) {
-    header { padding: 10px 0 0; }
-    .header-content { flex-direction: column; align-items: flex-start; gap: 4px; }
+    header { padding: 4px 0 0; }
+    .header-content { flex-direction: column; align-items: flex-start; gap: 0; }
     .header-content .btn { display: none; }
     .nav-links {
         flex-wrap: nowrap;
         justify-content: space-between;
-        gap: 14px;
+        gap: 4px;
         width: 100%;
         font-size: 14px;
         overflow-x: auto;
-        padding: 6px 0 10px;
+        padding: 0 0 4px;
         white-space: nowrap;
         scrollbar-width: none;
     }
     .nav-links::-webkit-scrollbar { display: none; }
+}
+
+/* On short viewports (landscape phones, or heavy zoom) a sticky header would
+   cover too much of the page and could hide the focused element
+   (WCAG 2.4.11/2.4.12), so let it scroll away. */
+@media (max-height: 500px) {
+    header { position: static; }
 }
 footer {
     background: var(--color-ink);
@@ -236,7 +272,9 @@ footer {
 .footer-content h2 { font-size: 34px; margin: 0; }
 .footer-email, .footer-email:hover, .footer-email:visited { color: var(--color-accent); }
 .footer-links { display: flex; flex-wrap: wrap; gap: 24px; }
-.footer-links a { display: inline-flex; align-items: center; gap: 8px; }
+.footer-links a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+.footer-email { display: inline-flex; align-items: center; min-height: 44px; }
+footer a:hover { text-decoration: underline; }
 footer a, footer a:hover, footer a:visited { color: var(--color-paper); }
 footer .icon { filter: brightness(0) invert(1); margin-top: 0; }
 .wrapper { max-width:1000px; margin:auto; }
@@ -420,5 +458,5 @@ table td {
 .breadcrumbs ol { display: flex; flex-wrap: wrap; align-items: center; list-style: none; margin: 0 0 16px; padding: 0; font-size: 15px; color: var(--color-text-muted); }
 .breadcrumbs li { display: inline-flex; align-items: center; }
 .breadcrumbs li + li::before { content: "\203A" / ""; margin: 0 8px; }
-.breadcrumbs a { text-decoration: underline; }
+.breadcrumbs a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; text-decoration: underline; }
 .breadcrumbs [aria-current] { color: var(--color-text); }
