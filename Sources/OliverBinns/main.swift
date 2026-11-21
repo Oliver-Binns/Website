@@ -11,7 +11,8 @@ struct OliverBinns: Website {
     enum SectionID: String, WebsiteSectionID {
         case posts
         case things
-        case times
+        case experience
+        case speaking
     }
 
     struct ItemMetadata: WebsiteItemMetadata {

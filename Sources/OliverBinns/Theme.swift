@@ -35,7 +35,7 @@ private struct OliverHTMLFactory: HTMLFactory {
 
                 Wrapper {
                     H3("Positions")
-                    Timeline(items: context.sections[.times].items)
+                    Timeline(items: context.sections[.experience].items + context.sections[.speaking].items)
                 }
 
                 SiteFooter()
