@@ -65,9 +65,41 @@ h4.year { color: #F9C300; margin-block-start: 0.7em; margin-block-end: 0.7em; }
 .timeline-item i.fas { margin-left:-34px; margin-right:8px; text-align:center; line-height:15px; height:15px; width:15px; padding:5px; background-color:#f9c300; border-radius:50%; color:white; font-size: 12px;  }
 
 .icon { filter: brightness(0); margin-top:5px; }
-header { text-align:center; padding: 62px; }
-header, footer { color:black; background-color: #F9C300; }
-footer { padding: 2px; }
+header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--color-accent);
+    border-bottom: 2px solid var(--color-text);
+    padding: 14px 48px;
+}
+.header-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+.site-title { font-weight: 700; font-size: 18px; }
+.nav-links { display: flex; flex-wrap: wrap; gap: 24px; font-size: 15px; }
+footer {
+    background: var(--color-text);
+    color: var(--color-bg);
+    padding: 48px;
+}
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-content h2 { font-size: 24px; font-weight: 700; margin: 0; }
+.footer-email, .footer-email:hover, .footer-email:visited { color: var(--color-accent); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 24px; }
+.footer-links a { display: inline-flex; align-items: center; gap: 8px; }
+footer a, footer a:hover, footer a:visited { color: var(--color-bg); }
+footer .icon { filter: brightness(0) invert(1); margin-top: 0; }
 .divider { width:100%; height: 20px; background-color: #F9C300; margin-top:5px; }
 .wrapper { max-width:1000px; margin:auto; }
 .blog { overflow: auto; white-space:nowrap; }
@@ -80,7 +112,6 @@ footer { padding: 2px; }
         .timeline-item h1 { color:white; }
         .timeline-item i.fas { color:black; }
 }
-footer { padding-bottom:30px; padding-top:10px; }
 
 .youtube iframe {
     width: 100%;
