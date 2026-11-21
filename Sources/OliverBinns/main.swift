@@ -27,6 +27,10 @@ struct OliverBinns: Website {
         let status: String?
         let link: String?
         let linkText: String?
+
+        // Speaking-only metadata (see `Content/speaking`): the venue, shown
+        // alongside the month and year from the item's `date`.
+        let event: String?
     }
 
     // Update these properties to configure your website:
